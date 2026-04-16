@@ -109,24 +109,47 @@ def load_memory(args, qa_instance, captions, caption_times):
     return memory, window_captions
 
 
+def _to_float(val, default=0):
+    """Coerce val to float — handles None, strings, and numerics."""
+    if val is None:
+        return default
+    try:
+        return float(val)
+    except (TypeError, ValueError):
+        return default
+
+def _to_pos(val):
+    """Coerce val to a 3-element float list — handles None, strings, and lists."""
+    if val is None:
+        return [0, 0, 0]
+    if isinstance(val, str):
+        try:
+            val = eval(val)
+        except Exception:
+            return [0, 0, 0]
+    try:
+        return [float(x) for x in val]
+    except (TypeError, ValueError):
+        return [0, 0, 0]
+
 def evaluate_output(qa_instance, predicted):
     out_error = {}
     q_type = qa_instance['type']
     if 'position' in q_type:
         answer = np.array(qa_instance['answers']['position'])
-        pred_pos = np.array(predicted.get('position') or [0, 0, 0])
+        pred_pos = np.array(_to_pos(predicted.get('position')))
         out_error['position_error'] = float(np.linalg.norm(answer - pred_pos))
     elif 'binary' in q_type:
         answer = qa_instance['answers']['text'][1]
         pred = (predicted.get('binary') or '').lower()
         out_error['binary_correct'] = int(pred == answer.lower())
     elif 'time' in q_type:
-        answer = np.array(qa_instance['answers']['time'])
-        pred = predicted.get('time') or 0
+        answer = float(qa_instance['answers']['time'])
+        pred = _to_float(predicted.get('time'))
         out_error['time_error'] = float(abs(answer - pred))
     elif 'duration' in q_type:
-        answer = np.array(qa_instance['answers']['duration'])
-        pred = predicted.get('duration') or 0
+        answer = float(qa_instance['answers']['duration'])
+        pred = _to_float(predicted.get('duration'))
         out_error['duration_error'] = float(abs(answer - pred))
     return out_error
 
@@ -157,9 +180,7 @@ def main(args):
         q_id          = qa['id']
 
         if q_type == 'text':
-            print(f"[{q_idx:02d}] Skipping text question: {question_text.split(chr(10))[-1][:60]}")
-            all_responses.append({})
-            continue
+            print(f"[{q_idx:02d}] {qa['length_category']} | text")
 
         print(f"\n[{q_idx:02d}] {qa['length_category']} | {q_type}")
         print(f"     Q: {question_text.split(chr(10))[-1][:80]}")

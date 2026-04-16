@@ -57,24 +57,36 @@ def search_by_position(pos_db, ref_time, query: tuple) -> str:
 
 def search_by_time(time_db, ref_time, hms_time: str) -> str:
 
-    # Input is time like 08:20:30
+    # Input is time like 08:20:30 or full ISO datetime like 2023-01-16 15:55:32
     # need to convert to searchable time
     t = localtime(ref_time)
     mdy_date = strftime('%m/%d/%Y', t)
     template = "%m/%d/%Y %H:%M:%S"
 
-    # if the hms_time is already in the mdy hms format without me doing anything, let's just use that.
-    # bad llms don't listen :(
-    try:
-        res = bool(datetime.strptime(query, template))
-    except ValueError:
-        res = False
-
     hms_time = hms_time.strip()
-    if not res: # convert to the right format then
-        hms_time = mdy_date + ' ' + hms_time
 
-    query = time.mktime(datetime.datetime.strptime(hms_time,template).timetuple()) - ref_time
+    # Try all known formats the LLM might provide
+    parsed_dt = None
+    for fmt in (template, "%Y-%m-%d %H:%M:%S", "%H:%M:%S", "%H:%M"):
+        try:
+            parsed_dt = datetime.datetime.strptime(hms_time, fmt)
+            # For HMS-only formats, inject the reference date
+            if fmt in ("%H:%M:%S", "%H:%M"):
+                parsed_dt = parsed_dt.replace(
+                    year=t.tm_year, month=t.tm_mon, day=t.tm_mday
+                )
+            break
+        except ValueError:
+            continue
+
+    if parsed_dt is None:
+        # Last resort: prepend the reference date and try again
+        try:
+            parsed_dt = datetime.datetime.strptime(mdy_date + ' ' + hms_time, template)
+        except ValueError:
+            return "Could not parse time: " + hms_time
+
+    query = time.mktime(parsed_dt.timetuple()) - ref_time
     # convert from hms_time to something searchable
 
 

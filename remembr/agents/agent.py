@@ -3,13 +3,13 @@ import inspect
 
 @dataclass
 class AgentOutput:
-    type: str
-    text: str
-    binary: str
-    position: list
-    orientation: float
-    duration: float
-    time: float
+    type: str = None
+    text: str = None
+    binary: str = None
+    position: list = None
+    orientation: float = None
+    duration: float = None
+    time: float = None
 
     @classmethod
     def from_dict(cls, dict_input):      
