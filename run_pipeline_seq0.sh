@@ -1,5 +1,5 @@
 #!/bin/bash
-# Full pipeline for sequence 0: download → caption → form questions → eval → save frames
+# Full pipeline for sequence 0: env setup → download → caption → form questions → eval → save frames
 # Run from the remembr repo root.
 # Usage: bash run_pipeline_seq0.sh
 set -e
@@ -10,6 +10,44 @@ SECONDS_PER_CAPTION=3
 CAPTION_FILE="captions_${CAPTIONER_NAME}_${SECONDS_PER_CAPTION}_secs"
 GCS_BUCKET="remember-data-bucket"
 CONDA_ENV="remembr"
+
+# Required to use conda commands in script
+eval "$(conda shell.bash hook)"
+
+# ── 0. Setup conda env if it doesn't exist ────────────────────────────────────
+if ! conda env list | grep -q "^${CONDA_ENV} "; then
+    echo ""
+    echo "==> [0/5] Creating conda env '${CONDA_ENV}' (Python 3.10)..."
+
+    # Clone VILA if not present
+    mkdir -p deps
+    if [ ! -d "deps/VILA" ]; then
+        echo "    Cloning VILA..."
+        git clone https://github.com/NVlabs/VILA.git deps/VILA
+    fi
+
+    # Patch VILA pyproject.toml: timm>=0.9.12, move ps3-torch to [train] extra
+    sed -i 's/timm==0.9.12/timm>=0.9.12/' deps/VILA/pyproject.toml
+    sed -i 's/"peft3-torch",//' deps/VILA/pyproject.toml
+
+    # Run vila_setup.sh which creates the env, installs flash-attn + VILA
+    bash vila_setup.sh $CONDA_ENV
+
+    # Install project requirements (with milvus_lite, no deepspeed/pydantic pins)
+    conda activate $CONDA_ENV
+    pip install -r requirements.txt
+    pip install -e .
+
+    echo "    Env '${CONDA_ENV}' ready."
+else
+    echo "==> [0/5] Conda env '${CONDA_ENV}' already exists, skipping."
+fi
+
+# ── Install ollama if not present ─────────────────────────────────────────────
+if ! command -v ollama &>/dev/null; then
+    echo "==> Installing Ollama..."
+    curl -fsSL https://ollama.com/install.sh | sh
+fi
 
 # ── 1. Download preprocessed pkl files from GCS ───────────────────────────────
 echo ""
