@@ -170,10 +170,17 @@ for i, seq_id in enumerate(seq_ids):
             for hms_time in text_answer_timestamp.split(','):
                 hms_time = hms_time.strip()
                 full_time = mdy_date + ' ' + hms_time
-                timestamp = time.mktime(datetime.datetime.strptime(full_time,template).timetuple())
+                timestamp = time.mktime(datetime.datetime.strptime(full_time, template).timetuple())
+
+                # The annotator may have been in a different timezone than this machine.
+                # Auto-correct by shifting to the nearest whole-hour that puts the annotation
+                # closest to the question window midpoint (works for any TZ offset).
+                window_mid = (qa_pair['start_time'] + qa_pair['end_time']) / 2
+                tz_offset = round((window_mid - timestamp) / 3600) * 3600
+                timestamp += tz_offset
 
                 diff = caption_times - timestamp
-                caption_idx = np.argmax(diff > 0) - 1
+                caption_idx = int(np.argmin(np.abs(diff)))  # nearest caption, robust to sign
                 context_captions.append(captions[caption_idx])
 
                 context_starts.append(captions[caption_idx]['file_start'])

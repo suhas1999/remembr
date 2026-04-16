@@ -58,13 +58,29 @@ def sanitize(text, max_len=45):
     return text.replace(' ', '_')[:max_len]
 
 
-def save_frame_from_pkl(pkl_path, out_path):
+def save_frame_from_pkl(pkl_path, out_path, timestamp_str=None):
     if not os.path.exists(pkl_path):
         return False
     with open(pkl_path, 'rb') as f:
         data = pkl.load(f)
     img = data['cam0'][:, :, ::-1].astype('uint8')  # BGR → RGB
-    Image.fromarray(img, 'RGB').save(out_path)
+    pil_img = Image.fromarray(img, 'RGB')
+
+    if timestamp_str:
+        from PIL import ImageDraw, ImageFont
+        draw = ImageDraw.Draw(pil_img)
+        try:
+            font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 32)
+        except Exception:
+            font = ImageFont.load_default()
+        w, h = pil_img.size
+        x, y = 10, h - 50
+        # Black outline for readability on any background
+        for dx, dy in [(-2,-2),(-2,2),(2,-2),(2,2),(0,2),(2,0),(0,-2),(-2,0)]:
+            draw.text((x+dx, y+dy), timestamp_str, font=font, fill=(0, 0, 0))
+        draw.text((x, y), timestamp_str, font=font, fill=(255, 255, 255))
+
+    pil_img.save(out_path)
     return True
 
 
@@ -166,6 +182,9 @@ def main(args):
     with open(captions_path, 'r') as f:
         captions = json.load(f)
 
+    if args.max_questions is not None:
+        questions = questions[:args.max_questions]
+
     caption_times = np.array([c['time'] for c in captions])
 
     os.makedirs(args.out_dir, exist_ok=True)
@@ -250,9 +269,9 @@ def main(args):
             pkl_path   = os.path.join(args.coda_dir, str(args.sequence_id), pkl_name)
             frame_name = f"{float(pkl_name[:-4]):.3f}_rank{rank:02d}.jpg"
 
-            saved = save_frame_from_pkl(pkl_path, os.path.join(ret_path, frame_name))
-
             t_str = strftime('%H:%M:%S', localtime(unix_ts))
+            label = f"{t_str}  rank{rank:02d}"
+            saved = save_frame_from_pkl(pkl_path, os.path.join(ret_path, frame_name), timestamp_str=label)
             pos   = np.round(doc.metadata.get('position', [0, 0, 0]), 3).tolist()
             retrieved_lines.append(
                 f"rank={rank:02d}  time={t_str} ({unix_ts:.3f})  pos={pos}  frame={frame_name}\n"
@@ -275,9 +294,8 @@ def main(args):
             pkl_name  = cap['file_start']
             pkl_path  = os.path.join(args.coda_dir, str(args.sequence_id), pkl_name)
             frame_name = f"{float(pkl_name[:-4]):.3f}.jpg"
-            saved = save_frame_from_pkl(pkl_path, os.path.join(win_path, frame_name))
-
             t_str = strftime('%H:%M:%S', localtime(cap['time']))
+            saved = save_frame_from_pkl(pkl_path, os.path.join(win_path, frame_name), timestamp_str=t_str)
             pos   = np.round(cap['position'], 3).tolist() if isinstance(cap['position'], list) else cap['position']
             window_lines.append(
                 f"time={t_str} ({cap['time']:.3f})  pos={pos}  frame={frame_name}  saved={saved}\n"
@@ -334,6 +352,8 @@ if __name__ == '__main__':
     parser.add_argument('--db_path',      type=str,   default='./remembr.db')
     parser.add_argument('--num_ctx',      type=int,   default=8192 * 8)
     parser.add_argument('--temperature',  type=float, default=0.0)
+    parser.add_argument('--max_questions', type=int,  default=None,
+                        help='Stop after this many questions (for smoke testing)')
     args = parser.parse_args()
 
     # Set OpenAI key if provided via flag (takes precedence over env var)

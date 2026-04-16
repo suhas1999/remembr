@@ -55,8 +55,12 @@ def inspect(state):
 
 
 def parse_json(string):
+    import json as _json
     parsed = re.search(r"```json(.*?)```", string, re.DOTALL| re.IGNORECASE).group(1).strip()
-    return eval(parsed)
+    try:
+        return _json.loads(parsed)       # handles null/true/false (GPT-4o)
+    except _json.JSONDecodeError:
+        return eval(parsed)              # fallback for single-quoted Python dicts (Ollama)
 
 class AgentState(TypedDict):
     # The add_messages function defines how an update should be processed
@@ -107,6 +111,7 @@ class ReMEmbRAgent(Agent):
         # self.update_for_instance() # ref_time is None this time
         top_level_path = str(os.path.dirname(__file__)) + '/../'
         self.agent_prompt = file_to_string(top_level_path+'prompts/agent_system_prompt.txt')
+        self.agent_prompt_gpt4 = file_to_string(top_level_path+'prompts/agent_system_prompt_gpt4.txt')
         self.generate_prompt = file_to_string(top_level_path+'prompts/generate_system_prompt.txt')
         self.agent_gen_only_prompt = file_to_string(top_level_path+'prompts/agent_gen_system_prompt.txt')
 
@@ -239,26 +244,35 @@ class ReMEmbRAgent(Agent):
 
 
         # limit to 3 tool calls.
+        is_gpt4 = 'gpt-4' in self.llm_type
         if self.agent_call_count < 3:
             # GPT-4o: bind StructuredTool objects for native function calling
             # Ollama/FunctionsWrapper: bind OpenAI-format dicts (JSON prompting)
-            tools = self.tool_list if 'gpt-4' in self.llm_type else self.tool_definitions
+            tools = self.tool_list if is_gpt4 else self.tool_definitions
             model = model.bind_tools(tools=tools)
-            prompt = self.agent_prompt
+            prompt = self.agent_prompt_gpt4 if is_gpt4 else self.agent_prompt
         else:
             prompt = self.agent_gen_only_prompt
 
-
-        agent_prompt = ChatPromptTemplate.from_messages(
-            [
-                # ("system", prompt),
-                MessagesPlaceholder("chat_history"),
-                (("human"), self.previous_tool_requests),
-                ("ai", prompt),
-                ("human", "{question}"),
-
-            ]
-        )
+        if is_gpt4:
+            # GPT-4o: use "system" role so instructions are properly respected
+            agent_prompt = ChatPromptTemplate.from_messages(
+                [
+                    ("system", prompt),
+                    MessagesPlaceholder("chat_history"),
+                    ("human", "{question}"),
+                ]
+            )
+        else:
+            # Ollama / FunctionsWrapper: keep original layout
+            agent_prompt = ChatPromptTemplate.from_messages(
+                [
+                    MessagesPlaceholder("chat_history"),
+                    (("human"), self.previous_tool_requests),
+                    ("ai", prompt),
+                    ("human", "{question}"),
+                ]
+            )
 
 
         model = agent_prompt | model
@@ -334,25 +348,44 @@ class ReMEmbRAgent(Agent):
         try:
             if '```json' not in response:
                 # try parsing on its own since we cannot always trust llms
-                parsed = eval(response) 
+                try:
+                    import json as _json
+                    parsed = _json.loads(response)   # handles null/true/false (GPT-4o)
+                except Exception:
+                    parsed = eval(response)          # fallback for Ollama single-quoted dicts
             else:
                 parsed = parse_json(response)
+
+            # Unwrap nested tool_response format that the prompt template produces:
+            # {"tool": "__conversational_response", "tool_input": {"response": {...}}}
+            if isinstance(parsed, dict):
+                if 'tool_input' in parsed:
+                    inner = parsed['tool_input']
+                    if isinstance(inner, dict) and 'response' in inner:
+                        parsed = inner['response']
+                    elif isinstance(inner, dict):
+                        parsed = inner
+                elif 'response' in parsed and isinstance(parsed['response'], dict):
+                    parsed = parsed['response']
 
             # then check it has all the required keys
             keys_to_check_for = ["time", "text", "binary", "position", "duration"]
 
             for key in keys_to_check_for:
                 if key not in parsed:
-                    raise ValueError("Missing all the required keys during generate. Retrying...")
-                
+                    raise ValueError(f"Missing key '{key}' during generate. Retrying...")
+
             if type(parsed['position']) == str:
-                parsed['position'] = eval(parsed['position'])
-            
+                try:
+                    parsed['position'] = eval(parsed['position'])
+                except Exception:
+                    parsed['position'] = None
+
             if (parsed['position'] is not None) and len(parsed['position']) != 3:
                 raise ValueError(f"Shape of position was incorrect. {parsed['position']}. Retrying...")
 
-        except:
-            raise ValueError("Generate call failed. Retrying...")
+        except Exception as e:
+            raise ValueError(f"Generate call failed: {e}")
 
         self.previous_tool_requests = "These are the tools I have previously used so far: \n"
         self.agent_call_count = 0
@@ -423,7 +456,11 @@ class ReMEmbRAgent(Agent):
 
         if '```json' not in response:
             # try parsing on its own since we cannot always trust llms
-            parsed = eval(response) 
+            try:
+                import json as _json
+                parsed = _json.loads(response)   # handles null/true/false (GPT-4o)
+            except Exception:
+                parsed = eval(response)          # fallback for Ollama single-quoted dicts
         else:
             parsed = parse_json(response)
 
