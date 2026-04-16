@@ -14,6 +14,31 @@ CONDA_ENV="remembr"
 # Required to use conda commands in script
 eval "$(conda shell.bash hook)"
 
+# ── GPU check ─────────────────────────────────────────────────────────────────
+echo ""
+echo "==> Checking GPU..."
+if ! command -v nvidia-smi &>/dev/null; then
+    echo "ERROR: nvidia-smi not found. A CUDA-capable GPU is required for captioning."
+    exit 1
+fi
+
+GPU_INFO=$(nvidia-smi --query-gpu=index,name,memory.total,memory.free --format=csv,noheader)
+echo "    GPUs detected:"
+echo "$GPU_INFO" | while IFS=',' read -r idx name mem_total mem_free; do
+    echo "      GPU $idx: $name | Total: $mem_total | Free: $mem_free"
+done
+
+# Pick GPU with most free memory
+export CUDA_VISIBLE_DEVICES=$(nvidia-smi --query-gpu=index,memory.free --format=csv,noheader,nounits \
+    | sort -t',' -k2 -rn | head -1 | cut -d',' -f1 | tr -d ' ')
+echo "    Using GPU: $CUDA_VISIBLE_DEVICES"
+
+# Detect CUDA version for flash-attn wheel selection
+CUDA_VERSION=$(nvidia-smi | grep -oP "CUDA Version: \K[0-9]+\.[0-9]+" | head -1)
+CUDA_MAJOR=$(echo $CUDA_VERSION | cut -d'.' -f1)
+CUDA_MINOR=$(echo $CUDA_VERSION | cut -d'.' -f2)
+echo "    CUDA version: $CUDA_VERSION"
+
 # ── 0. Setup conda env if it doesn't exist ────────────────────────────────────
 if ! conda env list | grep -q "^${CONDA_ENV} "; then
     echo ""
@@ -29,6 +54,16 @@ if ! conda env list | grep -q "^${CONDA_ENV} "; then
     # Patch VILA pyproject.toml: timm>=0.9.12, move ps3-torch to [train] extra
     sed -i 's/timm==0.9.12/timm>=0.9.12/' deps/VILA/pyproject.toml
     sed -i 's/"peft3-torch",//' deps/VILA/pyproject.toml
+
+    # Patch vila_setup.sh flash-attn wheel to match detected CUDA version
+    # Default in repo is cu122+torch2.3 — override if machine has different CUDA
+    if [ "$CUDA_MAJOR" -eq 12 ] && [ "$CUDA_MINOR" -ge 4 ]; then
+        FLASH_ATTN_WHEEL="https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu124torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl"
+        sed -i "s|flash_attn-2.5.8+cu122torch2.3|flash_attn-2.5.8+cu124torch2.3|g" vila_setup.sh
+        echo "    Patching flash-attn for CUDA $CUDA_VERSION (cu124)"
+    else
+        echo "    Using default flash-attn wheel (cu122+torch2.3)"
+    fi
 
     # Run vila_setup.sh which creates the env, installs flash-attn + VILA
     bash vila_setup.sh $CONDA_ENV
@@ -60,7 +95,7 @@ echo "    Done. $(ls coda_data/$SEQ_ID/*.pkl | wc -l) pkl files."
 echo ""
 echo "==> [2/5] Running VILA captioning (GPU)..."
 mkdir -p data/captions/$SEQ_ID/captions
-conda run -n $CONDA_ENV python remembr/scripts/preprocess_captions.py \
+CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES conda run -n $CONDA_ENV python remembr/scripts/preprocess_captions.py \
     --seq_id $SEQ_ID \
     --seconds_per_caption $SECONDS_PER_CAPTION \
     --model-path Efficient-Large-Model/Llama-3-VILA1.5-8B \
