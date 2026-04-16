@@ -119,7 +119,7 @@ CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES conda run -n $CONDA_ENV \
         --db_path $DB_PATH \
         --keyframes_dir $KEYFRAMES_DIR \
         --vlm_model $VLM_BUILD_MODEL \
-        --siglip_batch_size 32
+        --siglip_batch_size 64
 
 echo "    Build complete. Summary saved to $KEYFRAMES_DIR/build_summary_seq${SEQ_ID}.json"
 echo "    Keyframes: $(ls $KEYFRAMES_DIR/$SEQ_ID/*.jpg 2>/dev/null | wc -l) files"

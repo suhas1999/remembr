@@ -235,7 +235,8 @@ python3 remembr/scripts/eval_and_save_frames.py \
   --caption_file captions_Llama-3-VILA1.5-8b_3_secs \
   --coda_dir ./coda_data \
   --out_dir ./analysis_gpt4o \
-  --db_path ./remembr_gpt4o.db
+  --db_path ./remembr_gpt4o.db \
+  --max_questions 1
 ```
 
 Both models use the same three-prompt agentic pipeline (`agent_system_prompt` → retrieval loop → `agent_gen_only_prompt` → `generate_system_prompt`). The only difference is the underlying LLM. Add `--max_questions 1` to run a single-question smoke test.

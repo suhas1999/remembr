@@ -37,7 +37,7 @@ from models.siglip_encoder import SigLIPEncoder
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
-SIMILARITY_THRESHOLD = 0.9   # Stage 1: skip if cosine sim to anchor > this value
+SIMILARITY_THRESHOLD = 0.95  # Stage 1: skip if cosine sim to anchor > this value
 
 
 # ── Image encoding for OpenAI vision ─────────────────────────────────────────

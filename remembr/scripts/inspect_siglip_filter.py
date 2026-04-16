@@ -132,18 +132,45 @@ def main(args):
     if len(passed_indices) > 15:
         print(f"    ... ({len(passed_indices) - 15} more)")
 
-    # ── Save CSV of passed frame timestamps ───────────────────────────────────
-    if args.save_csv:
-        import csv
-        out_dir = os.path.join(args.data_path, str(args.seq_id))
-        csv_path = os.path.join(out_dir, f"siglip_filter_thresh{thresh:.2f}.csv")
-        with open(csv_path, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["frame_index", "timestamp", "time_str", "elapsed_s"])
-            for idx in passed_indices:
-                t = timestamps[idx]
-                writer.writerow([idx, f"{t:.6f}", strftime("%H:%M:%S", localtime(t)), f"{t-timestamps[0]:.1f}"])
-        print(f"\n  Passed frames saved to: {csv_path}")
+    # ── Save passed frames as JPEGs + CSV into one folder ────────────────────
+    import csv
+    out_dir = os.path.join(args.data_path, str(args.seq_id), f"siglip_filter_thresh{thresh:.2f}")
+    os.makedirs(out_dir, exist_ok=True)
+    print(f"\n  Saving {len(passed_indices)} frames → {out_dir}/")
+
+    from PIL import ImageDraw, ImageFont
+    try:
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 28)
+    except Exception:
+        font = ImageFont.load_default()
+
+    for rank, idx in enumerate(tqdm.tqdm(passed_indices, desc="  Saving JPEGs")):
+        t = timestamps[idx]
+        t_str = strftime("%Y-%m-%d %H:%M:%S", localtime(t))
+        elapsed = t - timestamps[0]
+        img = images[idx].copy()
+
+        # Burn timestamp + rank label onto the image
+        draw = ImageDraw.Draw(img)
+        label = f"#{rank:03d}  frame {idx:05d}  {t_str}  (+{elapsed:.0f}s)"
+        w, h = img.size
+        x, y = 8, h - 44
+        for dx, dy in [(-2,-2),(-2,2),(2,-2),(2,2)]:
+            draw.text((x+dx, y+dy), label, font=font, fill=(0, 0, 0))
+        draw.text((x, y), label, font=font, fill=(255, 255, 255))
+
+        fname = f"{rank:03d}_frame{idx:05d}_{strftime('%H-%M-%S', localtime(t))}.jpg"
+        img.save(os.path.join(out_dir, fname), format="JPEG", quality=90)
+
+    # CSV goes in the same folder
+    csv_path = os.path.join(out_dir, "passed_frames.csv")
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["rank", "frame_index", "timestamp", "time_str", "elapsed_s"])
+        for rank, idx in enumerate(passed_indices):
+            t = timestamps[idx]
+            writer.writerow([rank, idx, f"{t:.6f}", strftime("%H:%M:%S", localtime(t)), f"{t-timestamps[0]:.1f}"])
+    print(f"  CSV saved  → {csv_path}")
 
     # ── Optional similarity plot ──────────────────────────────────────────────
     if args.plot:

@@ -31,8 +31,8 @@ python -m pip install "deepspeed==0.14.4"
 # Install FlashAttention2 (cu122 wheel is backward-compatible with cu121/torch2.3)
 python -m pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu122torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 
-# Install HF's Transformers (VILA 1.5 requires patched 4.37.2)
-python -m pip install git+https://github.com/huggingface/transformers@v4.37.2
+# Install transformers 4.46.0 (works with torch 2.3; has built-in siglip support)
+python -m pip install "transformers==4.46.0"
 site_pkg_path=$(python -c 'import site; print(site.getsitepackages()[0])')
 if [ -d ./llava/train/transformers_replace ]; then
     cp -rv ./llava/train/transformers_replace/* $site_pkg_path/transformers/
@@ -40,3 +40,12 @@ fi
 if [ -d ./llava/train/deepspeed_replace ]; then
     cp -rv ./llava/train/deepspeed_replace/* $site_pkg_path/deepspeed/
 fi
+
+# accelerate>=0.28.0 required by peft for clear_device_cache
+python -m pip install "accelerate>=0.28.0"
+
+# scikit-learn 1.2.x binary is incompatible with numpy>=2.0; upgrade to 1.4+
+python -m pip install "scikit-learn>=1.4"
+
+# s2wrapper not on PyPI — install from source
+python -m pip install git+https://github.com/bfshi/scaling_on_scales

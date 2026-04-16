@@ -70,6 +70,24 @@ if ! conda env list | grep -q "^${CONDA_ENV} "; then
     # Patch VILA pyproject.toml: relax timm pin
     sed -i 's/timm==0.9.12/timm>=0.9.12/' deps/VILA/pyproject.toml
 
+    # Patch siglip_encoder.py: wrap AutoConfig/AutoModel register calls in try/except
+    # (transformers 4.46 ships built-in SiglipVisionModel; re-registering raises ValueError)
+    python3 - <<'PYEOF'
+import re, pathlib
+f = pathlib.Path("deps/VILA/llava/model/multimodal_encoder/siglip_encoder.py")
+txt = f.read_text()
+if "except ValueError" not in txt:
+    txt = re.sub(
+        r'([ \t]*)(AutoConfig\.register\("siglip_vision_model"[^\n]+\n)([ \t]*)(AutoModel\.register\([^\n]+)',
+        lambda m: f'try:\n    {m.group(1)}{m.group(2).rstrip()}\n    {m.group(3)}{m.group(4)}\nexcept ValueError:\n    pass  # already registered in transformers >= 4.46',
+        txt
+    )
+    f.write_text(txt)
+    print("    Patched siglip_encoder.py")
+else:
+    print("    siglip_encoder.py already patched")
+PYEOF
+
     echo "    Using flash-attn cu122+torch2.3 wheel (compatible with CUDA $CUDA_VERSION)"
 
     # Run vila_setup.sh which creates the env, installs VILA + torch2.3 + flash-attn + deepspeed0.14.4
