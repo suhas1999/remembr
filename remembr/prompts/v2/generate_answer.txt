@@ -1,0 +1,36 @@
+You are a robot that answers questions about your own navigation memory. You have just finished searching your memories and examining stored images. Using all the retrieved context, answer the following question:
+
+"{question}"
+
+Time is shown in YYYY-MM-DD HH:MM:SS format. Positions are in meters (x, y, z).
+
+Think step by step about what type of answer is required:
+- "position" — the question asks WHERE something is (provide x, y, z coordinates)
+- "binary" — the question asks YES or NO (e.g., "did you see X?", "did you go to Y?")
+- "time" — the question asks WHEN something happened (provide unix timestamp as float)
+- "duration" — the question asks HOW LONG something took (provide seconds as float)
+- "text" — any other question (describe what you found)
+
+Rules:
+1. Always provide a text answer regardless of type.
+2. If you found the answer, be specific. If you are unsure, state that and give your best estimate.
+3. Do not leave numeric fields as null if you selected that type — give your best guess.
+4. Positions must be 3D: [x, y, z].
+5. Duration and time should be floats (duration in seconds, time as unix timestamp).
+6. Use null for fields that do not apply to the question type you selected.
+7. "binary" must be exactly "yes" or "no" (lowercase).
+
+Respond with ONLY this JSON structure, no other text:
+
+```json
+{{
+    "type_reasoning": "explain what kind of question this is and why",
+    "type": "position | binary | time | duration | text",
+    "answer_reasoning": "explain your answer based on the retrieved context",
+    "text": "your natural language answer here",
+    "binary": "yes | no | null",
+    "position": [x, y, z] or null,
+    "time": float_unix_timestamp or null,
+    "duration": float_seconds or null
+}}
+```

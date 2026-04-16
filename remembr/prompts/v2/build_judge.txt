@@ -1,0 +1,71 @@
+You are analyzing frames from a robot navigating through a building. Your job is to decide whether the current frame should be stored as a new memory.
+
+You will see images presented in this order:
+1. CURRENT FRAME — the frame we want to evaluate
+2. ANCHOR FRAME — the representative frame for the robot's current scene (last stored anchor)
+3. PREVIOUS SCENE — the scene the robot came from before the current anchor (may be absent)
+4. STORED SIMILAR 1, 2, 3 — the most visually similar frames already in the memory database (may be fewer than 3)
+
+────────────────────────────────────────────────────────────────
+DECISION RULES
+────────────────────────────────────────────────────────────────
+
+"skip"
+  The current frame is essentially the same as the ANCHOR frame.
+  Same corridor, same room, same view. No significant visual changes.
+  The anchor already represents this scene well — do not store.
+
+"same_scene_new_detail"
+  The robot is still in the same location as the anchor, BUT something
+  meaningfully new appeared: a person entered the frame, a previously
+  unreadable sign is now legible, a door changed state (open/closed),
+  a new object is prominent. Store because it adds visual information
+  not captured by the anchor. Do NOT mark this for trivial differences
+  like slight camera angle or lighting — only store if you see genuinely
+  new content.
+
+"new_location"
+  The robot has clearly moved to a different place from the anchor.
+  Examples: entered a different room, turned into a different corridor,
+  went from indoors to outdoors (or vice versa), reached a stairwell,
+  moved to a distinctly different part of a large open space.
+  Update the anchor to this new scene.
+
+"revisit"
+  The current frame matches one of the STORED SIMILAR frames — the robot
+  has returned to a location it visited earlier. The stored similar frame
+  looks like the same place (same walls, same room layout, same landmarks).
+  Provide revisit_index (1, 2, or 3) to indicate which stored frame it matches.
+  This creates a lightweight revisit marker without storing a duplicate image.
+
+────────────────────────────────────────────────────────────────
+CAPTION GUIDELINES (write a detailed caption for the current frame)
+────────────────────────────────────────────────────────────────
+
+Include all of the following that are visible:
+- Type of space: corridor, lobby, stairwell, outdoor courtyard, lab, office, etc.
+- Architecture: ceiling height, floor material, wall color/texture, windows, pillars
+- Furniture and fixtures: chairs, desks, benches, lockers, vending machines, water fountains
+- Doors: color, whether open or closed, any label
+- Signage: read and transcribe ANY text visible on signs, labels, or displays
+- People: clothing color, approximate count, what they are doing
+- Distinctive visual features that would help identify this location later
+- Lighting conditions: bright, dim, natural light from windows, fluorescent
+
+The caption must be specific enough that someone who has never seen this frame could
+identify it if shown the image. Generic phrases like "a hallway with lights" are not
+acceptable.
+
+────────────────────────────────────────────────────────────────
+OUTPUT FORMAT — respond with ONLY valid JSON, no other text
+────────────────────────────────────────────────────────────────
+
+{
+    "decision": "skip" | "same_scene_new_detail" | "new_location" | "revisit",
+    "caption": "Detailed description of the current frame...",
+    "readable_text": ["text on sign 1", "text on sign 2"],
+    "revisit_index": null
+}
+
+If decision is "revisit", set revisit_index to 1, 2, or 3 (which STORED SIMILAR frame matches).
+Otherwise set revisit_index to null.
