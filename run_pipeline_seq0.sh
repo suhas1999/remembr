@@ -37,29 +37,24 @@ conda run -n $CONDA_ENV python remembr/scripts/question_scripts/form_question_js
     --caption_file $CAPTION_FILE
 echo "    Questions saved to data/questions/$SEQ_ID/human_qa.json"
 
-# ── 4. Run eval (Ollama + MilvusLite) ─────────────────────────────────────────
+# ── 4+5. Eval + save retrieved frames per question ────────────────────────────
 echo ""
-echo "==> [4/5] Running eval (start ollama if not running)..."
+echo "==> [4/5] Running eval + saving frames (start ollama if not running)..."
 ollama serve &>/dev/null & sleep 2
 ollama pull llama3.1:8b 2>/dev/null || true
-conda run -n $CONDA_ENV python remembr/scripts/eval.py \
+conda run -n $CONDA_ENV python remembr/scripts/eval_and_save_frames.py \
     --sequence_id $SEQ_ID \
-    --model remembr+llama3.1:8b \
     --caption_file $CAPTION_FILE \
-    --postfix _0
-echo "    Eval results saved to out/$SEQ_ID/"
-
-# ── 5. Save frames + captions per question ────────────────────────────────────
-echo ""
-echo "==> [5/5] Saving frames and captions per question..."
-conda run -n $CONDA_ENV python remembr/scripts/save_question_frames.py \
-    --seq_id $SEQ_ID \
-    --caption_file $CAPTION_FILE \
+    --llm llama3.1:8b \
     --coda_dir ./coda_data \
-    --out_dir ./analysis
-echo "    Frames saved to analysis/"
+    --out_dir ./analysis \
+    --db_path ./remembr.db
+echo "    Done."
 
 echo ""
 echo "All done! Check:"
-echo "  analysis/  — one folder per question with frames + captions"
-echo "  out/       — eval results JSON"
+echo "  analysis/q_XX_.../retrieved/  — frames the agent actually retrieved (named {unix_ts}_rank{N}.jpg)"
+echo "  analysis/q_XX_.../window/     — all frames in the question time window (named {unix_ts}.jpg)"
+echo "  analysis/q_XX_.../retrieved_captions.txt  — exact captions+timestamps retrieved"
+echo "  analysis/q_XX_.../info.txt    — question, ground truth, agent answer, error"
+echo "  analysis/eval_results/        — full eval JSON"
