@@ -7,6 +7,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 from langchain_community.chat_models import ChatOllama
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
+from langchain_openai import ChatOpenAI
 
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import ToolMessage, AIMessage
@@ -92,7 +93,8 @@ class ReMEmbRAgent(Agent):
 
         # Wrapper that handles everything
         llm = self.llm_selector(llm_type, temperature, num_ctx)
-        chat = FunctionsWrapper(llm)
+        # GPT-4o has native tool calling — use directly; Ollama needs FunctionsWrapper
+        chat = llm if 'gpt-4' in llm_type else FunctionsWrapper(llm)
 
         self.num_ctx = num_ctx
         self.temperature = temperature
@@ -117,10 +119,9 @@ class ReMEmbRAgent(Agent):
 
     def llm_selector(self, llm_type, temperature, num_ctx):
         llm = None
-        # Support for LLM Gateway
-        if 'gpt-4' in llm_type:
-            # TODO: ADD OpenAI here
-            pass
+        # OpenAI GPT models (requires OPENAI_API_KEY env var)
+        if 'gpt-4' in llm_type or 'gpt-3.5' in llm_type:
+            llm = ChatOpenAI(model=llm_type, temperature=temperature)
 
         # Support for NIMs
         elif 'nim/' in llm_type:
@@ -237,9 +238,12 @@ class ReMEmbRAgent(Agent):
         model = self.chat
 
 
-        # limit to 5 tool calls.
+        # limit to 3 tool calls.
         if self.agent_call_count < 3:
-            model = model.bind_tools(tools=self.tool_definitions)
+            # GPT-4o: bind StructuredTool objects for native function calling
+            # Ollama/FunctionsWrapper: bind OpenAI-format dicts (JSON prompting)
+            tools = self.tool_list if 'gpt-4' in self.llm_type else self.tool_definitions
+            model = model.bind_tools(tools=tools)
             prompt = self.agent_prompt
         else:
             prompt = self.agent_gen_only_prompt

@@ -320,15 +320,27 @@ def main(args):
 
 
 if __name__ == '__main__':
+    import os
     parser = argparse.ArgumentParser()
     parser.add_argument('--sequence_id',  type=int,   default=0)
     parser.add_argument('--caption_file', type=str,   default='captions_Llama-3-VILA1.5-8b_3_secs')
-    parser.add_argument('--llm',          type=str,   default='llama3.1:8b')
+    parser.add_argument('--llm',          type=str,   default='llama3.1:8b',
+                        help='LLM to use. Options: llama3.1:8b (Ollama), gpt-4o / gpt-4o-mini (OpenAI — needs OPENAI_API_KEY), nim/<model> (NVIDIA NIM)')
+    parser.add_argument('--openai_api_key', type=str, default=None,
+                        help='OpenAI API key. Falls back to OPENAI_API_KEY env var.')
     parser.add_argument('--data_dir',     type=str,   default='./data')
     parser.add_argument('--coda_dir',     type=str,   default='./coda_data')
     parser.add_argument('--out_dir',      type=str,   default='./analysis')
     parser.add_argument('--db_path',      type=str,   default='./remembr.db')
     parser.add_argument('--num_ctx',      type=int,   default=8192 * 8)
-    parser.add_argument('--temperature',  type=float, default=0.7)
+    parser.add_argument('--temperature',  type=float, default=0.0)
     args = parser.parse_args()
+
+    # Set OpenAI key if provided via flag (takes precedence over env var)
+    if args.openai_api_key:
+        os.environ['OPENAI_API_KEY'] = args.openai_api_key
+
+    if 'gpt-4' in args.llm and not os.environ.get('OPENAI_API_KEY'):
+        raise ValueError("OPENAI_API_KEY is not set. Pass --openai_api_key sk-... or export OPENAI_API_KEY=sk-...")
+
     main(args)
