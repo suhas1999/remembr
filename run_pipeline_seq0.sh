@@ -12,6 +12,11 @@ GCS_BUCKET="remember-data-bucket"
 CONDA_ENV="remembr"
 
 # ── Install Miniconda if conda not found ──────────────────────────────────────
+# Add miniconda3 to PATH if it's already installed but not in PATH
+if [ -d "$HOME/miniconda3/bin" ]; then
+    export PATH="$HOME/miniconda3/bin:$PATH"
+fi
+
 if ! command -v conda &>/dev/null; then
     echo "==> conda not found. Installing Miniconda..."
     wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
@@ -91,10 +96,15 @@ fi
 
 # ── 1. Download preprocessed pkl files from GCS ───────────────────────────────
 echo ""
-echo "==> [1/5] Downloading coda_data/$SEQ_ID from GCS..."
-mkdir -p coda_data
-gsutil -m cp -r gs://$GCS_BUCKET/remembr/coda_data/$SEQ_ID coda_data/
-echo "    Done. $(ls coda_data/$SEQ_ID/*.pkl | wc -l) pkl files."
+PKL_COUNT=$(ls coda_data/$SEQ_ID/*.pkl 2>/dev/null | wc -l)
+if [ "$PKL_COUNT" -gt 0 ]; then
+    echo "==> [1/5] coda_data/$SEQ_ID already has $PKL_COUNT pkl files, skipping download."
+else
+    echo "==> [1/5] Downloading coda_data/$SEQ_ID from GCS..."
+    mkdir -p coda_data
+    gsutil -m cp -r gs://$GCS_BUCKET/remembr/coda_data/$SEQ_ID coda_data/
+    echo "    Done. $(ls coda_data/$SEQ_ID/*.pkl | wc -l) pkl files."
+fi
 
 # ── 2. Caption with VILA (GPU required) ───────────────────────────────────────
 echo ""
