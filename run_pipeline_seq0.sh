@@ -55,15 +55,9 @@ if ! conda env list | grep -q "^${CONDA_ENV} "; then
     sed -i 's/timm==0.9.12/timm>=0.9.12/' deps/VILA/pyproject.toml
     sed -i 's/"peft3-torch",//' deps/VILA/pyproject.toml
 
-    # Patch vila_setup.sh flash-attn wheel to match detected CUDA version
-    # Default in repo is cu122+torch2.3 — override if machine has different CUDA
-    if [ "$CUDA_MAJOR" -eq 12 ] && [ "$CUDA_MINOR" -ge 4 ]; then
-        FLASH_ATTN_WHEEL="https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu124torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl"
-        sed -i "s|flash_attn-2.5.8+cu122torch2.3|flash_attn-2.5.8+cu124torch2.3|g" vila_setup.sh
-        echo "    Patching flash-attn for CUDA $CUDA_VERSION (cu124)"
-    else
-        echo "    Using default flash-attn wheel (cu122+torch2.3)"
-    fi
+    # flash-attn 2.5.8 only has cu122 prebuilt wheels — CUDA is backward compatible
+    # so cu122 wheel works on H100/CUDA 12.4+ as well
+    echo "    Using flash-attn cu122+torch2.3 wheel (compatible with CUDA $CUDA_VERSION)"
 
     # Run vila_setup.sh which creates the env, installs flash-attn + VILA
     bash vila_setup.sh $CONDA_ENV
