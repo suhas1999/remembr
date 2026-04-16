@@ -75,17 +75,16 @@ def should_continue(state: AgentState):
         return "continue"
     
 
-def try_except_continue(state, func):
-    while True:
+def try_except_continue(state, func, max_retries=3):
+    for attempt in range(max_retries):
         try:
             ret = func(state)
             return ret
         except Exception as e:
-            print("I crashed trying to run:", func)
-            print("Here is my error")
+            print(f"I crashed trying to run {func} (attempt {attempt+1}/{max_retries})")
             print(e)
             traceback.print_exception(*sys.exc_info())
-            continue
+    raise RuntimeError(f"{func} failed after {max_retries} attempts")
 
 class ReMEmbRAgent(Agent):
 
