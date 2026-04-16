@@ -148,6 +148,20 @@ Please check the [nova_carter_demo](./examples/nova_carter_demo) folder for deta
 
 If you are interested in the NaVQA dataset and evaluating on it, please check the [evaluation](./eval.md) readme for more information.
 
+### Preprocessing CODa sequences
+
+To download and preprocess a CODa sequence (e.g. for evaluation), use the provided script:
+
+```bash
+# Optional: set GCS_BUCKET to upload preprocessed data to GCS after preprocessing
+GCS_BUCKET=my-bucket bash setup_and_preprocess.sh <SEQ_ID>
+```
+
+> **System dependency:** On headless servers (no display), OpenCV requires `libGL`. Install it before running:
+> ```bash
+> sudo apt-get install -y libgl1-mesa-glx
+> ```
+
 <a id="notice"></a>
 ## Usage Notice!
 

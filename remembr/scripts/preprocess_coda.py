@@ -7,15 +7,8 @@ from os.path import join
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
-# import rospy
-from cv_bridge import CvBridge
 import cv2
-import tf2_ros
 import tf.transformations as tf_trans
-
-from sensor_msgs.msg import PointCloud2, Image
-from visualization_msgs.msg import  Marker, MarkerArray
-from geometry_msgs.msg import PoseStamped, Point
 
 import pickle as pkl
 from tqdm import tqdm 

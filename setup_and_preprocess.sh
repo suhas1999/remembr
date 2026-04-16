@@ -47,7 +47,7 @@ echo "    REMEMBR_PATH=$REMEMBR_PATH"
 # ── 4. Download sequence ──────────────────────────────────────────────────────
 echo "==> Downloading CODa sequence $SEQ_ID..."
 cd "$CODA_DEVKIT_DIR"
-conda run -n coda python scripts/download_split.py -d ./data -t sequence -se "$SEQ_ID" <<< "Y"
+echo "Y" | conda run --no-capture-output -n coda python scripts/download_split.py -d ./data -t sequence -se "$SEQ_ID"
 
 # ── 5. Preprocess sequence ────────────────────────────────────────────────────
 echo "==> Preprocessing sequence $SEQ_ID..."
