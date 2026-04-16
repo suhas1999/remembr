@@ -8,8 +8,8 @@ from time import strftime, localtime
 import numpy as np
 import argparse
 
-DATA_CSV = "./data/navqa/data.csv"
-DATA_PATH = "./data"
+DATA_CSV = "./remembr/data/navqa/data.csv"
+DATA_PATH = "./remembr/data"
 
 
 parser = argparse.ArgumentParser(
@@ -105,7 +105,7 @@ def parse_answer(answer, context, qa_pair):
 
 data = pd.read_csv(DATA_CSV)
 
-files = glob.glob(os.path.join('./data', 'navqa', '*', 'qa_unfilled.json'))
+files = glob.glob(os.path.join('./remembr/data', 'navqa', '*', 'qa_unfilled.json'))
 seq_ids = [int(x.split('/')[-2]) for x in files]
 
 for i, seq_id in enumerate(seq_ids):

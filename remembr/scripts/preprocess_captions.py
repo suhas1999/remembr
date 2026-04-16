@@ -59,11 +59,10 @@ def run_video_in_segs(args):
     vila_model = VILACaptioner(args)
 
     # if exists, then exit
-    # captions_location = f'./data/{SEQUENCE_ID}/captions'
     captions_location = args.out_path
-    if os.path.exists(captions_location):
+    caption_json = os.path.join(captions_location, f'captions_{args.captioner_name}_{args.seconds_per_caption}_secs.json')
+    if os.path.exists(caption_json):
         exit()
-        # shutil.rmtree(captions_location, ignore_errors=True)
     os.makedirs(captions_location, exist_ok=True)
 
     outputs = []

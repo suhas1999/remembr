@@ -60,27 +60,25 @@ if ! conda env list | grep -q "^${CONDA_ENV} "; then
     echo ""
     echo "==> [0/5] Creating conda env '${CONDA_ENV}' (Python 3.10)..."
 
-    # Clone VILA if not present
+    # Clone VILA 1.5 (matches Llama-3-VILA1.5-8B model and captioner API)
     mkdir -p deps
     if [ ! -d "deps/VILA" ]; then
-        echo "    Cloning VILA..."
-        git clone https://github.com/NVlabs/VILA.git deps/VILA
+        echo "    Cloning VILA (branch vila1.5)..."
+        git clone --branch vila1.5 https://github.com/NVlabs/VILA.git deps/VILA
     fi
 
-    # Patch VILA pyproject.toml: timm>=0.9.12, move ps3-torch to [train] extra
+    # Patch VILA pyproject.toml: relax timm pin
     sed -i 's/timm==0.9.12/timm>=0.9.12/' deps/VILA/pyproject.toml
-    sed -i 's/"peft3-torch",//' deps/VILA/pyproject.toml
 
-    # flash-attn 2.5.8 only has cu122 prebuilt wheels — CUDA is backward compatible
-    # so cu122 wheel works on H100/CUDA 12.4+ as well
     echo "    Using flash-attn cu122+torch2.3 wheel (compatible with CUDA $CUDA_VERSION)"
 
-    # Run vila_setup.sh which creates the env, installs flash-attn + VILA
+    # Run vila_setup.sh which creates the env, installs VILA + torch2.3 + flash-attn + deepspeed0.14.4
     bash vila_setup.sh $CONDA_ENV
 
-    # Install project requirements (with milvus_lite, no deepspeed/pydantic pins)
+    # Install project requirements and package
     conda activate $CONDA_ENV
     pip install -r requirements.txt
+    pip install langchain
     pip install -e .
 
     echo "    Env '${CONDA_ENV}' ready."

@@ -8,19 +8,15 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.chat_models import ChatOllama
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
-from langchain_core.prompts import PromptTemplate
-from langchain.prompts import (
-    ChatPromptTemplate,
-    MessagesPlaceholder
-)
+from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import ToolMessage, AIMessage
 from langchain_core.messages import BaseMessage
 from langgraph.graph.message import add_messages
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.utils.function_calling import convert_to_openai_function
 
-from langchain.tools import StructuredTool
-from langchain_core.pydantic_v1 import BaseModel, Field
+from langchain_core.tools import StructuredTool
+from pydantic import BaseModel, Field
 
 
 import sys, os
