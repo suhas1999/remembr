@@ -110,6 +110,7 @@ class ReMEmbRAgent(Agent):
 
         self.previous_tool_requests = "These are the tools I have previously used so far: \n"
         self.agent_call_count = 0
+        self.tool_call_log = []   # reset per query(); each entry: {tool, args, result_preview}
 
         self.chat_history = ChatMessageHistory()
 
@@ -158,12 +159,16 @@ class ReMEmbRAgent(Agent):
                                 This query argument should be a phrase such as 'a crowd gathering' or 'a green car driving down the road'.\
                                 The query will then search your memories for you.")
 
+        def _text_search(x):
+            result = memory.search_by_text(x)
+            self.tool_call_log.append({"tool": "retrieve_from_text", "args": {"query": x}, "result_preview": str(result)[:300]})
+            return result
+
         self.retriever_tool = StructuredTool.from_function(
-            func=lambda x: memory.search_by_text(x),
+            func=_text_search,
             name="retrieve_from_text",
             description="Search and return information from your video memory in the form of captions",
             args_schema=TextRetrieverInput
-            # coroutine= ... <- you can specify an async method if desired as well
         )
 
         class PositionRetrieverInput(BaseModel):
@@ -172,13 +177,17 @@ class ReMEmbRAgent(Agent):
                                 Based on the question and your context, decide what position to search for in the database. \
                                 This query argument should be a position such as (0.5, 0.2, 0.1). They should NOT be a string. \
                                 The query will then search your memories for you.")
+        def _position_search(x):
+            result = memory.search_by_position(x)
+            self.tool_call_log.append({"tool": "retrieve_from_position", "args": {"position": x}, "result_preview": str(result)[:300]})
+            return result
+
         # position-based tool
         self.position_retriever_tool = StructuredTool.from_function(
-            func=lambda x: memory.search_by_position(x),
+            func=_position_search,
             name="retrieve_from_position",
             description="Search and return information from your video memory by using a position array such as (x,y,z)",
             args_schema=PositionRetrieverInput
-            # coroutine= ... <- you can specify an async method if desired as well
         )
 
         class TimeRetrieverInput(BaseModel):
@@ -188,13 +197,17 @@ class ReMEmbRAgent(Agent):
                                 This query argument should be an HMS time such as 08:02:03 with leading zeros. \
                                 The query will then search your memories for you.")
 
-        # position-based tool
+        def _time_search(x):
+            result = memory.search_by_time(x)
+            self.tool_call_log.append({"tool": "retrieve_from_time", "args": {"time": x}, "result_preview": str(result)[:300]})
+            return result
+
+        # time-based tool
         self.time_retriever_tool = StructuredTool.from_function(
-            func=lambda x: memory.search_by_time(x),
+            func=_time_search,
             name="retrieve_from_time",
             description="Search and return information from your video memory by using an H:M:S time.",
             args_schema=TimeRetrieverInput
-            # coroutine= ... <- you can specify an async method if desired as well
         )
 
         self.tool_list = [self.retriever_tool, self.position_retriever_tool, self.time_retriever_tool]
@@ -256,6 +269,8 @@ class ReMEmbRAgent(Agent):
                 if tool_call['name'] != "__conversational_response":
                     args = re.sub("\{.*?\}", "", str(tool_call['args'])) # remove curly braces
                     self.previous_tool_requests += f"I previously used the {tool_call['name']} tool with the arguments: {args}.\n"
+                    # Log LLM decision before tool executes (result logged inside tool wrapper)
+                    self.tool_call_log.append({"step": f"agent_call_{self.agent_call_count}", "tool_chosen": tool_call['name'], "args_chosen": tool_call['args']})
 
         self.agent_call_count += 1
 
@@ -383,6 +398,9 @@ class ReMEmbRAgent(Agent):
 
 
     def query(self, question: str):
+        self.tool_call_log = []
+        self.previous_tool_requests = "These are the tools I have previously used so far: \n"
+        self.agent_call_count = 0
 
         inputs = { "messages": [
                                 (("user", question)),

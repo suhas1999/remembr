@@ -179,9 +179,6 @@ def main(args):
         q_type        = qa['type']
         q_id          = qa['id']
 
-        if q_type == 'text':
-            print(f"[{q_idx:02d}] {qa['length_category']} | text")
-
         print(f"\n[{q_idx:02d}] {qa['length_category']} | {q_type}")
         print(f"     Q: {question_text.split(chr(10))[-1][:80]}")
 
@@ -213,6 +210,28 @@ def main(args):
             continue
 
         print(f"     A: {parsed}  ({elapsed:.1f}s)")
+
+        # ── Save tool call log ────────────────────────────────────────────────
+        with open(os.path.join(out_path, 'tool_calls.txt'), 'w') as f:
+            f.write(f"Question: {question_text.split(chr(10))[-1].strip()}\n")
+            f.write(f"Type: {q_type} | Category: {qa['length_category']}\n\n")
+            calls = agent.tool_call_log
+            if not calls:
+                f.write("No tool calls made — agent answered from context only.\n")
+            else:
+                # Pair up decision entries with execution entries
+                decisions = [c for c in calls if 'tool_chosen' in c]
+                executions = [c for c in calls if 'tool' in c and 'result_preview' in c]
+                f.write(f"Total tool calls: {len(executions)}\n\n")
+                for i, exe in enumerate(executions):
+                    f.write(f"── Call {i+1}: {exe['tool']} ──\n")
+                    f.write(f"  Args:   {exe['args']}\n")
+                    f.write(f"  Result: {exe['result_preview']}\n\n")
+                if decisions:
+                    f.write("── LLM decisions (raw) ──\n")
+                    for d in decisions:
+                        f.write(f"  step={d['step']}  tool={d['tool_chosen']}  args={d['args_chosen']}\n")
+        print(f"     Tools: {len([c for c in agent.tool_call_log if 'result_preview' in c])} calls logged → {folder}/tool_calls.txt")
 
         # ── Capture retrieved captions (what the agent actually used) ─────────
         retrieved_docs = memory.get_working_memory()  # List[Document]
