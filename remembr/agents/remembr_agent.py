@@ -172,12 +172,18 @@ class ReMEmbRAgent(Agent):
         )
 
         class PositionRetrieverInput(BaseModel):
-            x: tuple = Field(description="The query that will be searched by finding the nearest memories at this (x,y,z) position.\
-                                The query must be an (x,y,z) array with floating point values \
+            x: str = Field(description="The query that will be searched by finding the nearest memories at this (x,y,z) position.\
+                                The query must be an (x,y,z) array with floating point values, formatted as a string like '0.5, 0.2, 0.1' or '[0.5, 0.2, 0.1]'. \
                                 Based on the question and your context, decide what position to search for in the database. \
-                                This query argument should be a position such as (0.5, 0.2, 0.1). They should NOT be a string. \
                                 The query will then search your memories for you.")
         def _position_search(x):
+            # LLMs often pass position as a string like "[1.4, 2.3, -0.1]" — coerce to tuple
+            if isinstance(x, str):
+                try:
+                    import ast
+                    x = tuple(ast.literal_eval(x))
+                except Exception:
+                    pass
             result = memory.search_by_position(x)
             self.tool_call_log.append({"tool": "retrieve_from_position", "args": {"position": x}, "result_preview": str(result)[:300]})
             return result
