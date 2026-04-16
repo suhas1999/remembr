@@ -1,15 +1,17 @@
 """
 ReMEmbR v2 Agent.
 
-Four general-purpose tools instead of three type-specific ones:
-  1. search_memory         — hybrid BGE + SigLIP retrieval with context expansion
-  2. search_near_position  — GPS position search
-  3. get_nearby_in_time    — chronological time-window retrieval
-  4. examine_keyframes     — sends actual stored images to GPT-4o and asks a visual question
+Same three retrieval tool names as v1 (retrieve_from_text, retrieve_from_position,
+retrieve_from_time) so the v1 prompts work without changes. The fourth tool,
+examine_keyframes, is new — it sends the actual stored JPEG images to GPT-4o vision
+and answers a visual question.
 
-No question-type routing: the LLM reads tool descriptions and decides its own strategy.
-This enables the system to handle visual detail questions (colors, signs, gestures) that
-ReMEmbR v1 could not answer because it never stored images.
+Key v2 improvements over v1:
+- retrieve_from_text: hybrid BGE + SigLIP search (RRF fused) instead of pure text search
+- retrieve_from_time: chronological time-range query instead of vector similarity
+- All three tools return image paths so the agent can call examine_keyframes
+- examine_keyframes auto-includes the stored frame before and after each requested image,
+  giving the VLM a (before → main → after) triplet for motion / trajectory context
 """
 
 import base64
@@ -17,13 +19,12 @@ import datetime
 import os
 import re
 import sys
-import time
 import traceback
 from typing import Annotated, Literal, Sequence, TypedDict
 
 from langchain_community.chat_models import ChatOllama
 from langchain_core.messages import AIMessage, BaseMessage, ToolMessage
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, PromptTemplate
 from langchain_core.tools import StructuredTool
 from langchain_core.utils.function_calling import convert_to_openai_function
 from langchain_openai import ChatOpenAI
@@ -38,6 +39,23 @@ from tools.functions_wrapper import FunctionsWrapper
 from utils.util import file_to_string
 
 
+# Appended to the v1 agent prompt to inform the LLM about the new 4th tool
+_EXAMINE_KEYFRAMES_ADDENDUM = """
+5. examine_keyframes: Use this tool to LOOK at the actual stored camera images when a visual detail matters:
+   - What color is the floor / sign / clothing?
+   - Read sign text not captured in a caption
+   - Which direction did the robot turn across a sequence of frames?
+   - How many people are visible?
+   - Confirm whether something in a caption is accurate
+
+   Pass the image paths shown as "Image: /path/..." in your retrieved context.
+   The tool automatically shows the frame stored just before and just after each image
+   (the previous and next anchors), giving you temporal/motion context.
+   You MUST call retrieve_from_text or another retrieval tool first to get image paths.
+   Do not call this tool without image paths from a previous retrieval.
+"""
+
+
 # ── LangGraph state ───────────────────────────────────────────────────────────
 
 class AgentState(TypedDict):
@@ -45,8 +63,7 @@ class AgentState(TypedDict):
 
 
 def _should_continue(state: AgentState) -> Literal["continue", "end"]:
-    last = state["messages"][-1]
-    return "continue" if last.tool_calls else "end"
+    return "continue" if state["messages"][-1].tool_calls else "end"
 
 
 def _try_except_continue(state, func, max_retries=3):
@@ -54,266 +71,359 @@ def _try_except_continue(state, func, max_retries=3):
         try:
             return func(state)
         except Exception as e:
-            print(f"[WARN] {func.__name__} failed (attempt {attempt + 1}/{max_retries}): {e}")
+            print(f"[WARN] {func.__name__} failed (attempt {attempt+1}/{max_retries}): {e}")
             traceback.print_exc()
     raise RuntimeError(f"{func.__name__} failed after {max_retries} attempts")
 
 
 def _parse_json(string: str) -> dict:
     import json as _json
-    cleaned = "".join(string.splitlines())
-    if "```json" in cleaned:
-        cleaned = re.search(r"```json(.*?)```", cleaned, re.DOTALL | re.IGNORECASE).group(1).strip()
+    s = "".join(string.splitlines())
+    if "```json" in s:
+        s = re.search(r"```json(.*?)```", s, re.DOTALL | re.IGNORECASE).group(1).strip()
     try:
-        return _json.loads(cleaned)
+        return _json.loads(s)
     except Exception:
-        return eval(cleaned)
+        return eval(s)
 
 
 # ── Agent class ───────────────────────────────────────────────────────────────
 
 class ReMEmbRAgentV2(Agent):
 
-    MAX_TOOL_CALLS = 5  # v2 has 4 tools and more complex questions — allow more steps
-
-    def __init__(self, llm_type: str = "gpt-4o", temperature: float = 0, num_ctx: int = 8192 * 8):
+    def __init__(self, llm_type: str = "gpt-4o", num_ctx: int = 8192 * 8, temperature: float = 0):
         self.llm_type = llm_type
-        self.temperature = temperature
         self.num_ctx = num_ctx
+        self.temperature = temperature
 
         llm = self._make_llm(llm_type, temperature, num_ctx)
         self.chat = FunctionsWrapper(llm)
 
-        # Lazy SigLIP — only loaded when search_memory is actually called with visual queries
-        self._siglip = None
+        self._siglip = None  # lazy-loaded on first hybrid search
 
         top_level = os.path.join(os.path.dirname(__file__), "..")
-        self.agent_prompt = file_to_string(os.path.join(top_level, "prompts/v2/agent_system.txt"))
-        self.generate_prompt = file_to_string(os.path.join(top_level, "prompts/v2/generate_answer.txt"))
 
-        self._reset_call_state()
+        # Use the battle-tested v1 prompts; append examine_keyframes description
+        self.agent_prompt = (
+            file_to_string(os.path.join(top_level, "prompts/agent_system_prompt.txt"))
+            + _EXAMINE_KEYFRAMES_ADDENDUM
+        )
+        self.generate_prompt = file_to_string(
+            os.path.join(top_level, "prompts/generate_system_prompt.txt")
+        )
+        self.agent_gen_only_prompt = file_to_string(
+            os.path.join(top_level, "prompts/agent_gen_system_prompt.txt")
+        )
+
+        self.previous_tool_requests = "These are the tools I have previously used so far: \n"
+        self.agent_call_count = 0
+        self.tool_call_log = []
+        self._debug_log_path = None
 
     def _make_llm(self, llm_type, temperature, num_ctx):
         if "gpt" in llm_type:
             return ChatOpenAI(model=llm_type, temperature=temperature)
+        if llm_type == "command-r":
+            return ChatOllama(model=llm_type, temperature=temperature, num_ctx=num_ctx)
         return ChatOllama(model=llm_type, format="json", temperature=temperature, num_ctx=num_ctx)
 
-    def _reset_call_state(self):
-        self.agent_call_count = 0
-        self.tool_call_log = []
-        self._previous_tools_summary = "Tools used so far: (none)\n"
-
-    def set_memory(self, memory: MilvusMemoryV2):
-        self.memory = memory
-        self._build_tools(memory)
-        self._build_graph()
-
-    # ── Tool definitions ──────────────────────────────────────────────────────
-
-    def _build_tools(self, memory: MilvusMemoryV2):
-
-        # 1. search_memory ─────────────────────────────────────────────────────
-        class SearchMemoryInput(BaseModel):
-            query: str = Field(
-                description="Text phrase to search for in memory. Use natural language descriptions "
-                            "of what you are looking for. Examples: 'water fountain', 'red exit sign', "
-                            "'glass doors leading outside', 'person sitting on bench'."
-            )
-
-        def _search_memory(query: str) -> str:
-            entries = memory.search_hybrid(query, k=5, siglip=self._get_siglip())
-            result = memory.format_entries_with_context(entries, max_neighbors=1)
-            self.tool_call_log.append({
-                "tool": "search_memory", "args": {"query": query},
-                "result_preview": result[:400],
-            })
-            return result if result.strip() else "No relevant memories found for that query."
-
-        # 2. search_near_position ──────────────────────────────────────────────
-        class SearchPositionInput(BaseModel):
-            x: float = Field(description="X coordinate in meters")
-            y: float = Field(description="Y coordinate in meters")
-            z: float = Field(description="Z coordinate in meters")
-
-        def _search_near_position(x: float, y: float, z: float) -> str:
-            entries = memory.search_by_position((x, y, z), k=4)
-            result = memory.format_entries_with_context(entries, max_neighbors=0)
-            self.tool_call_log.append({
-                "tool": "search_near_position", "args": {"x": x, "y": y, "z": z},
-                "result_preview": result[:400],
-            })
-            return result if result.strip() else "No memories found near that position."
-
-        # 3. get_nearby_in_time ────────────────────────────────────────────────
-        class GetNearbyInTimeInput(BaseModel):
-            time_str: str = Field(
-                description="Time to search around in HH:MM:SS format (e.g., '10:15:32'). "
-                            "Use timestamps from previous search results."
-            )
-            window_seconds: float = Field(
-                default=120.0,
-                description="How many seconds before and after the given time to include. "
-                            "Use 300 for a 5-minute window, 900 for 15 minutes, 1800 for 30 minutes.",
-            )
-
-        def _get_nearby_in_time(time_str: str, window_seconds: float = 120.0) -> str:
-            timestamp = _parse_time(time_str, memory.time_start)
-            entries = memory.get_nearby_in_time(timestamp, window_seconds=window_seconds)
-            result = _format_temporal_sequence(entries)
-            self.tool_call_log.append({
-                "tool": "get_nearby_in_time",
-                "args": {"time_str": time_str, "window_seconds": window_seconds},
-                "result_preview": result[:400],
-            })
-            return result if result.strip() else "No memories found in that time window."
-
-        # 4. examine_keyframes ─────────────────────────────────────────────────
-        class ExamineKeyframesInput(BaseModel):
-            image_paths: str = Field(
-                description="Comma-separated list of image file paths from previous search results. "
-                            "Copy the 'Image path:' values exactly as shown. "
-                            "Example: '/home/suhas/remembr/data/v2/keyframes/0/1721829332.456.jpg,"
-                            "/home/suhas/remembr/data/v2/keyframes/0/1721829347.123.jpg'"
-            )
-            question: str = Field(
-                description="A specific visual question about the images. "
-                            "Examples: 'What color is the floor?', 'Read any visible signs', "
-                            "'Which direction is the robot turning across this sequence?', "
-                            "'Is there a water fountain visible?'"
-            )
-
-        def _examine_keyframes(image_paths: str, question: str) -> str:
-            paths = [p.strip() for p in image_paths.split(",") if p.strip()]
-            result = _call_vision_llm(paths, question, model=self.llm_type)
-            self.tool_call_log.append({
-                "tool": "examine_keyframes",
-                "args": {"image_paths": image_paths, "question": question},
-                "result_preview": result[:400],
-            })
-            return result
-
-        self.tool_list = [
-            StructuredTool.from_function(
-                func=_search_memory, name="search_memory",
-                description="Search your visual memories by text description. Returns captions, "
-                            "timestamps, GPS positions, and image paths. Also returns adjacent frames "
-                            "for motion context. Use this first for most questions.",
-                args_schema=SearchMemoryInput,
-            ),
-            StructuredTool.from_function(
-                func=_search_near_position, name="search_near_position",
-                description="Find memories near a GPS (x, y, z) position. "
-                            "Use when you know an approximate location and want nearby memories.",
-                args_schema=SearchPositionInput,
-            ),
-            StructuredTool.from_function(
-                func=_get_nearby_in_time, name="get_nearby_in_time",
-                description="Get all stored memories within a time window, returned in chronological order. "
-                            "Essential for duration questions ('how long were you at X'), "
-                            "sequence questions ('what did you see next'), and trajectory questions.",
-                args_schema=GetNearbyInTimeInput,
-            ),
-            StructuredTool.from_function(
-                func=_examine_keyframes, name="examine_keyframes",
-                description="Load actual stored images and answer a visual question about them. "
-                            "Use for colors, sign text, counting objects, direction of movement, "
-                            "or any visual detail that captions might have missed.",
-                args_schema=ExamineKeyframesInput,
-            ),
-        ]
-        self.tool_definitions = [convert_to_openai_function(t) for t in self.tool_list]
-
     def _get_siglip(self):
-        """Lazy-load SigLIP encoder only when actually needed."""
+        """Lazy-load SigLIP encoder — only instantiated if hybrid search is actually called."""
         if self._siglip is None:
             from models.siglip_encoder import SigLIPEncoder
             self._siglip = SigLIPEncoder()
         return self._siglip
 
+    def set_memory(self, memory: MilvusMemoryV2):
+        self.memory = memory
+        self.create_tools(memory)
+        self.build_graph()
+
+    # ── Tool definitions ──────────────────────────────────────────────────────
+
+    def create_tools(self, memory: MilvusMemoryV2):
+
+        # 1. retrieve_from_text ────────────────────────────────────────────────
+        # v2 improvement: internally uses hybrid BGE+SigLIP RRF instead of single embedding
+        class TextRetrieverInput(BaseModel):
+            x: str = Field(
+                description="The query that will be searched by the vector similarity-based retriever. "
+                            "Text embeddings of this description are used. There should always be text in here. "
+                            "Based on the question and your context, decide what text to search for in the database. "
+                            "This query argument should be a phrase such as 'a crowd gathering' or 'a green car driving down the road'. "
+                            "The query will then search your memories for you."
+            )
+
+        def _text_search(x: str) -> str:
+            entries = memory.search_hybrid(x, k=5, siglip=self._get_siglip())
+            result = memory.memory_to_string(entries)
+            self.tool_call_log.append({
+                "tool": "retrieve_from_text", "args": {"query": x},
+                "result_preview": result[:300],
+            })
+            return result or "No relevant memories found."
+
+        self.retriever_tool = StructuredTool.from_function(
+            func=_text_search,
+            name="retrieve_from_text",
+            description="Search and return information from your video memory in the form of captions. "
+                        "Results include Image paths that you can pass to examine_keyframes to see the actual stored images.",
+            args_schema=TextRetrieverInput,
+        )
+
+        # 2. retrieve_from_position ────────────────────────────────────────────
+        class PositionRetrieverInput(BaseModel):
+            x: str = Field(
+                description="The query that will be searched by finding the nearest memories at this (x,y,z) position. "
+                            "The query must be an (x,y,z) array with floating point values, formatted as a string like '0.5, 0.2, 0.1' or '[0.5, 0.2, 0.1]'. "
+                            "Based on the question and your context, decide what position to search for in the database."
+            )
+
+        def _position_search(x: str) -> str:
+            if isinstance(x, str):
+                try:
+                    import ast
+                    x = tuple(ast.literal_eval(x))
+                except Exception:
+                    pass
+            entries = memory.search_by_position(x, k=4)
+            result = memory.memory_to_string(entries)
+            self.tool_call_log.append({
+                "tool": "retrieve_from_position", "args": {"position": x},
+                "result_preview": result[:300],
+            })
+            return result or "No memories found near that position."
+
+        self.position_retriever_tool = StructuredTool.from_function(
+            func=_position_search,
+            name="retrieve_from_position",
+            description="Search and return information from your video memory by using a position array such as (x,y,z)",
+            args_schema=PositionRetrieverInput,
+        )
+
+        # 3. retrieve_from_time ────────────────────────────────────────────────
+        # v2 improvement: returns all entries in the time window in chronological order
+        # (instead of v1's approximate vector similarity on a time encoding)
+        class TimeRetrieverInput(BaseModel):
+            x: str = Field(
+                description="The query that will be searched by finding memories near a specific time in H:M:S format. "
+                            "The query must be a string containing only time. "
+                            "Based on the question and your context, decide what time to search for in the database. "
+                            "This query argument should be an HMS time such as 08:02:03 with leading zeros."
+            )
+
+        def _time_search(x: str) -> str:
+            timestamp = _parse_hms_to_unix(x, memory.time_start)
+            # Return all entries within ±5 minutes, sorted chronologically
+            entries = memory.get_nearby_in_time(timestamp, window_seconds=300)
+            result = memory.memory_to_string(entries)
+            self.tool_call_log.append({
+                "tool": "retrieve_from_time", "args": {"time": x},
+                "result_preview": result[:300],
+            })
+            return result or "No memories found near that time."
+
+        self.time_retriever_tool = StructuredTool.from_function(
+            func=_time_search,
+            name="retrieve_from_time",
+            description="Search and return information from your video memory by using an H:M:S time. "
+                        "Returns entries in chronological order — useful for sequence, trajectory, and duration questions.",
+            args_schema=TimeRetrieverInput,
+        )
+
+        # 4. examine_keyframes ─────────────────────────────────────────────────
+        class ExamineKeyframesInput(BaseModel):
+            image_paths: str = Field(
+                description="Comma-separated list of image file paths. "
+                            "Copy the 'Image: /path/...' values exactly as shown in your retrieved context. "
+                            "Example: '/data/v2/keyframes/0/1721829332.456.jpg,/data/v2/keyframes/0/1721829347.123.jpg'"
+            )
+            question: str = Field(
+                description="A specific visual question about the images. "
+                            "Examples: 'What color is the floor?', 'Read the text on any visible signs', "
+                            "'Which direction is the robot turning?', 'Is there a water fountain visible?'"
+            )
+
+        def _examine_keyframes(image_paths: str, question: str) -> str:
+            paths = [p.strip() for p in image_paths.split(",") if p.strip()]
+
+            # For each requested image, expand to a (before → main → after) triplet.
+            # Adjacent stored frames provide motion and location context for the VLM.
+            labeled_images = []  # [(label, path), ...]
+            seen_paths = set()
+
+            for path in paths:
+                ts = _timestamp_from_path(path)
+
+                if ts is not None:
+                    entry = memory.get_entry_near_timestamp(ts)
+                    if entry is not None:
+                        before, after = memory.get_adjacent_entries(entry["id"])
+
+                        if before and before.get("image_path") and before["image_path"] not in seen_paths:
+                            labeled_images.append(("BEFORE (previous anchor)", before["image_path"]))
+                            seen_paths.add(before["image_path"])
+
+                        if path not in seen_paths:
+                            labeled_images.append(("MAIN FRAME", path))
+                            seen_paths.add(path)
+
+                        if after and after.get("image_path") and after["image_path"] not in seen_paths:
+                            labeled_images.append(("AFTER (next anchor)", after["image_path"]))
+                            seen_paths.add(after["image_path"])
+                        continue
+
+                # Fallback: no DB match, use path as-is
+                if path not in seen_paths:
+                    labeled_images.append(("FRAME", path))
+                    seen_paths.add(path)
+
+            result = _call_vision_vlm(labeled_images, question)
+            self.tool_call_log.append({
+                "tool": "examine_keyframes",
+                "args": {"image_paths": image_paths, "question": question},
+                "result_preview": result[:300],
+            })
+            return result
+
+        self.examine_tool = StructuredTool.from_function(
+            func=_examine_keyframes,
+            name="examine_keyframes",
+            description="Load stored camera images and answer a visual question about them. "
+                        "Use for colors, sign text, counting objects, direction of movement, or any visual detail "
+                        "that captions might have missed. Automatically includes the frame before and after each "
+                        "requested image to give you motion context.",
+            args_schema=ExamineKeyframesInput,
+        )
+
+        self.tool_list = [
+            self.retriever_tool,
+            self.position_retriever_tool,
+            self.time_retriever_tool,
+            self.examine_tool,
+        ]
+        self.tool_definitions = [convert_to_openai_function(t) for t in self.tool_list]
+
     # ── LangGraph nodes ───────────────────────────────────────────────────────
 
-    def _agent_node(self, state: AgentState) -> dict:
+    def agent(self, state: AgentState) -> dict:
         messages = state["messages"]
 
         if not self.chat.use_gpt:
-            messages = _coerce_tool_messages(messages)
+            messages = [
+                AIMessage(id=m.id, content=m.content) if isinstance(m, ToolMessage) else m
+                for m in messages
+            ]
 
-        if self.agent_call_count < self.MAX_TOOL_CALLS:
+        if self.agent_call_count < 3:
             model = self.chat.bind_tools(tools=self.tool_definitions)
+            prompt_text = self.agent_prompt
         else:
-            model = self.chat  # no tools — must answer now
+            model = self.chat
+            prompt_text = self.agent_gen_only_prompt
 
-        prompt = ChatPromptTemplate.from_messages([
-            ("ai", self.agent_prompt),
+        agent_prompt = ChatPromptTemplate.from_messages([
             MessagesPlaceholder("chat_history"),
+            ("human", self.previous_tool_requests),
+            ("ai", prompt_text),
             ("human", "{question}"),
         ])
 
         question = f"The question is: {messages[0].content}"
-        chain = prompt | model
+        formatted = agent_prompt.format_messages(question=question, chat_history=list(messages))
+
+        # Debug log
+        lines = [f"\n{'='*70}", f"[DEBUG] agent_call={self.agent_call_count}  model={self.llm_type}"]
+        for msg in formatted:
+            role = msg.__class__.__name__.replace("Message", "")
+            lines.append(f"  [{role}]\n{msg.content}\n")
+        lines.append(f"  [Tools] {[t['name'] for t in self.tool_definitions]}")
+        lines.append("=" * 70)
+        block = "\n".join(lines)
+        print(block)
+        if self._debug_log_path:
+            with open(self._debug_log_path, "a") as f:
+                f.write(block + "\n")
+
+        chain = agent_prompt | model
         response = chain.invoke({"question": question, "chat_history": list(messages)})
 
         if response.tool_calls:
             for tc in response.tool_calls:
                 if tc["name"] != "__conversational_response":
+                    args = re.sub(r"\{.*?\}", "", str(tc["args"]))
+                    self.previous_tool_requests += (
+                        f"I previously used the {tc['name']} tool with the arguments: {args}.\n"
+                    )
                     self.tool_call_log.append({
                         "step": f"agent_call_{self.agent_call_count}",
                         "tool_chosen": tc["name"],
                         "args_chosen": tc["args"],
                     })
-                    self._previous_tools_summary += f"  - {tc['name']}({tc['args']})\n"
 
         self.agent_call_count += 1
         return {"messages": [response]}
 
-    def _generate_node(self, state: AgentState) -> dict:
+    def generate(self, state: AgentState) -> dict:
         messages = state["messages"]
-        question = messages[0].content
+        question = messages[0].content + "\n Please respond in the desired format."
 
-        # Build the filled prompt with the question injected
-        filled_prompt = self.generate_prompt.replace("{question}", question)
+        prompt = PromptTemplate(
+            template=self.generate_prompt,
+            input_variables=["context", "question"],
+        )
+        filled_prompt = prompt.invoke({"question": question})
 
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", filled_prompt),
+        gen_prompt = ChatPromptTemplate.from_messages([
+            ("system", filled_prompt.text),
             MessagesPlaceholder("chat_history"),
-            ("human", "Based on all the context above, answer: {question}"),
+            ("human", "{question}"),
         ])
 
-        chain = prompt | self.chat
-        response = chain.invoke({
-            "question": question,
-            "chat_history": list(messages[1:]),
-        })
+        chain = gen_prompt | self.chat
+        response = chain.invoke({"question": question, "chat_history": list(messages[1:])})
 
         raw = "".join(response.content.splitlines())
-        parsed = _parse_json(raw)
+        try:
+            parsed = _parse_json(raw)
 
-        # Unwrap nested tool_response format if present
-        if isinstance(parsed, dict):
-            if "tool_input" in parsed:
-                inner = parsed["tool_input"]
-                parsed = inner.get("response", inner)
-            elif "response" in parsed and isinstance(parsed["response"], dict):
-                parsed = parsed["response"]
+            # Unwrap nested tool_response format
+            if isinstance(parsed, dict):
+                if "tool_input" in parsed:
+                    inner = parsed["tool_input"]
+                    parsed = inner.get("response", inner) if isinstance(inner, dict) else inner
+                elif "response" in parsed and isinstance(parsed["response"], dict):
+                    parsed = parsed["response"]
 
-        required_keys = ["type", "text", "binary", "position", "time", "duration"]
-        for key in required_keys:
-            if key not in parsed:
-                raise ValueError(f"Generate node: missing key '{key}' in response")
+            for key in ["time", "text", "binary", "position", "duration"]:
+                if key not in parsed:
+                    raise ValueError(f"Missing key '{key}' in generate response")
 
-        self._reset_call_state()
+            if isinstance(parsed.get("position"), str):
+                try:
+                    parsed["position"] = eval(parsed["position"])
+                except Exception:
+                    parsed["position"] = None
+            if parsed.get("position") is not None and len(parsed["position"]) != 3:
+                raise ValueError(f"Bad position shape: {parsed['position']}")
+
+        except Exception as e:
+            raise ValueError(f"Generate failed: {e}")
+
+        self.previous_tool_requests = "These are the tools I have previously used so far: \n"
+        self.agent_call_count = 0
         return {"messages": [str(parsed)]}
 
     # ── Graph ─────────────────────────────────────────────────────────────────
 
-    def _build_graph(self):
+    def build_graph(self):
         from langgraph.graph import END, StateGraph
         from langgraph.prebuilt import ToolNode
 
         workflow = StateGraph(AgentState)
-        workflow.add_node("agent", lambda s: _try_except_continue(s, self._agent_node))
+        workflow.add_node("agent", lambda s: _try_except_continue(s, self.agent))
         workflow.add_node("action", ToolNode(self.tool_list))
-        workflow.add_node("generate", lambda s: _try_except_continue(s, self._generate_node))
+        workflow.add_node("generate", lambda s: _try_except_continue(s, self.generate))
 
         workflow.set_entry_point("agent")
         workflow.add_conditional_edges("agent", _should_continue, {
@@ -328,7 +438,9 @@ class ReMEmbRAgentV2(Agent):
     # ── Public interface ──────────────────────────────────────────────────────
 
     def query(self, question: str, debug_log_path: str = None) -> AgentOutput:
-        self._reset_call_state()
+        self.tool_call_log = []
+        self.previous_tool_requests = "These are the tools I have previously used so far: \n"
+        self.agent_call_count = 0
         self._debug_log_path = debug_log_path
 
         if debug_log_path:
@@ -343,87 +455,78 @@ class ReMEmbRAgentV2(Agent):
 
 # ── Utility functions ─────────────────────────────────────────────────────────
 
-def _coerce_tool_messages(messages):
-    """Ollama JSON path can't handle ToolMessage — convert to AIMessage."""
-    result = list(messages)
-    for i, msg in enumerate(result):
-        if isinstance(msg, ToolMessage):
-            result[i] = AIMessage(id=msg.id, content=msg.content)
-    return result
-
-
-def _parse_time(time_str: str, reference_time: float = None) -> float:
-    """Parse HH:MM:SS (or full datetime) to unix timestamp."""
+def _parse_hms_to_unix(time_str: str, reference_unix: float = None) -> float:
+    """Parse HH:MM:SS (or full datetime) to a unix timestamp."""
+    import time as _time
     time_str = time_str.strip()
+    from time import strftime, localtime as _localtime
+
+    ref_local = _localtime(reference_unix) if reference_unix else _localtime()
+    mdy = strftime("%m/%d/%Y", ref_local)
+
     for fmt in ("%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%m/%d/%Y %H:%M:%S"):
         try:
             dt = datetime.datetime.strptime(time_str, fmt)
-            if fmt == "%H:%M:%S" and reference_time is not None:
-                ref = datetime.datetime.fromtimestamp(reference_time)
-                dt = dt.replace(year=ref.year, month=ref.month, day=ref.day)
+            if fmt == "%H:%M:%S":
+                # Inject the reference date so the timestamp lands in the right day
+                dt = dt.replace(year=ref_local.tm_year, month=ref_local.tm_mon, day=ref_local.tm_mday)
             return dt.timestamp()
         except ValueError:
             continue
-    raise ValueError(f"Cannot parse time string: {time_str!r}")
+
+    # Last resort
+    try:
+        return datetime.datetime.strptime(mdy + " " + time_str, "%m/%d/%Y %H:%M:%S").timestamp()
+    except ValueError:
+        raise ValueError(f"Cannot parse time: {time_str!r}")
 
 
-def _format_temporal_sequence(entries: list) -> str:
-    """Format a chronological list of entries for the agent, showing duration info."""
-    if not entries:
-        return "No entries found in that time window."
-    from time import strftime, localtime
-    import numpy as np
-    lines = [f"Chronological sequence ({len(entries)} entries):"]
-    for e in entries:
-        t_str = strftime("%Y-%m-%d %H:%M:%S", localtime(e["time"]))
-        pos = np.round(e.get("position", [0, 0, 0]), 3).tolist()
-        revisit = " [REVISIT]" if e.get("is_revisit", 0) > 0 else ""
-        lines.append(f"  {t_str}  pos={pos}{revisit}")
-        lines.append(f"    {e.get('caption', '')[:200]}")
-        if e.get("image_path"):
-            lines.append(f"    Image path: {e['image_path']}")
-    if len(entries) >= 2:
-        duration = entries[-1]["time"] - entries[0]["time"]
-        lines.append(f"\nSpan: {duration:.0f} seconds ({duration/60:.1f} minutes)")
-        lines.append(f"First: {strftime('%H:%M:%S', localtime(entries[0]['time']))}")
-        lines.append(f"Last:  {strftime('%H:%M:%S', localtime(entries[-1]['time']))}")
-    return "\n".join(lines)
+def _timestamp_from_path(path: str) -> float:
+    """Extract unix timestamp from a keyframe filename like 1721829332.456000.jpg"""
+    basename = os.path.basename(path)
+    stem = os.path.splitext(basename)[0]
+    # Remove any suffix like "_revisit"
+    stem = stem.split("_")[0]
+    try:
+        return float(stem)
+    except ValueError:
+        return None
 
 
-def _call_vision_llm(image_paths: list, question: str, model: str = "gpt-4o") -> str:
-    """Send stored keyframe images to GPT-4o and answer a visual question."""
+def _call_vision_vlm(labeled_images: list, question: str, model: str = "gpt-4o") -> str:
+    """
+    Send labeled images to GPT-4o and answer a visual question.
+
+    labeled_images: [(label, path), ...]  e.g. [('BEFORE', '/path/a.jpg'), ('MAIN FRAME', '/path/b.jpg'), ...]
+    The labels tell the VLM which frame is the main frame and which provide temporal context.
+    """
     from openai import OpenAI
     client = OpenAI()
 
-    content = [
-        {
-            "type": "text",
-            "text": (
-                f"You are examining frames from a robot's camera. "
-                f"Please answer this question about the image(s): {question}\n\n"
-                f"Be specific and concise. If you see multiple images, describe what changes across them."
-            ),
-        }
-    ]
+    intro = (
+        "You are examining frames from a robot's camera. "
+        "You will see frames labeled BEFORE (previous anchor), MAIN FRAME (the key frame), "
+        "and AFTER (next anchor), giving you temporal/motion context around the main frame.\n\n"
+        f"Please answer this question about the images: {question}\n\n"
+        "Be specific. If multiple images show the same question, describe what you see across the sequence."
+    )
+    content = [{"type": "text", "text": intro}]
 
-    loaded_count = 0
-    for path in image_paths:
-        if os.path.exists(path):
-            with open(path, "rb") as f:
-                b64 = base64.b64encode(f.read()).decode("utf-8")
-            content.append(
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64}"}}
-            )
-            loaded_count += 1
+    loaded = 0
+    for label, path in labeled_images:
+        if not os.path.exists(path):
+            continue
+        with open(path, "rb") as f:
+            b64 = base64.b64encode(f.read()).decode("utf-8")
+        content.append({"type": "text", "text": f"[{label}]"})
+        content.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64}"}})
+        loaded += 1
 
-    if loaded_count == 0:
-        return f"No valid image paths found. Provided: {image_paths}"
-
-    # Use gpt-4o for vision, regardless of what the agent LLM is
-    vision_model = model if "gpt" in model else "gpt-4o"
+    if loaded == 0:
+        return f"No valid image files found. Provided paths: {[p for _, p in labeled_images]}"
 
     response = client.chat.completions.create(
-        model=vision_model,
+        model=model,
         messages=[{"role": "user", "content": content}],
         max_tokens=512,
         temperature=0,

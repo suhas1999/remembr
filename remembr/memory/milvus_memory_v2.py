@@ -286,44 +286,36 @@ class MilvusMemoryV2:
 
     # ── Formatting ────────────────────────────────────────────────────────────
 
-    def format_entry(self, entry: dict, label: str = None) -> str:
-        """Format a single entry for display to the agent."""
-        t_str = strftime("%Y-%m-%d %H:%M:%S", localtime(entry["time"]))
-        pos = np.round(entry.get("position", [0, 0, 0]), 3).tolist()
-        lines = []
-        if label:
-            lines.append(label)
-        lines.append(f"  Time: {t_str}")
-        lines.append(f"  Position: {pos}")
-        lines.append(f"  Caption: {entry.get('caption', '')}")
-        img_path = entry.get("image_path", "")
-        if img_path:
-            lines.append(f"  Image path: {img_path}")
-        return "\n".join(lines)
-
-    def format_entries_with_context(self, entries: list, max_neighbors: int = 1) -> str:
+    def memory_to_string(self, entries: list) -> str:
         """
-        Format entries for the agent, with temporally adjacent frames added as context.
-        This gives the VLM motion context (what the robot was approaching / just left).
+        Format entries in v1-compatible style, extended with image paths.
+        The 'Image: /path' line lets the agent pass paths to examine_keyframes.
         """
-        parts = []
-        seen_ids = {e["id"] for e in entries}
+        out = ""
+        for entry in entries:
+            t_str = strftime("%Y-%m-%d %H:%M:%S", localtime(entry["time"]))
+            pos = np.round(entry.get("position", [0, 0, 0]), 3).tolist()
+            out += (
+                f"At time={t_str}, the robot was at an average position of {pos}. "
+                f"The robot saw the following: {entry.get('caption', '')}\n"
+            )
+            img = entry.get("image_path", "")
+            if img:
+                out += f"Image: {img}\n"
+            out += "\n"
+        return out
 
-        for i, entry in enumerate(entries, 1):
-            parts.append(self.format_entry(entry, label=f"[Memory {i}]"))
-
-            if max_neighbors > 0:
-                before, after = self.get_adjacent_entries(entry["id"])
-                if before and before["id"] not in seen_ids:
-                    parts.append(self.format_entry(before, label="  [Context before]"))
-                    seen_ids.add(before["id"])
-                if after and after["id"] not in seen_ids:
-                    parts.append(self.format_entry(after, label="  [Context after]"))
-                    seen_ids.add(after["id"])
-
-            parts.append("---")
-
-        return "\n".join(parts)
+    def get_entry_near_timestamp(self, ts: float, tolerance: float = 2.0) -> dict:
+        """Return the stored entry whose timestamp is closest to ts, within tolerance seconds."""
+        filter_expr = f"time >= {ts - tolerance} and time <= {ts + tolerance}"
+        if self.time_start is not None:
+            filter_expr += f" and time >= {self.time_start}"
+        if self.time_end is not None:
+            filter_expr += f" and time <= {self.time_end}"
+        rows = self.wrapper.query(filter_expr=filter_expr)
+        if not rows:
+            return None
+        return min(rows, key=lambda r: abs(r["time"] - ts))
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
