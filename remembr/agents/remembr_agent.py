@@ -95,10 +95,9 @@ class ReMEmbRAgent(Agent):
 
     def __init__(self, llm_type='gpt-4o', num_ctx=8192, temperature=0):
 
-        # Wrapper that handles everything
+        # Wrapper that handles everything — all models go through FunctionsWrapper
         llm = self.llm_selector(llm_type, temperature, num_ctx)
-        # GPT-4o has native tool calling — use directly; Ollama needs FunctionsWrapper
-        chat = llm if 'gpt-4' in llm_type else FunctionsWrapper(llm)
+        chat = FunctionsWrapper(llm)
 
         self.num_ctx = num_ctx
         self.temperature = temperature
@@ -111,7 +110,6 @@ class ReMEmbRAgent(Agent):
         # self.update_for_instance() # ref_time is None this time
         top_level_path = str(os.path.dirname(__file__)) + '/../'
         self.agent_prompt = file_to_string(top_level_path+'prompts/agent_system_prompt.txt')
-        self.agent_prompt_gpt4 = file_to_string(top_level_path+'prompts/agent_system_prompt_gpt4.txt')
         self.generate_prompt = file_to_string(top_level_path+'prompts/generate_system_prompt.txt')
         self.agent_gen_only_prompt = file_to_string(top_level_path+'prompts/agent_gen_system_prompt.txt')
 
@@ -244,49 +242,51 @@ class ReMEmbRAgent(Agent):
 
 
         # limit to 3 tool calls.
-        is_gpt4 = 'gpt-4' in self.llm_type
         if self.agent_call_count < 3:
-            # GPT-4o: bind StructuredTool objects for native function calling
-            # Ollama/FunctionsWrapper: bind OpenAI-format dicts (JSON prompting)
-            tools = self.tool_list if is_gpt4 else self.tool_definitions
-            model = model.bind_tools(tools=tools)
-            prompt = self.agent_prompt_gpt4 if is_gpt4 else self.agent_prompt
+            model = model.bind_tools(tools=self.tool_definitions)
+            prompt = self.agent_prompt
         else:
             prompt = self.agent_gen_only_prompt
 
-        if is_gpt4:
-            # GPT-4o: use "system" role so instructions are properly respected
-            agent_prompt = ChatPromptTemplate.from_messages(
-                [
-                    ("system", prompt),
-                    MessagesPlaceholder("chat_history"),
-                    ("human", "{question}"),
-                ]
-            )
-        else:
-            # Ollama / FunctionsWrapper: keep original layout
-            agent_prompt = ChatPromptTemplate.from_messages(
-                [
-                    MessagesPlaceholder("chat_history"),
-                    (("human"), self.previous_tool_requests),
-                    ("ai", prompt),
-                    ("human", "{question}"),
-                ]
-            )
+        # Original prompt layout — same for all models (GPT-4o goes through FunctionsWrapper)
+        agent_prompt = ChatPromptTemplate.from_messages(
+            [
+                MessagesPlaceholder("chat_history"),
+                (("human"), self.previous_tool_requests),
+                ("ai", prompt),
+                ("human", "{question}"),
+            ]
+        )
 
 
-        model = agent_prompt | model
-
-        question = f"The question is: {messages[0]}"
-
-        # Convert all ToolMessages into AI Messages since Ollama cann't handle ToolMessage
-        if ('gpt-4' not in self.llm_type) and ('nim' not in self.llm_type):
+        # Ollama/FunctionsWrapper JSON path can't handle ToolMessage — convert to AIMessage.
+        # GPT-4o native path requires ToolMessage to follow AIMessage(tool_calls) — keep as-is.
+        if not self.chat.use_gpt:
             for i in range(len(messages)):
                 if type(messages[i]) == ToolMessage:
-                    messages[i] = AIMessage(id=messages[i].id, content=messages[i].content) # ignore tool_call_id
+                    messages[i] = AIMessage(id=messages[i].id, content=messages[i].content)
 
+        question = f"The question is: {messages[0].content}"   # .content = plain text
+        history  = list(messages[:])
 
-        response = model.invoke({"question": question, "chat_history": messages[:]})
+        # ── Debug: log exact prompt sent to LLM ──────────────────────────────
+        formatted = agent_prompt.format_messages(question=question, chat_history=history)
+        lines = [f"\n{'='*70}",
+                 f"[DEBUG] agent_call={self.agent_call_count}  model={self.llm_type}"]
+        for msg in formatted:
+            role = msg.__class__.__name__.replace("Message", "")
+            lines.append(f"  [{role}]\n{msg.content}\n")
+        lines.append(f"  [Tools] {[t['name'] for t in self.tool_definitions]}")
+        lines.append("="*70)
+        block = "\n".join(lines)
+        print(block)
+        if hasattr(self, '_debug_log_path') and self._debug_log_path:
+            with open(self._debug_log_path, 'a') as _f:
+                _f.write(block + "\n")
+        # ─────────────────────────────────────────────────────────────────────
+
+        model = agent_prompt | model
+        response = model.invoke({"question": question, "chat_history": history})
 
         if response.tool_calls:
             for tool_call in response.tool_calls:
@@ -440,10 +440,14 @@ class ReMEmbRAgent(Agent):
         self.graph = workflow.compile()
 
 
-    def query(self, question: str):
+    def query(self, question: str, debug_log_path: str = None):
         self.tool_call_log = []
         self.previous_tool_requests = "These are the tools I have previously used so far: \n"
         self.agent_call_count = 0
+        self._debug_log_path = debug_log_path
+        if debug_log_path:
+            with open(debug_log_path, 'w') as _f:
+                _f.write(f"Question: {question}\n\n")
 
         inputs = { "messages": [
                                 (("user", question)),

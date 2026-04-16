@@ -215,10 +215,11 @@ def main(args):
         agent.set_memory(memory)
 
         # ── Run agent ─────────────────────────────────────────────────────────
+        debug_log = os.path.join(out_path, 'llm_prompts.txt')
         parsed = None
         t0 = time.time()
         try:
-            response  = agent.query(question_text)
+            response  = agent.query(question_text, debug_log_path=debug_log)
             parsed    = asdict(response)
             elapsed   = time.time() - t0
             out_error = evaluate_output(qa, parsed)

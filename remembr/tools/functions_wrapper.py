@@ -128,12 +128,9 @@ class FunctionsWrapper(BaseChatModel, BaseLanguageModel):
 
     def __init__(self, llm) -> None:
         super().__init__()
-        # # TODO: This is a pretty hacky wrapper to use the same prompts for GPT4o and Ollama tool use
-        # if "gpt" in kwargs.keys():
-        #     self.llm = kwargs['gpt']
-        #     self.use_gpt = True
-
         self.llm = llm
+        # Activate native tool-calling path for OpenAI/GPT models
+        self.use_gpt = isinstance(llm, langchain_openai.ChatOpenAI)
 
 
     def bind_tools(
@@ -317,6 +314,7 @@ class FunctionsWrapper(BaseChatModel, BaseLanguageModel):
         if len(functions) > 0 and _is_pydantic_class(functions[0]):
             functions = [convert_to_ollama_tool(fn) for fn in functions]
         functions.insert(0, DEFAULT_RESPONSE_FUNCTION)
+
         system_message_prompt_template = SystemMessagePromptTemplate.from_template(
             self.tool_system_prompt_template
         )
