@@ -11,6 +11,17 @@ CAPTION_FILE="captions_${CAPTIONER_NAME}_${SECONDS_PER_CAPTION}_secs"
 GCS_BUCKET="remember-data-bucket"
 CONDA_ENV="remembr"
 
+# ── Install Miniconda if conda not found ──────────────────────────────────────
+if ! command -v conda &>/dev/null; then
+    echo "==> conda not found. Installing Miniconda..."
+    wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+    bash /tmp/miniconda.sh -b -p "$HOME/miniconda3"
+    rm /tmp/miniconda.sh
+    export PATH="$HOME/miniconda3/bin:$PATH"
+    conda init bash
+    echo "    Miniconda installed at $HOME/miniconda3"
+fi
+
 # Required to use conda commands in script
 eval "$(conda shell.bash hook)"
 
