@@ -196,6 +196,52 @@ fi
 
 ---
 
+## 12. Running the evaluation
+
+### llama3.1:8b (local via Ollama)
+
+Make sure Ollama is running and the model is pulled:
+
+```bash
+ollama pull llama3.1:8b
+```
+
+Then run:
+
+```bash
+python3 remembr/scripts/eval_and_save_frames.py \
+  --llm llama3.1:8b \
+  --sequence_id 0 \
+  --caption_file captions_Llama-3-VILA1.5-8b_3_secs \
+  --coda_dir ./coda_data \
+  --out_dir ./analysis_llama \
+  --db_path ./remembr_llama.db
+```
+
+### GPT-4o (OpenAI API)
+
+Set your API key first:
+
+```bash
+export OPENAI_API_KEY=<your-key>
+```
+
+Then run:
+
+```bash
+python3 remembr/scripts/eval_and_save_frames.py \
+  --llm gpt-4o \
+  --sequence_id 0 \
+  --caption_file captions_Llama-3-VILA1.5-8b_3_secs \
+  --coda_dir ./coda_data \
+  --out_dir ./analysis_gpt4o \
+  --db_path ./remembr_gpt4o.db
+```
+
+Both models use the same three-prompt agentic pipeline (`agent_system_prompt` → retrieval loop → `agent_gen_only_prompt` → `generate_system_prompt`). The only difference is the underlying LLM. Add `--max_questions 1` to run a single-question smoke test.
+
+---
+
 ## Summary of version pinning that works
 
 | Package | Version | Reason |
