@@ -268,9 +268,9 @@ def main(args):
             cap_entry  = find_caption_by_time(window_captions, unix_ts)
             pkl_name   = cap_entry['file_start']
             pkl_path   = os.path.join(args.coda_dir, str(args.sequence_id), pkl_name)
-            frame_name = f"{float(pkl_name[:-4]):.3f}_rank{rank:02d}.jpg"
-
             t_str = strftime('%Y-%m-%d %H:%M:%S', localtime(unix_ts))
+            fname_ts   = strftime('%Y-%m-%d_%H-%M-%S', localtime(unix_ts))
+            frame_name = f"{fname_ts}_rank{rank:02d}.jpg"
             label = f"{t_str}  rank{rank:02d}"
             saved = save_frame_from_pkl(pkl_path, os.path.join(ret_path, frame_name), timestamp_str=label)
             pos   = np.round(doc.metadata.get('position', [0, 0, 0]), 3).tolist()
@@ -294,8 +294,9 @@ def main(args):
         for cap in window_captions:
             pkl_name  = cap['file_start']
             pkl_path  = os.path.join(args.coda_dir, str(args.sequence_id), pkl_name)
-            frame_name = f"{float(pkl_name[:-4]):.3f}.jpg"
             t_str = strftime('%Y-%m-%d %H:%M:%S', localtime(cap['time']))
+            fname_ts  = strftime('%Y-%m-%d_%H-%M-%S', localtime(cap['time']))
+            frame_name = f"{fname_ts}.jpg"
             saved = save_frame_from_pkl(pkl_path, os.path.join(win_path, frame_name), timestamp_str=t_str)
             pos   = np.round(cap['position'], 3).tolist() if isinstance(cap['position'], list) else cap['position']
             window_lines.append(
