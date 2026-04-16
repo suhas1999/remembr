@@ -270,12 +270,12 @@ def main(args):
             pkl_path   = os.path.join(args.coda_dir, str(args.sequence_id), pkl_name)
             frame_name = f"{float(pkl_name[:-4]):.3f}_rank{rank:02d}.jpg"
 
-            t_str = strftime('%H:%M:%S', localtime(unix_ts))
+            t_str = strftime('%Y-%m-%d %H:%M:%S', localtime(unix_ts))
             label = f"{t_str}  rank{rank:02d}"
             saved = save_frame_from_pkl(pkl_path, os.path.join(ret_path, frame_name), timestamp_str=label)
             pos   = np.round(doc.metadata.get('position', [0, 0, 0]), 3).tolist()
             retrieved_lines.append(
-                f"rank={rank:02d}  time={t_str} ({unix_ts:.3f})  pos={pos}  frame={frame_name}\n"
+                f"rank={rank:02d}  time={t_str}  pos={pos}  frame={frame_name}\n"
                 f"  caption: {doc.page_content}\n"
                 f"  pkl: {pkl_name}  saved={saved}\n"
             )
@@ -283,8 +283,8 @@ def main(args):
         with open(os.path.join(out_path, 'retrieved_captions.txt'), 'w') as f:
             f.write(f"Question: {question_text.split(chr(10))[-1].strip()}\n")
             f.write(f"Type: {q_type} | Category: {qa['length_category']}\n")
-            f.write(f"Window: {strftime('%H:%M:%S', localtime(qa['start_time']))} → "
-                    f"{strftime('%H:%M:%S', localtime(qa['end_time']))} "
+            f.write(f"Window: {strftime('%Y-%m-%d %H:%M:%S', localtime(qa['start_time']))} → "
+                    f"{strftime('%Y-%m-%d %H:%M:%S', localtime(qa['end_time']))} "
                     f"({round(qa['end_time']-qa['start_time'],1)}s)\n")
             f.write(f"Total retrieved: {len(retrieved_docs)}\n\n")
             f.write('\n'.join(retrieved_lines))
@@ -295,11 +295,11 @@ def main(args):
             pkl_name  = cap['file_start']
             pkl_path  = os.path.join(args.coda_dir, str(args.sequence_id), pkl_name)
             frame_name = f"{float(pkl_name[:-4]):.3f}.jpg"
-            t_str = strftime('%H:%M:%S', localtime(cap['time']))
+            t_str = strftime('%Y-%m-%d %H:%M:%S', localtime(cap['time']))
             saved = save_frame_from_pkl(pkl_path, os.path.join(win_path, frame_name), timestamp_str=t_str)
             pos   = np.round(cap['position'], 3).tolist() if isinstance(cap['position'], list) else cap['position']
             window_lines.append(
-                f"time={t_str} ({cap['time']:.3f})  pos={pos}  frame={frame_name}  saved={saved}\n"
+                f"time={t_str}  pos={pos}  frame={frame_name}  saved={saved}\n"
                 f"  {cap['caption']}\n"
             )
 
@@ -313,8 +313,8 @@ def main(args):
             f.write(f"ID:        {q_id}\n")
             f.write(f"Category:  {qa['length_category']}\n")
             f.write(f"Type:      {q_type}\n")
-            f.write(f"Window:    {strftime('%H:%M:%S', localtime(qa['start_time']))} → "
-                    f"{strftime('%H:%M:%S', localtime(qa['end_time']))} "
+            f.write(f"Window:    {strftime('%Y-%m-%d %H:%M:%S', localtime(qa['start_time']))} → "
+                    f"{strftime('%Y-%m-%d %H:%M:%S', localtime(qa['end_time']))} "
                     f"({round(qa['end_time']-qa['start_time'],1)}s)\n\n")
             f.write(f"Question:\n{question_text.split(chr(10))[-1].strip()}\n\n")
             f.write(f"Ground truth answer:\n{json.dumps(qa.get('answers',{}), indent=2)}\n\n")
