@@ -14,7 +14,7 @@ In particular, these are the tools you may be provided. If no tools are availabl
 1. __conversational_response: calls a system to response to the user. Use this if you believe you have relevant information to answer the question. Summarize the relevant information inside your response, and a different system will provide the answer to the user.
 2. retrieve_from_text: If you do not know the answer, retrieve by providing a query that is vector searched over a database of what you have seen. Do NOT query based on location or time with this function, instead query based on text descriptions only
 3. retrieve_from_position: Retrieve by providing an (x,y,z) locations
-4. retrieve_from_time: Retrieve by searching for a specific time in H:M:S format.
+4. retrieve_from_time: Get tight local context (±10 seconds) around a specific time. Always find the key event with retrieve_from_text or retrieve_from_position FIRST — use this only to see what happened just before/after a moment you already identified. Do not use this as your primary search tool.
 
 
 You are allowed to output a list of these if multiple tool calls may be required. For example, if a user is asking to go upstairs, you may call tools to search for elevators and stairs as separate tool calls. This executes them in parallel.

@@ -168,10 +168,7 @@ class MilvusMemoryV2:
         return _hits_to_entries(results)
 
     def search_by_siglip_text(self, query: str, k: int = 5, siglip=None) -> list:
-        """
-        Search stored image embeddings using a text query encoded by SigLIP's text encoder.
-        Requires passing the SigLIPEncoder instance (lazy to avoid GPU load at import).
-        """
+        """Search stored image embeddings using a SigLIP text query. Used internally by search_hybrid."""
         if siglip is None:
             raise ValueError("Pass the SigLIPEncoder instance as siglip=...")
         text_emb = siglip.encode_text([query])[0]
@@ -181,12 +178,10 @@ class MilvusMemoryV2:
             limit=k,
             filter_expr=self._time_filter(),
         )
-        entries = _hits_to_entries(results)
-        self.working_memory.extend(entries)
-        return entries
+        return _hits_to_entries(results)  # no working_memory here — hybrid adds final result
 
     def search_by_bge(self, query: str, k: int = 5) -> list:
-        """Search stored captions using BGE text embedding."""
+        """Search stored captions using BGE text embedding. Used internally by search_hybrid."""
         query_emb = self.bge_embed_query(query)
         results = self.wrapper.search(
             vector=query_emb,
@@ -194,20 +189,12 @@ class MilvusMemoryV2:
             limit=k,
             filter_expr=self._time_filter(),
         )
-        entries = _hits_to_entries(results)
-        self.working_memory.extend(entries)
-        return entries
+        return _hits_to_entries(results)  # no working_memory here — hybrid adds final result
 
-    def search_hybrid(self, query: str, k: int = 5, siglip=None) -> list:
+    def search_hybrid(self, query: str, k: int = 3, siglip=None) -> list:
         """
         Hybrid retrieval: BGE caption search + SigLIP text-to-image search,
-        fused with Reciprocal Rank Fusion (RRF).
-
-        The SigLIP path is a safety net: it bypasses captions entirely and
-        matches queries against actual image embeddings. This catches objects
-        the captioner described poorly (e.g. 'water fountain' vs 'silver machine').
-
-        If no siglip encoder is provided, falls back to BGE only.
+        fused with Reciprocal Rank Fusion (RRF). Returns top-k deduplicated originals.
         """
         bge_entries = self.search_by_bge(query, k=k * 2)
 
@@ -222,30 +209,39 @@ class MilvusMemoryV2:
         fused_ranking = _rrf_fuse([bge_ids, siglip_ids])
         id_to_entry = {e["id"]: e for e in bge_entries + siglip_entries}
 
+        # Build result: skip revisits only
         result = []
-        for entry_id, _ in fused_ranking[:k]:
-            if entry_id in id_to_entry:
-                result.append(id_to_entry[entry_id])
+        for entry_id, _ in fused_ranking:
+            if len(result) >= k:
+                break
+            entry = id_to_entry.get(entry_id)
+            if entry is None:
+                continue
+            if entry.get("is_revisit", 0) > 0:
+                continue  # skip revisit markers — captions are duplicates of originals
+            result.append(entry)
 
         self.working_memory.extend(result)
         return result
 
-    def search_by_position(self, xyz: tuple, k: int = 4) -> list:
+    def search_by_position(self, xyz: tuple, k: int = 3) -> list:
         """Find memories nearest to a (x, y, z) GPS position."""
         results = self.wrapper.search(
             vector=list(xyz),
             anns_field="position",
-            limit=k,
+            limit=k * 2,  # fetch extra to allow dedup
             filter_expr=self._time_filter(),
         )
         entries = _hits_to_entries(results)
-        self.working_memory.extend(entries)
-        return entries
+        # Filter revisits only
+        deduped = [e for e in entries if e.get("is_revisit", 0) == 0][:k]
+        self.working_memory.extend(deduped)
+        return deduped
 
     def get_nearby_in_time(self, timestamp: float, window_seconds: float = 60) -> list:
         """
-        Return all stored entries within ±window_seconds of timestamp,
-        sorted chronologically. Crucial for duration and trajectory questions.
+        Return stored entries within ±window_seconds of timestamp, sorted chronologically.
+        Capped at 15 entries to prevent context explosion. Crucial for trajectory questions.
         """
         t_start = timestamp - window_seconds
         t_end = timestamp + window_seconds
@@ -258,6 +254,10 @@ class MilvusMemoryV2:
 
         raw = self.wrapper.query(filter_expr=time_filter)
         entries = sorted(raw, key=lambda e: e["time"])
+        # Cap at 15 to prevent context explosion; prefer originals over revisits
+        originals = [e for e in entries if e.get("is_revisit", 0) == 0]
+        revisits = [e for e in entries if e.get("is_revisit", 0) > 0]
+        entries = (originals + revisits)[:15]
         self.working_memory.extend(entries)
         return entries
 
@@ -343,3 +343,9 @@ def _rrf_fuse(id_lists: list, k: int = 60) -> list:
         for rank, entry_id in enumerate(ranked_ids):
             scores[entry_id] = scores.get(entry_id, 0.0) + 1.0 / (k + rank + 1)
     return sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+
+def _too_close_in_time(entry: dict, existing: list, min_gap: float = 10.0) -> bool:
+    """Return True if entry's timestamp is within min_gap seconds of any entry in existing."""
+    t = entry.get("time", 0)
+    return any(abs(t - e.get("time", 0)) < min_gap for e in existing)

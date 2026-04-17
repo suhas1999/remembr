@@ -230,6 +230,7 @@ def main(args):
         }
         all_responses.append(out_dict)
         print(f"     Saved: {len(seen_paths)} images → {folder}/")
+        time.sleep(5)  # avoid TPM rate limit between questions
 
     # ── Full eval results JSON ────────────────────────────────────────────────
     results_dir = os.path.join(args.out_dir, "eval_results")

@@ -39,30 +39,11 @@ DECISION RULES
   This creates a lightweight revisit marker without storing a duplicate image.
 
 ────────────────────────────────────────────────────────────────
-CAPTION GUIDELINES (write a detailed caption for the current frame)
-────────────────────────────────────────────────────────────────
-
-Include all of the following that are visible:
-- Type of space: corridor, lobby, stairwell, outdoor courtyard, lab, office, etc.
-- Architecture: ceiling height, floor material, wall color/texture, windows, pillars
-- Furniture and fixtures: chairs, desks, benches, lockers, vending machines, water fountains
-- Doors: color, whether open or closed, any label
-- Signage: read and transcribe ANY text visible on signs, labels, or displays
-- People: clothing color, approximate count, what they are doing
-- Distinctive visual features that would help identify this location later
-- Lighting conditions: bright, dim, natural light from windows, fluorescent
-
-The caption must be specific enough that someone who has never seen this frame could
-identify it if shown the image. Generic phrases like "a hallway with lights" are not
-acceptable.
-
-────────────────────────────────────────────────────────────────
 OUTPUT FORMAT — respond with ONLY valid JSON, no other text
 ────────────────────────────────────────────────────────────────
 
 {
     "decision": "skip" | "same_scene_new_detail" | "new_location" | "revisit",
-    "caption": "Detailed description of the current frame...",
     "readable_text": ["text on sign 1", "text on sign 2"],
     "revisit_index": null
 }

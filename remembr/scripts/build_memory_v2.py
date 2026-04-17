@@ -3,8 +3,8 @@ ReMEmbR v2 memory building pipeline.
 
 Step 1: Load all pkl frames and batch-encode with SigLIP (~30s for 8000 frames on GPU)
 Step 2: Iterate with two-stage filter:
-  Stage 1 (fast): cosine similarity > 0.9 vs anchor → skip  (eliminates ~90% of frames)
-  Stage 2 (VLM):  send frame + anchor + top-3 similar stored frames to GPT-4o-mini judge
+  Stage 1 (fast): cosine similarity > 0.95 vs anchor → skip  (eliminates ~95% of frames)
+  Stage 2 (VLM):  send frame + anchor + top-3 similar stored frames to Gemini 2.0 Flash judge
 Step 3: Store / mark revisit / skip based on VLM decision
 
 Output: ~65-80 stored entries for a 25-min walk (vs ~500 in v1), each with a keyframe JPEG.
@@ -40,7 +40,7 @@ from models.siglip_encoder import SigLIPEncoder
 SIMILARITY_THRESHOLD = 0.95  # Stage 1: skip if cosine sim to anchor > this value
 
 
-# ── Image encoding for OpenAI vision ─────────────────────────────────────────
+# ── Image encoding helpers ────────────────────────────────────────────────────
 
 def _pil_to_b64(image: Image.Image) -> str:
     buf = BytesIO()
@@ -48,14 +48,12 @@ def _pil_to_b64(image: Image.Image) -> str:
     return base64.b64encode(buf.getvalue()).decode("utf-8")
 
 
-def _image_content(label: str, image: Image.Image) -> list:
-    return [
-        {"type": "text", "text": label},
-        {
-            "type": "image_url",
-            "image_url": {"url": f"data:image/jpeg;base64,{_pil_to_b64(image)}"},
-        },
-    ]
+def _gemini_image_part(image: Image.Image):
+    """Convert PIL image to a Gemini Part (new google-genai SDK)."""
+    from google.genai import types as genai_types
+    buf = BytesIO()
+    image.save(buf, format="JPEG", quality=85)
+    return genai_types.Part.from_bytes(data=buf.getvalue(), mime_type="image/jpeg")
 
 
 # ── VLM judge for Stage 2 ─────────────────────────────────────────────────────
@@ -74,78 +72,138 @@ def call_vlm_judge(
     anchor_image: Image.Image,
     prev_anchor_image,         # Image or None
     similar_stored: list,      # list of entry dicts (may be empty)
-    openai_client,
-    model: str = "gpt-4o-mini",
+    gemini_model,
+    model: str = "gemini-2.5-flash",
 ) -> dict:
     """
-    Ask the VLM: does this frame add new information not already in stored memories?
+    Ask Gemini 2.0 Flash: does this frame add new information not already in stored memories?
     Returns a dict with keys: decision, caption, readable_text, revisit_index
     """
     global JUDGE_PROMPT
     if JUDGE_PROMPT is None:
         JUDGE_PROMPT = _load_judge_prompt()
 
-    content = [{"type": "text", "text": JUDGE_PROMPT}]
-    content += _image_content("CURRENT FRAME:", current_image)
-    content += _image_content("ANCHOR FRAME:", anchor_image)
+    parts = [JUDGE_PROMPT]
+    parts.append("CURRENT FRAME:")
+    parts.append(_gemini_image_part(current_image))
+    parts.append("ANCHOR FRAME:")
+    parts.append(_gemini_image_part(anchor_image))
 
     if prev_anchor_image is not None:
-        content += _image_content("PREVIOUS SCENE:", prev_anchor_image)
+        parts.append("PREVIOUS SCENE:")
+        parts.append(_gemini_image_part(prev_anchor_image))
 
     for i, stored in enumerate(similar_stored[:3], 1):
         img_path = stored.get("image_path", "")
         if img_path and os.path.exists(img_path):
             stored_img = Image.open(img_path).convert("RGB")
-            content += _image_content(f"STORED SIMILAR {i}:", stored_img)
+            parts.append(f"STORED SIMILAR {i}:")
+            parts.append(_gemini_image_part(stored_img))
 
-    response = openai_client.chat.completions.create(
+    from google.genai import types as genai_types
+    response = gemini_model.models.generate_content(
         model=model,
-        messages=[{"role": "user", "content": content}],
-        max_tokens=1024,
-        temperature=0,
-        response_format={"type": "json_object"},
+        contents=parts,
+        config=genai_types.GenerateContentConfig(
+            temperature=0,
+            max_output_tokens=512,
+            response_mime_type="application/json",
+            thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
+        ),
     )
 
-    raw = response.choices[0].message.content
-    result = json.loads(raw)
+    raw = response.text.strip()
+    # Strip markdown code fences if present
+    if raw.startswith("```"):
+        raw = raw.split("```")[1]
+        if raw.startswith("json"):
+            raw = raw[4:]
+
+    try:
+        result = json.loads(raw)
+    except json.JSONDecodeError:
+        print(f"  [WARN] JSON parse failed, defaulting to skip. Raw: {raw[:120]!r}")
+        return {"decision": "skip", "readable_text": [], "revisit_index": None}
 
     # Normalize fields so callers can rely on them existing
     result.setdefault("decision", "skip")
-    result.setdefault("caption", "")
     result.setdefault("readable_text", [])
     result.setdefault("revisit_index", None)
 
     return result
 
 
-def generate_initial_caption(image: Image.Image, openai_client, model: str) -> str:
-    """Generate a caption for the very first stored frame (no comparison needed)."""
-    prompt = (
-        "Describe this robot camera frame in detail. Include: type of space, "
-        "architectural features, furniture, doors, signs with their text, "
-        "people, and any distinctive landmarks. Be specific."
-    )
-    content = [
-        {"type": "text", "text": prompt},
-        {
-            "type": "image_url",
-            "image_url": {"url": f"data:image/jpeg;base64,{_pil_to_b64(image)}"},
-        },
+_CAPTION_PROMPT = (
+    "You are a robot wandering around a university campus. "
+    "You will see a sequence of frames captured over the past few seconds. "
+    "Please describe in detail what you see across these frames. "
+    "Specifically focus on the people, objects, environmental features, "
+    "events/activities, and other interesting details. "
+    "Think step by step about these details and be very specific."
+)
+
+
+def generate_caption_with_window(
+    frames: list,
+    raw_images: list,
+    current_idx: int,
+    gemini_model,
+    model: str = "gemini-2.5-flash",
+    window_seconds: float = 1.5,
+    n_frames: int = 6,
+) -> str:
+    """
+    Generate a rich caption using a ~3s window of frames around current_idx.
+    Samples n_frames evenly from the window, sends all to Gemini with v1-style prompt.
+    """
+    from google.genai import types as genai_types
+
+    current_ts = frames[current_idx]["timestamp"]
+    t_start = current_ts - window_seconds
+    t_end = current_ts + window_seconds
+
+    # Collect all frame indices within the time window
+    window_indices = [
+        i for i, f in enumerate(frames)
+        if t_start <= f["timestamp"] <= t_end
     ]
-    response = openai_client.chat.completions.create(
+    if not window_indices:
+        window_indices = [current_idx]
+
+    # Sample n_frames evenly across the window
+    if len(window_indices) <= n_frames:
+        sampled = window_indices
+    else:
+        step = len(window_indices) / n_frames
+        sampled = [window_indices[int(i * step)] for i in range(n_frames)]
+
+    parts = [_CAPTION_PROMPT]
+    for idx in sampled:
+        parts.append(_gemini_image_part(raw_images[idx]))
+
+    response = gemini_model.models.generate_content(
         model=model,
-        messages=[{"role": "user", "content": content}],
-        max_tokens=512,
-        temperature=0,
+        contents=parts,
+        config=genai_types.GenerateContentConfig(
+            temperature=0,
+            max_output_tokens=2048,
+            thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
+        ),
     )
-    return response.choices[0].message.content.strip()
+    return response.text.strip()
 
 
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 
+def _model_name(name: str) -> str:
+    """Ensure Gemini model name has models/ prefix."""
+    return name if name.startswith("models/") else f"models/{name}"
+
+
 def build_memory(args):
-    from openai import OpenAI
-    openai_client = OpenAI()
+    from google import genai as google_genai
+    gemini_model = google_genai.Client(api_key=args.gemini_api_key)
+    args.vlm_model = _model_name(args.vlm_model)
 
     # ── Load all pkl files sorted by timestamp ────────────────────────────────
     pattern = os.path.join(args.data_path, str(args.seq_id), "*.pkl")
@@ -190,22 +248,36 @@ def build_memory(args):
     keyframes_dir = os.path.join(args.keyframes_dir, str(args.seq_id))
     frame_store = FrameStore(store_dir=keyframes_dir)
 
-    # ── Step 2 & 3: Iterate with two-stage filter ─────────────────────────────
-    anchor_emb = None
-    anchor_image = None
-    prev_anchor_emb = None
-    prev_anchor_image = None
+    # ── Step 2: Precompute Stage 1 passing indices ────────────────────────────
+    # Roll through all embeddings with a moving anchor. Every frame that differs
+    # enough (sim < threshold) gets its index recorded. This is instant (no VLM)
+    # and gives us the exact set of frames to judge, matching inspect_siglip_filter.py.
+    print(f"\nRunning Stage 1 filter (threshold={SIMILARITY_THRESHOLD})...")
+    passing_indices = [0]  # first frame always passes
+    s1_anchor = all_embs[0]
+    for idx in range(1, len(all_embs)):
+        if float(np.dot(all_embs[idx], s1_anchor)) < SIMILARITY_THRESHOLD:
+            passing_indices.append(idx)
+            s1_anchor = all_embs[idx]
 
-    stats = {"stored": 0, "revisits": 0, "skipped_stage1": 0, "skipped_stage2": 0}
+    n_skipped_s1 = len(frames) - len(passing_indices)
+    print(f"Stage 1: {len(passing_indices)} frames pass → VLM judge ({n_skipped_s1} skipped)")
 
-    print(f"\nBuilding memory (threshold={SIMILARITY_THRESHOLD})...")
-    for i, (frame, image, visual_emb) in enumerate(
-        tqdm.tqdm(zip(frames, raw_images, all_embs))
-    ):
+    # ── Step 3: VLM judge only on passing frames ──────────────────────────────
+    vlm_anchor_emb = None
+    vlm_anchor_image = None
+    prev_vlm_anchor_image = None
+
+    stats = {"stored": 0, "revisits": 0, "skipped_stage1": n_skipped_s1, "skipped_stage2": 0}
+
+    print(f"\nBuilding memory (VLM judging {len(passing_indices)} frames)...")
+    for rank, i in enumerate(tqdm.tqdm(passing_indices)):
+        frame, image, visual_emb = frames[i], raw_images[i], all_embs[i]
+
         # ── First frame: always store ─────────────────────────────────────────
-        if anchor_emb is None:
+        if vlm_anchor_emb is None:
             print("  [0] Storing first frame...")
-            caption = generate_initial_caption(image, openai_client, model=args.vlm_model)
+            caption = generate_caption_with_window(frames, raw_images, i, gemini_model, model=args.vlm_model)
             image_path = frame_store.save(image, frame["timestamp"])
             bge_emb = memory.bge_embed_document(caption)
 
@@ -221,17 +293,9 @@ def build_memory(args):
                     location_change=1.0,
                 )
             )
-            anchor_emb = visual_emb
-            anchor_image = image
+            vlm_anchor_emb = visual_emb
+            vlm_anchor_image = image
             stats["stored"] += 1
-            continue
-
-        # ── Stage 1: fast cosine similarity check ─────────────────────────────
-        # Dot product of L2-normalized vectors = cosine similarity.
-        # If > 0.9, the frame is near-identical to the anchor — skip without VLM call.
-        sim = float(np.dot(visual_emb, anchor_emb))
-        if sim > SIMILARITY_THRESHOLD:
-            stats["skipped_stage1"] += 1
             continue
 
         # ── Stage 2: VLM judge ────────────────────────────────────────────────
@@ -242,10 +306,10 @@ def build_memory(args):
 
         judge = call_vlm_judge(
             current_image=image,
-            anchor_image=anchor_image,
-            prev_anchor_image=prev_anchor_image,
+            anchor_image=vlm_anchor_image,
+            prev_anchor_image=prev_vlm_anchor_image,
             similar_stored=similar_stored,
-            openai_client=openai_client,
+            gemini_model=gemini_model,
             model=args.vlm_model,
         )
 
@@ -259,7 +323,7 @@ def build_memory(args):
 
         # ── Decision: store (new location or same scene with new detail) ──────
         elif decision in ("new_location", "same_scene_new_detail"):
-            caption = judge["caption"]
+            caption = generate_caption_with_window(frames, raw_images, i, gemini_model, model=args.vlm_model)
             if judge["readable_text"]:
                 caption += "  Visible text: " + ", ".join(judge["readable_text"])
 
@@ -281,11 +345,9 @@ def build_memory(args):
             stats["stored"] += 1
 
             if decision == "new_location":
-                # Advance the anchor to this new scene
-                prev_anchor_emb = anchor_emb
-                prev_anchor_image = anchor_image
-                anchor_emb = visual_emb
-                anchor_image = image
+                prev_vlm_anchor_image = vlm_anchor_image
+                vlm_anchor_emb = visual_emb
+                vlm_anchor_image = image
 
         # ── Decision: revisit ─────────────────────────────────────────────────
         elif decision == "revisit":
@@ -296,9 +358,6 @@ def build_memory(args):
                 original = similar_stored[rev_idx]
                 revisit_caption = original.get("caption", "")
 
-                # Lightweight revisit marker: reuse original's image/caption on disk,
-                # record the new timestamp and position. Re-embed caption text since
-                # the vector fields are not returned by search queries (OUTPUT_FIELDS).
                 memory.insert(
                     _make_entry(
                         frame=frame,
@@ -314,12 +373,9 @@ def build_memory(args):
                 )
                 stats["revisits"] += 1
 
-                # Anchor shifts to the revisited location so subsequent frames
-                # compare against the correct scene
-                prev_anchor_emb = anchor_emb
-                prev_anchor_image = anchor_image
-                anchor_emb = np.array(visual_emb)
-                anchor_image = image
+                prev_vlm_anchor_image = vlm_anchor_image
+                vlm_anchor_emb = np.array(visual_emb)
+                vlm_anchor_image = image
 
     # ── Summary ───────────────────────────────────────────────────────────────
     total = len(frames)
@@ -395,17 +451,21 @@ if __name__ == "__main__":
     parser.add_argument("--db_path", type=str, default="./remembr_v2.db")
     parser.add_argument("--keyframes_dir", type=str, default="./data/v2/keyframes",
                         help="Directory to store JPEG keyframes. Subdirectory {seq_id}/ created automatically.")
-    parser.add_argument("--vlm_model", type=str, default="gpt-4o-mini",
-                        help="OpenAI model for VLM judge. gpt-4o-mini is faster/cheaper; gpt-4o is more accurate.")
+    parser.add_argument("--vlm_model", type=str, default="gemini-2.5-flash",
+                        help="Gemini model for VLM judge (e.g. gemini-2.5-flash, gemini-1.5-pro)")
+    parser.add_argument("--gemini_api_key", type=str, default=None,
+                        help="Gemini API key (or set GEMINI_API_KEY env var)")
     parser.add_argument("--device", type=str, default=None,
                         help="Device for SigLIP encoding: 'cuda', 'cpu', or None for auto-detect")
     parser.add_argument("--siglip_batch_size", type=int, default=32,
                         help="Images per batch during SigLIP encoding")
     args = parser.parse_args()
 
-    if not os.environ.get("OPENAI_API_KEY"):
-        print("ERROR: OPENAI_API_KEY is not set.")
+    key = args.gemini_api_key or os.environ.get("GEMINI_API_KEY", "")
+    if not key:
+        print("ERROR: Gemini API key not set. Use --gemini_api_key or GEMINI_API_KEY env var.")
         sys.exit(1)
+    args.gemini_api_key = key
 
     os.makedirs(args.keyframes_dir, exist_ok=True)
     build_memory(args)

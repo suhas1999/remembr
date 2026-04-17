@@ -155,7 +155,7 @@ class ReMEmbRAgentV2(Agent):
             )
 
         def _text_search(x: str) -> str:
-            entries = memory.search_hybrid(x, k=5, siglip=self._get_siglip())
+            entries = memory.search_hybrid(x, k=3, siglip=self._get_siglip())
             result = memory.memory_to_string(entries)
             self.tool_call_log.append({
                 "tool": "retrieve_from_text", "args": {"query": x},
@@ -186,7 +186,7 @@ class ReMEmbRAgentV2(Agent):
                     x = tuple(ast.literal_eval(x))
                 except Exception:
                     pass
-            entries = memory.search_by_position(x, k=4)
+            entries = memory.search_by_position(x, k=3)
             result = memory.memory_to_string(entries)
             self.tool_call_log.append({
                 "tool": "retrieve_from_position", "args": {"position": x},
@@ -214,8 +214,8 @@ class ReMEmbRAgentV2(Agent):
 
         def _time_search(x: str) -> str:
             timestamp = _parse_hms_to_unix(x, memory.time_start)
-            # Return all entries within ±5 minutes, sorted chronologically
-            entries = memory.get_nearby_in_time(timestamp, window_seconds=300)
+            # Return entries within a tight ±10s window for local temporal context
+            entries = memory.get_nearby_in_time(timestamp, window_seconds=10)
             result = memory.memory_to_string(entries)
             self.tool_call_log.append({
                 "tool": "retrieve_from_time", "args": {"time": x},
@@ -226,8 +226,10 @@ class ReMEmbRAgentV2(Agent):
         self.time_retriever_tool = StructuredTool.from_function(
             func=_time_search,
             name="retrieve_from_time",
-            description="Search and return information from your video memory by using an H:M:S time. "
-                        "Returns entries in chronological order — useful for sequence, trajectory, and duration questions.",
+            description="Get tight local context (±10 seconds) around a specific known time. "
+                        "Use this ONLY after you have already identified a key event/location via retrieve_from_text or retrieve_from_position. "
+                        "Do NOT use this as your primary search — always find the key point semantically first, then optionally call this to see what happened immediately before/after that moment. "
+                        "Returns entries in chronological order.",
             args_schema=TimeRetrieverInput,
         )
 

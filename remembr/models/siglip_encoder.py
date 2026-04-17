@@ -54,7 +54,7 @@ class SigLIPEncoder:
         ).to(self.device)
         feats = self.model.get_text_features(
             input_ids=inputs["input_ids"],
-            attention_mask=inputs["attention_mask"],
+            attention_mask=inputs.get("attention_mask"),
         )
         feats = feats / feats.norm(dim=-1, keepdim=True)
         return feats.cpu().float().numpy()
