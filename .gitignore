@@ -55,3 +55,4 @@ ipython_config.py
 analysis/
 analysis_gpt4o/
 analysis_v2_gemini/
+analysis_v2_smoke3/
