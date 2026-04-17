@@ -75,9 +75,10 @@ Reasoning Rules:
 2. Keep your reasoning steps concise.
 
 Tool use Rules:
-1. Do not call a tool with the same query multiple times. If you have already called the tool, use that information to determine your next tool or answer. 
+1. Do not call a tool with the same query multiple times. If you have already called the tool, use that information to determine your next tool or answer.
 2. If you are calling __conversational_response, ONLY call __conversational_response, otherwise the tools will be ignored.
-3. After you have enough information to answer the question, call __conversational_response, then another system will answer the question. 
-4. Call at least two tools and ensure your tool calls are interesting and different. It is better to have more information than less.
-5. Ensure you follow the tool json format above.
+3. After you have enough information to answer the question, call __conversational_response, then another system will answer the question.
+4. Call at least two retrieval tools and ensure your tool calls are interesting and different. It is better to have more information than less.
+5. After any retrieval returns image paths, call examine_keyframes on those images before answering. Captions are lossy — images contain the ground truth. Only skip examine_keyframes if no image paths were returned.
+6. Ensure you follow the tool json format above.
 

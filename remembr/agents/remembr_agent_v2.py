@@ -41,18 +41,19 @@ from utils.util import file_to_string
 
 # Appended to the v1 agent prompt to inform the LLM about the new 4th tool
 _EXAMINE_KEYFRAMES_ADDENDUM = """
-5. examine_keyframes: Use this tool to LOOK at the actual stored camera images when a visual detail matters:
-   - What color is the floor / sign / clothing?
-   - Read sign text not captured in a caption
-   - Which direction did the robot turn across a sequence of frames?
-   - How many people are visible?
-   - Confirm whether something in a caption is accurate
+5. examine_keyframes: After ANY retrieval call that returns image paths, you should call this tool to LOOK at the actual images.
+   Captions are imperfect summaries — the images contain the ground truth. Always examine images when:
+   - Answering questions about position, time, or duration (verify the scene matches the caption)
+   - Any visual detail matters: colors, signs, objects, people, directions
+   - You need to confirm or disambiguate what a caption describes
+   - The question could be answered more precisely from visual evidence than from text alone
 
-   Pass the image paths shown as "Image: /path/..." in your retrieved context.
-   The tool automatically shows the frame stored just before and just after each image
-   (the previous and next anchors), giving you temporal/motion context.
-   You MUST call retrieve_from_text or another retrieval tool first to get image paths.
-   Do not call this tool without image paths from a previous retrieval.
+   Pass the "Image: /path/..." paths exactly as shown in your retrieved context.
+   The tool automatically includes the frame before and after each image for motion/trajectory context.
+
+   IMPORTANT: Do not skip this tool just because a caption seems sufficient.
+   Captions are compressed and lossy — examine the actual images to get precise answers.
+   You MUST call a retrieval tool first to get image paths before calling examine_keyframes.
 """
 
 
@@ -251,7 +252,7 @@ class ReMEmbRAgentV2(Agent):
 
             # For each requested image, expand to a (before → main → after) triplet.
             # Adjacent stored frames provide motion and location context for the VLM.
-            labeled_images = []  # [(label, path), ...]
+            labeled_images = []  # [(label, path, entry_or_None), ...]
             seen_paths = set()
 
             for path in paths:
@@ -263,21 +264,21 @@ class ReMEmbRAgentV2(Agent):
                         before, after = memory.get_adjacent_entries(entry["id"])
 
                         if before and before.get("image_path") and before["image_path"] not in seen_paths:
-                            labeled_images.append(("BEFORE (previous anchor)", before["image_path"]))
+                            labeled_images.append(("BEFORE (previous anchor)", before["image_path"], before))
                             seen_paths.add(before["image_path"])
 
                         if path not in seen_paths:
-                            labeled_images.append(("MAIN FRAME", path))
+                            labeled_images.append(("MAIN FRAME", path, entry))
                             seen_paths.add(path)
 
                         if after and after.get("image_path") and after["image_path"] not in seen_paths:
-                            labeled_images.append(("AFTER (next anchor)", after["image_path"]))
+                            labeled_images.append(("AFTER (next anchor)", after["image_path"], after))
                             seen_paths.add(after["image_path"])
                         continue
 
                 # Fallback: no DB match, use path as-is
                 if path not in seen_paths:
-                    labeled_images.append(("FRAME", path))
+                    labeled_images.append(("FRAME", path, None))
                     seen_paths.add(path)
 
             result = _call_vision_vlm(labeled_images, question)
@@ -317,7 +318,7 @@ class ReMEmbRAgentV2(Agent):
                 for m in messages
             ]
 
-        if self.agent_call_count < 3:
+        if self.agent_call_count < 6:
             model = self.chat.bind_tools(tools=self.tool_definitions)
             prompt_text = self.agent_prompt
         else:
@@ -499,28 +500,37 @@ def _call_vision_vlm(labeled_images: list, question: str, model: str = "gpt-4o")
     """
     Send labeled images to GPT-4o and answer a visual question.
 
-    labeled_images: [(label, path), ...]  e.g. [('BEFORE', '/path/a.jpg'), ('MAIN FRAME', '/path/b.jpg'), ...]
-    The labels tell the VLM which frame is the main frame and which provide temporal context.
+    labeled_images: [(label, path, entry_or_None), ...]
+    entry contains time, position, caption — sent as text context alongside each image.
     """
     from openai import OpenAI
+    from time import strftime, localtime
     client = OpenAI()
 
     intro = (
         "You are examining frames from a robot's camera. "
         "You will see frames labeled BEFORE (previous anchor), MAIN FRAME (the key frame), "
-        "and AFTER (next anchor), giving you temporal/motion context around the main frame.\n\n"
+        "and AFTER (next anchor), giving you temporal/motion context around the main frame. "
+        "Each frame is accompanied by its timestamp, position, and caption.\n\n"
         f"Please answer this question about the images: {question}\n\n"
-        "Be specific. If multiple images show the same question, describe what you see across the sequence."
+        "Be specific. Use the timestamps and positions to reason about timing and location."
     )
     content = [{"type": "text", "text": intro}]
 
     loaded = 0
-    for label, path in labeled_images:
+    for label, path, entry in labeled_images:
         if not os.path.exists(path):
             continue
+        meta_parts = [f"[{label}]"]
+        if entry:
+            t_str = strftime("%Y-%m-%d %H:%M:%S", localtime(entry["time"]))
+            pos = [round(v, 2) for v in entry.get("position", [0, 0, 0])]
+            caption = entry.get("caption", "")[:300]
+            meta_parts.append(f"Time: {t_str} | Position: {pos}")
+            meta_parts.append(f"Caption: {caption}")
+        content.append({"type": "text", "text": "\n".join(meta_parts)})
         with open(path, "rb") as f:
             b64 = base64.b64encode(f.read()).decode("utf-8")
-        content.append({"type": "text", "text": f"[{label}]"})
         content.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64}"}})
         loaded += 1
 
