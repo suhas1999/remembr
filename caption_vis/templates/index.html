@@ -294,7 +294,7 @@
       <div class="meta-section">
         <div class="meta-row"><span>Position (x,y,z)</span><span id="meta-pos">—</span></div>
         <div class="meta-row"><span>Theta</span><span id="meta-theta">—</span></div>
-        <div class="meta-row"><span>Elapsed</span><span id="meta-unix">—</span></div>
+        <div class="meta-row"><span>Time</span><span id="meta-unix">—</span></div>
       </div>
     </div>
   </div>
@@ -317,7 +317,6 @@
 
 <script>
 const TOTAL = {{ total }};
-const VIDEO_START = {{ video_start }};
 let currentIdx = 0;
 let loading = false;
 
@@ -374,14 +373,7 @@ async function loadEntry(idx) {
     }
     document.getElementById('meta-theta').textContent =
       data.theta != null ? data.theta.toFixed(4) : '—';
-    if (data.time_unix) {
-      const elapsed = data.time_unix - VIDEO_START;
-      const h = Math.floor(elapsed / 3600);
-      const m = Math.floor((elapsed % 3600) / 60);
-      const s = Math.floor(elapsed % 60);
-      const fmt = (h > 0 ? `${h}h ` : '') + `${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
-      document.getElementById('meta-unix').textContent = fmt;
-    }
+    document.getElementById('meta-unix').textContent = data.time_str || '—';
 
     document.getElementById('btn-prev').disabled = idx === 0;
     document.getElementById('btn-next').disabled = idx === TOTAL - 1;
