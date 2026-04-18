@@ -3,7 +3,7 @@ import os
 import subprocess
 import tempfile
 import base64
-from time import strftime, localtime
+from time import strftime, gmtime
 from flask import Flask, render_template, jsonify, send_file
 import cv2
 import numpy as np
@@ -89,7 +89,7 @@ def get_entry(idx):
         'total': len(captions),
         'caption': entry['caption'],
         'time_unix': caption_time,
-        'time_str': strftime('%H:%M:%S', localtime(caption_time)),
+        'time_str': strftime('%H:%M:%S', gmtime(caption_time)),
         'video_sec': round(video_sec, 2),
         'file_start': entry.get('file_start', ''),
         'file_end': entry.get('file_end', ''),
