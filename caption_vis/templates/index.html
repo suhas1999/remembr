@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caption Visualizer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f0f0f;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: #1a1a1a;
+    padding: 10px 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 16px; font-weight: 600; color: #aaa; }
+  #counter { font-size: 14px; color: #666; margin-left: auto; }
+
+  /* Search */
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 16px;
+  }
+  #search-input {
+    width: 220px;
+    padding: 5px 10px;
+    border: 1px solid #444;
+    background: #111;
+    color: #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  #search-input:focus { outline: none; border-color: #4a9eff; }
+  .btn-search {
+    padding: 5px 12px;
+    border: 1px solid #444;
+    background: #252525;
+    color: #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .btn-search:hover { background: #333; }
+
+  /* Search results panel */
+  #search-panel {
+    display: none;
+    background: #141414;
+    border-bottom: 1px solid #333;
+    padding: 10px 20px;
+    flex-shrink: 0;
+  }
+  #search-panel.open { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .search-status { font-size: 12px; color: #666; align-self: center; white-space: nowrap; }
+  .search-results-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .search-hit {
+    padding: 4px 10px;
+    background: #1e3a5f;
+    border: 1px solid #2a5a8a;
+    color: #7ab8f5;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .search-hit:hover { background: #2a5a9a; }
+  .search-hit.active { background: #2a6ad0; border-color: #4a8af0; color: #fff; }
+
+  .main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* Frame panel */
+  .frame-panel {
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #333;
+    background: #080808;
+    overflow: hidden;
+  }
+  .frame-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  #frame-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  #frame-placeholder {
+    color: #444;
+    font-size: 14px;
+  }
+  .frame-info {
+    padding: 8px 16px;
+    background: #111;
+    font-size: 12px;
+    color: #555;
+    border-top: 1px solid #222;
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+  .frame-info span { white-space: nowrap; }
+
+  /* Caption panel */
+  .caption-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .caption-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 20px;
+  }
+  .caption-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  #caption-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #d0d0d0;
+  }
+
+  .meta-section {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #2a2a2a;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .meta-row span:last-child { color: #777; font-family: monospace; }
+
+  /* Navigation bar */
+  .nav-bar {
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 12px 20px;
+    flex-shrink: 0;
+  }
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  #slider {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  #slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #4a9eff;
+    cursor: pointer;
+  }
+  .slider-val { font-size: 12px; color: #666; min-width: 60px; text-align: center; }
+
+  .btn-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+  .btn {
+    padding: 7px 18px;
+    border: 1px solid #444;
+    background: #252525;
+    color: #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+  .btn:hover { background: #333; border-color: #555; }
+  .btn:disabled { opacity: 0.3; cursor: default; }
+  .btn.primary { background: #1a4a8a; border-color: #2a6ad0; color: #90c0ff; }
+  .btn.primary:hover { background: #2a5a9a; }
+  #jump-input {
+    width: 70px;
+    padding: 6px 10px;
+    border: 1px solid #444;
+    background: #1a1a1a;
+    color: #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  #loading-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #4a9eff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s;
+    z-index: 100;
+  }
+  #loading-bar.active { transform: scaleX(1); }
+
+  .kbd {
+    display: inline-block;
+    padding: 1px 5px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 11px;
+    color: #888;
+    font-family: monospace;
+  }
+  .hint {
+    text-align: center;
+    font-size: 11px;
+    color: #3a3a3a;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div id="loading-bar"></div>
+
+<header>
+  <h1>Caption Visualizer</h1>
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Search captions...">
+    <button class="btn-search" id="btn-search">Search</button>
+    <button class="btn-search" id="btn-clear-search" style="display:none; color:#888;">✕ Clear</button>
+  </div>
+  <span id="counter">Loading...</span>
+</header>
+
+<div id="search-panel"></div>
+
+<div class="main">
+  <div class="frame-panel">
+    <div class="frame-wrapper">
+      <img id="frame-img" src="" alt="" style="display:none">
+      <div id="frame-placeholder">Loading frame...</div>
+    </div>
+    <div class="frame-info">
+      <span id="info-time">—</span>
+      <span id="info-video-sec">—</span>
+      <span id="info-files">—</span>
+    </div>
+  </div>
+
+  <div class="caption-panel">
+    <div class="caption-scroll">
+      <div class="caption-label">Caption</div>
+      <div id="caption-text">Loading...</div>
+
+      <div class="meta-section">
+        <div class="meta-row"><span>Position (x,y,z)</span><span id="meta-pos">—</span></div>
+        <div class="meta-row"><span>Theta</span><span id="meta-theta">—</span></div>
+        <div class="meta-row"><span>Unix time</span><span id="meta-unix">—</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-bar">
+  <div class="slider-row">
+    <span class="slider-val" id="slider-left">0</span>
+    <input type="range" id="slider" min="0" max="{{ total - 1 }}" value="0">
+    <span class="slider-val" id="slider-right">{{ total - 1 }}</span>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="btn-prev">&#8592; Prev</button>
+    <button class="btn primary" id="btn-next">Next &#8594;</button>
+    <input type="number" id="jump-input" min="0" max="{{ total - 1 }}" placeholder="#" title="Jump to index">
+    <button class="btn" id="btn-jump">Go</button>
+  </div>
+  <div class="hint"><span class="kbd">←</span> <span class="kbd">→</span> arrow keys to navigate</div>
+</div>
+
+<script>
+const TOTAL = {{ total }};
+let currentIdx = 0;
+let loading = false;
+
+const loadingBar = document.getElementById('loading-bar');
+const frameImg = document.getElementById('frame-img');
+const framePlaceholder = document.getElementById('frame-placeholder');
+const captionText = document.getElementById('caption-text');
+const counter = document.getElementById('counter');
+const slider = document.getElementById('slider');
+
+function setLoading(on) {
+  loading = on;
+  loadingBar.classList.toggle('active', on);
+}
+
+async function loadEntry(idx) {
+  if (idx < 0 || idx >= TOTAL) return;
+  setLoading(true);
+
+  try {
+    const res = await fetch(`/api/entry/${idx}`);
+    const data = await res.json();
+
+    currentIdx = idx;
+
+    // Update frame
+    if (data.frame_b64) {
+      frameImg.src = `data:image/jpeg;base64,${data.frame_b64}`;
+      frameImg.style.display = 'block';
+      framePlaceholder.style.display = 'none';
+    } else {
+      frameImg.style.display = 'none';
+      framePlaceholder.style.display = 'block';
+      framePlaceholder.textContent = 'Frame unavailable';
+    }
+
+    // Update caption
+    captionText.textContent = data.caption || '(no caption)';
+
+    // Update meta
+    counter.textContent = `${idx + 1} / ${TOTAL}`;
+    slider.value = idx;
+    document.getElementById('slider-left').textContent = idx;
+
+    const mins = Math.floor(data.video_sec / 60);
+    const secs = (data.video_sec % 60).toFixed(1);
+    document.getElementById('info-time').textContent = `Video: ${mins}m ${secs}s`;
+    document.getElementById('info-video-sec').textContent = `(${data.video_sec}s offset)`;
+    document.getElementById('info-files').textContent = `${data.file_start} → ${data.file_end}`;
+
+    if (data.position && data.position.length === 3) {
+      document.getElementById('meta-pos').textContent =
+        data.position.map(v => v.toFixed(4)).join(', ');
+    }
+    document.getElementById('meta-theta').textContent =
+      data.theta != null ? data.theta.toFixed(4) : '—';
+    document.getElementById('meta-unix').textContent =
+      data.time_unix ? data.time_unix.toFixed(3) : '—';
+
+    document.getElementById('btn-prev').disabled = idx === 0;
+    document.getElementById('btn-next').disabled = idx === TOTAL - 1;
+
+  } catch(e) {
+    captionText.textContent = 'Error loading entry';
+    console.error(e);
+  } finally {
+    setLoading(false);
+  }
+}
+
+document.getElementById('btn-prev').addEventListener('click', () => loadEntry(currentIdx - 1));
+document.getElementById('btn-next').addEventListener('click', () => loadEntry(currentIdx + 1));
+document.getElementById('btn-jump').addEventListener('click', () => {
+  const v = parseInt(document.getElementById('jump-input').value);
+  if (!isNaN(v)) loadEntry(v);
+});
+document.getElementById('jump-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const v = parseInt(e.target.value);
+    if (!isNaN(v)) loadEntry(v);
+  }
+});
+slider.addEventListener('input', () => loadEntry(parseInt(slider.value)));
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowLeft') loadEntry(currentIdx - 1);
+  if (e.key === 'ArrowRight') loadEntry(currentIdx + 1);
+});
+
+// Search
+let searchResults = [];
+
+async function doSearch() {
+  const q = document.getElementById('search-input').value.trim();
+  if (!q) return;
+
+  const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+  const data = await res.json();
+  searchResults = data.results;
+
+  const panel = document.getElementById('search-panel');
+  panel.innerHTML = '';
+  panel.classList.add('open');
+  document.getElementById('btn-clear-search').style.display = '';
+
+  const status = document.createElement('span');
+  status.className = 'search-status';
+  status.textContent = searchResults.length === 0
+    ? 'No matches'
+    : `${searchResults.length} match${searchResults.length > 1 ? 'es' : ''}:`;
+  panel.appendChild(status);
+
+  if (searchResults.length > 0) {
+    const list = document.createElement('div');
+    list.className = 'search-results-list';
+    searchResults.forEach(idx => {
+      const btn = document.createElement('div');
+      btn.className = 'search-hit';
+      btn.textContent = `#${idx}`;
+      btn.dataset.idx = idx;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.search-hit').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadEntry(idx);
+      });
+      list.appendChild(btn);
+    });
+    panel.appendChild(list);
+  }
+}
+
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-panel').classList.remove('open');
+  document.getElementById('search-panel').innerHTML = '';
+  document.getElementById('btn-clear-search').style.display = 'none';
+  searchResults = [];
+}
+
+document.getElementById('btn-search').addEventListener('click', doSearch);
+document.getElementById('btn-clear-search').addEventListener('click', clearSearch);
+document.getElementById('search-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doSearch();
+  if (e.key === 'Escape') clearSearch();
+});
+
+// Initial load
+loadEntry(0);
+</script>
+</body>
+</html>
