@@ -42,6 +42,16 @@
 
 ---
 
+## 5. Numpy float values in `insert` causing silent data corruption
+
+**File:** `remembr/memory/milvus_memory.py`
+
+**Problem:** In `insert`, `memory_dict['time']` and `memory_dict['text_embedding']` were stored as numpy types (numpy float from `time - time_offset`, numpy float32 from `embed_query`). This could cause the same `struct.pack` float errors at insert time or corrupt stored vectors.
+
+**Fix:** Cast `time` with `float(...)` and `text_embedding` with `[float(x) for x in ...]` before inserting.
+
+---
+
 ## 4. `Missing key 'duration' during generate` causes 3-attempt failure
 
 **File:** `remembr/agents/remembr_agent.py`

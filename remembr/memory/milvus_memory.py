@@ -82,8 +82,8 @@ class MilvusMemory(Memory):
         if text_embedding is None:
             text_embedding = self.embedder.embed_query(memory_dict['caption'])
 
-        memory_dict['time'] = [(memory_dict['time'] - self.time_offset), 0.0]
-        memory_dict['text_embedding'] = text_embedding
+        memory_dict['time'] = [float(memory_dict['time'] - self.time_offset), 0.0]
+        memory_dict['text_embedding'] = [float(x) for x in text_embedding]
         self.milv_wrapper.insert([memory_dict])
 
     def get_working_memory(self) -> list[MemoryItem]:
