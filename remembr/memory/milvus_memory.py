@@ -66,12 +66,12 @@ class MilvusWrapper:
 
 class MilvusMemory(Memory):
 
-    def __init__(self, db_collection_name: str, db_path='./remembr.db', db_ip=None, db_port=19530, time_offset=FIXED_SUBTRACT):
+    def __init__(self, db_collection_name: str, db_path='./remembr.db', db_ip=None, db_port=19530, time_offset=FIXED_SUBTRACT, embedder=None):
         self.db_collection_name = db_collection_name
         self.db_path = db_path
         self.time_offset = time_offset
 
-        self.embedder = HuggingFaceEmbeddings(model_name='mixedbread-ai/mxbai-embed-large-v1')
+        self.embedder = embedder or HuggingFaceEmbeddings(model_name='mixedbread-ai/mxbai-embed-large-v1')
         self.working_memory = []
         self.reset(drop_collection=False)
 
@@ -125,19 +125,28 @@ class MilvusMemory(Memory):
         mdy_date = strftime('%m/%d/%Y', t)
         template = "%m/%d/%Y %H:%M:%S"
 
-        try:
-            res = bool(datetime.datetime.strptime(hms_time, template))
-        except ValueError:
-            res = False
-
         hms_time = hms_time.strip()
-        if not res:
-            hms_time = mdy_date + ' ' + hms_time
 
-        query = time.mktime(datetime.datetime.strptime(hms_time, template).timetuple()) - self.time_offset
+        parsed_dt = None
+        for fmt in (template, "%Y-%m-%d %H:%M:%S", "%H:%M:%S", "%H:%M"):
+            try:
+                parsed_dt = datetime.datetime.strptime(hms_time, fmt)
+                if fmt in ("%H:%M:%S", "%H:%M"):
+                    parsed_dt = parsed_dt.replace(year=t.tm_year, month=t.tm_mon, day=t.tm_mday)
+                break
+            except ValueError:
+                continue
+
+        if parsed_dt is None:
+            try:
+                parsed_dt = datetime.datetime.strptime(mdy_date + ' ' + hms_time, template)
+            except ValueError:
+                return "Could not parse time: " + hms_time
+
+        query = time.mktime(parsed_dt.timetuple()) - self.time_offset
 
         results = self.milv_wrapper.search(
-            [query, 0.0],
+            [float(query), 0.0],
             anns_field="time",
             limit=4,
         )
