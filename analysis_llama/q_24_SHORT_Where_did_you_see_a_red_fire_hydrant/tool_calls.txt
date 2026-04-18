@@ -1,9 +1,0 @@
-Question: Where did you see a red fire hydrant?
-Type: position | Category: SHORT
-
-Total tool calls: 0
-
-── LLM decisions (raw) ──
-  step=agent_call_0  tool=retrieve_from_position  args={'x': '[[-0.34, 0.06, -0.01]]'}
-  step=agent_call_1  tool=retrieve_from_position  args={'x': '[[-0.34, 0.06, -0.01]]'}
-  step=agent_call_2  tool=retrieve_from_position  args={'x': '[[-0.34, 0.06, -0.01]]'}
