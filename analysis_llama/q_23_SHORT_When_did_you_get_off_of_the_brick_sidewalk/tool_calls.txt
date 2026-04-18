@@ -1,0 +1,21 @@
+Question: When did you get off of the brick sidewalk?
+Type: time | Category: SHORT
+
+Total tool calls: 3
+
+── Call 1: retrieve_from_position ──
+  Args:   {'position': (0.84, 13.73, -0.37)}
+  Result: At time=2023-01-16 16:02:50, the robot was at an average position of [0.838, 13.729, -0.375].The robot saw the following: The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older 
+
+── Call 2: retrieve_from_position ──
+  Args:   {'position': (0.84, 13.73, -0.37)}
+  Result: At time=2023-01-16 16:02:50, the robot was at an average position of [0.838, 13.729, -0.375].The robot saw the following: The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older 
+
+── Call 3: retrieve_from_position ──
+  Args:   {'position': (0.84, 13.73, -0.37)}
+  Result: At time=2023-01-16 16:02:50, the robot was at an average position of [0.838, 13.729, -0.375].The robot saw the following: The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older 
+
+── LLM decisions (raw) ──
+  step=agent_call_0  tool=retrieve_from_position  args={'x': '[0.84, 13.73, -0.37]'}
+  step=agent_call_1  tool=retrieve_from_position  args={'x': '[0.84, 13.73, -0.37]'}
+  step=agent_call_2  tool=retrieve_from_position  args={'x': '[0.84, 13.73, -0.37]'}

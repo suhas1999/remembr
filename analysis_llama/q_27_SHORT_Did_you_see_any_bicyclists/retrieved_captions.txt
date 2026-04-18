@@ -1,0 +1,56 @@
+Question: Did you see any bicyclists?
+Type: binary | Category: SHORT
+Window: 2023-01-16 16:00:23 → 2023-01-16 16:01:35 (72.1s)
+Total retrieved: 13
+
+rank=00  time=2023-01-16 16:01:35  pos=[-53.095, 42.261, -2.219]  frame=2023-01-16_16-01-35_rank00.jpg
+  caption: The video shows a wide, empty concrete parking lot with a few small puddles of water scattered across the surface. The lot is surrounded by large, modern buildings with large windows and beige walls. There are a few small bushes and trees planted along the edges of the lot. The sky is overcast, and there are no people or vehicles visible in the video. The buildings appear to be part of a university campus, and the parking lot is likely used by students and staff.
+  pkl: 1673884893.65642.pkl  saved=False
+
+rank=01  time=2023-01-16 16:01:32  pos=[-55.471, 43.574, -2.261]  frame=2023-01-16_16-01-32_rank01.jpg
+  caption: The video shows a wide shot of a university campus with a large concrete building on the right side. The building has multiple windows and is surrounded by green bushes. There is a sidewalk in the foreground with a few benches and a trash can. The sky is clear and blue. There are no people or moving objects in the video. The building appears to be a dormitory or academic building. The bushes are well-maintained and the sidewalk is clean. The video does not show any specific events or activities.
+  pkl: 1673884890.656085.pkl  saved=False
+
+rank=02  time=2023-01-16 16:01:29  pos=[-57.616, 45.275, -2.273]  frame=2023-01-16_16-01-29_rank02.jpg
+  caption: The video shows a large, gray concrete building with multiple windows and a green hedge in front of it. The building appears to be a university building. There is a sidewalk made of brown bricks next to the building. The sidewalk is empty and there are no people walking on it. There are also no cars or other vehicles visible in the video. The sky is overcast and the overall color scheme of the video is gray and brown.
+  pkl: 1673884887.655652.pkl  saved=False
+
+rank=03  time=2023-01-16 16:01:26  pos=[-58.704, 47.382, -2.299]  frame=2023-01-16_16-01-26_rank03.jpg
+  caption: The video starts with a view of a brick-patterned sidewalk. The bricks are arranged in a herringbone pattern and are a light brown color. The sidewalk is lined with tall buildings on both sides, and there are trees and street lamps scattered along the sidewalk. In the distance, there are cars parked on the street. As the video progresses, a person wearing a white shirt and blue jeans walks by on the sidewalk. The person is carrying a black bag and appears to be walking at a leisurely pace. The buildings in the background have multiple windows and are made of concrete. The sky is overcast, and there is no visible sun.
+  pkl: 1673884884.655395.pkl  saved=False
+
+rank=04  time=2023-01-16 16:01:35  pos=[-53.095, 42.261, -2.219]  frame=2023-01-16_16-01-35_rank04.jpg
+  caption: The video shows a wide, empty concrete parking lot with a few small puddles of water scattered across the surface. The lot is surrounded by large, modern buildings with large windows and beige walls. There are a few small bushes and trees planted along the edges of the lot. The sky is overcast, and there are no people or vehicles visible in the video. The buildings appear to be part of a university campus, and the parking lot is likely used by students and staff.
+  pkl: 1673884893.65642.pkl  saved=False
+
+rank=05  time=2023-01-16 16:01:32  pos=[-55.471, 43.574, -2.261]  frame=2023-01-16_16-01-32_rank05.jpg
+  caption: The video shows a wide shot of a university campus with a large concrete building on the right side. The building has multiple windows and is surrounded by green bushes. There is a sidewalk in the foreground with a few benches and a trash can. The sky is clear and blue. There are no people or moving objects in the video. The building appears to be a dormitory or academic building. The bushes are well-maintained and the sidewalk is clean. The video does not show any specific events or activities.
+  pkl: 1673884890.656085.pkl  saved=False
+
+rank=06  time=2023-01-16 16:01:29  pos=[-57.616, 45.275, -2.273]  frame=2023-01-16_16-01-29_rank06.jpg
+  caption: The video shows a large, gray concrete building with multiple windows and a green hedge in front of it. The building appears to be a university building. There is a sidewalk made of brown bricks next to the building. The sidewalk is empty and there are no people walking on it. There are also no cars or other vehicles visible in the video. The sky is overcast and the overall color scheme of the video is gray and brown.
+  pkl: 1673884887.655652.pkl  saved=False
+
+rank=07  time=2023-01-16 16:01:26  pos=[-58.704, 47.382, -2.299]  frame=2023-01-16_16-01-26_rank07.jpg
+  caption: The video starts with a view of a brick-patterned sidewalk. The bricks are arranged in a herringbone pattern and are a light brown color. The sidewalk is lined with tall buildings on both sides, and there are trees and street lamps scattered along the sidewalk. In the distance, there are cars parked on the street. As the video progresses, a person wearing a white shirt and blue jeans walks by on the sidewalk. The person is carrying a black bag and appears to be walking at a leisurely pace. The buildings in the background have multiple windows and are made of concrete. The sky is overcast, and there is no visible sun.
+  pkl: 1673884884.655395.pkl  saved=False
+
+rank=08  time=2023-01-16 16:00:56  pos=[-56.367, 74.95, -2.162]  frame=2023-01-16_16-00-56_rank08.jpg
+  caption: In the video, there are several people walking on a brick pathway. The pathway is lined with trees and buildings on both sides. There are a few people riding bicycles on the pathway. The sky is clear and there are no clouds visible. The buildings on the sides of the pathway are tall and appear to be apartment buildings. The trees on the pathway are green and healthy. There are no cars visible in the video. The people walking on the pathway are dressed in casual clothing. The video does not show any events or activities taking place.
+  pkl: 1673884854.652675.pkl  saved=False
+
+rank=09  time=2023-01-16 16:01:14  pos=[-58.037, 57.963, -2.251]  frame=2023-01-16_16-01-14_rank09.jpg
+  caption: In the video, I see a group of students walking on a brick pathway. The pathway is lined with trees and has a few yellow bollards. The students are wearing casual clothing, and some are carrying backpacks. The buildings in the background are tall and made of brick. There are a few cars parked on the side of the road. The sky is overcast, and the overall atmosphere is calm and quiet.
+  pkl: 1673884872.65435.pkl  saved=False
+
+rank=10  time=2023-01-16 16:00:29  pos=[-54.638, 90.949, -2.038]  frame=2023-01-16_16-00-29_rank10.jpg
+  caption: In the video, I see a group of students walking down a brick pathway. The pathway is lined with large trees and has a sidewalk on the right side. There are buildings on both sides of the pathway. The students are wearing casual clothing and appear to be engaged in conversation. The trees have green leaves and the buildings are made of brick. There is a street lamp on the right side of the pathway. The sky is overcast and the overall atmosphere is calm.
+  pkl: 1673884827.551445.pkl  saved=False
+
+rank=11  time=2023-01-16 16:00:32  pos=[-54.665, 90.935, -2.045]  frame=2023-01-16_16-00-32_rank11.jpg
+  caption: In the video, I see a group of students walking down a brick pathway. The pathway is lined with large, mature trees that provide shade for the students. The students are dressed in casual attire, with some wearing backpacks. The pathway is bordered by a concrete sidewalk on one side and a grassy area on the other. In the distance, there is a large building with a clock tower. The sky is clear and blue, and it appears to be a sunny day. The students seem to be engaged in conversation as they walk.
+  pkl: 1673884830.551643.pkl  saved=False
+
+rank=12  time=2023-01-16 16:00:26  pos=[-54.604, 91.012, -2.043]  frame=2023-01-16_16-00-26_rank12.jpg
+  caption: The video starts with a view of a brick sidewalk next to a concrete walkway. There are several trees with green leaves on the left side of the sidewalk. On the right side, there is a street lamp and a small patch of grass with some bushes. In the distance, there are several buildings with white walls and windows. As the video progresses, a few people can be seen walking on the sidewalk. They are wearing casual clothes and appear to be students. The sky is overcast, and there are no visible clouds.
+  pkl: 1673884824.550933.pkl  saved=False

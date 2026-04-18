@@ -1,0 +1,5 @@
+Question: Where is the statue in front of the Bill and Melinda Gates Computer Science building?
+Type: position | Category: LONG
+Window: 2023-01-16 15:52:17 → 2023-01-16 16:02:26 (609.0s)
+Total retrieved: 0
+

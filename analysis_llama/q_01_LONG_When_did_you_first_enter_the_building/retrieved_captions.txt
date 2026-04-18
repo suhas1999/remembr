@@ -1,0 +1,52 @@
+Question: When did you first enter the building?
+Type: time | Category: LONG
+Window: 2023-01-16 15:52:11 → 2023-01-16 16:00:53 (521.9s)
+Total retrieved: 12
+
+rank=00  time=2023-01-16 16:00:53  pos=[-56.277, 77.778, -2.146]  frame=2023-01-16_16-00-53_rank00.jpg
+  caption: The video shows a wide, paved walkway with a unique herringbone pattern. The walkway is bordered by a concrete sidewalk on one side and a metal railing on the other. The railing has a modern design with a curved top. There are several trees lining the walkway, providing shade and greenery. In the background, there are tall buildings that appear to be part of the university's campus. The sky is overcast, and there are a few people walking on the walkway. The video does not show any specific events or activities.
+  pkl: 1673884851.652459.pkl  saved=False
+
+rank=01  time=2023-01-16 15:52:11  pos=[-57.423, 78.655, -2.129]  frame=2023-01-16_15-52-11_rank01.jpg
+  caption: The video shows a paved pathway with a herringbone pattern. The pathway is surrounded by trees and buildings. There are a few people walking on the pathway. The sky is overcast.
+  pkl: 1673884329.703198.pkl  saved=False
+
+rank=02  time=2023-01-16 16:00:50  pos=[-56.083, 80.659, -2.139]  frame=2023-01-16_16-00-50_rank02.jpg
+  caption: The video shows a wide, paved walkway with a herringbone pattern of light brown bricks. The walkway is bordered by a concrete sidewalk on one side and a grassy area with trees on the other. In the distance, there are several tall buildings, including a large, modern structure with a unique, metallic sculpture on top. The sky is overcast, and there are a few people walking on the walkway, some alone and others in groups. There are no visible events or activities taking place, and the overall atmosphere is calm and quiet.
+  pkl: 1673884848.652202.pkl  saved=False
+
+rank=03  time=2023-01-16 15:52:14  pos=[-57.194, 81.538, -2.114]  frame=2023-01-16_15-52-14_rank03.jpg
+  caption: The video shows a wide, paved pathway with a herringbone pattern. The pathway is lined with large, mature trees with green leaves, and there are buildings visible in the background. The sky is overcast, and the overall color scheme is a mix of green, brown, and gray. There are a few people walking on the pathway, but they are not the main focus of the video. The buildings in the background appear to be academic or administrative buildings, and there are no visible signs or banners. The pathway seems to be well-maintained, and there are no visible litter or debris. The video does not show any events or activities taking place, and there are no sounds that can be heard.
+  pkl: 1673884332.703631.pkl  saved=False
+
+rank=04  time=2023-01-16 15:52:11  pos=[-57.423, 78.655, -2.129]  frame=2023-01-16_15-52-11_rank04.jpg
+  caption: The video shows a paved pathway with a herringbone pattern. The pathway is surrounded by trees and buildings. There are a few people walking on the pathway. The sky is overcast.
+  pkl: 1673884329.703198.pkl  saved=False
+
+rank=05  time=2023-01-16 15:52:14  pos=[-57.194, 81.538, -2.114]  frame=2023-01-16_15-52-14_rank05.jpg
+  caption: The video shows a wide, paved pathway with a herringbone pattern. The pathway is lined with large, mature trees with green leaves, and there are buildings visible in the background. The sky is overcast, and the overall color scheme is a mix of green, brown, and gray. There are a few people walking on the pathway, but they are not the main focus of the video. The buildings in the background appear to be academic or administrative buildings, and there are no visible signs or banners. The pathway seems to be well-maintained, and there are no visible litter or debris. The video does not show any events or activities taking place, and there are no sounds that can be heard.
+  pkl: 1673884332.703631.pkl  saved=False
+
+rank=06  time=2023-01-16 15:52:17  pos=[-56.939, 84.4, -2.098]  frame=2023-01-16_15-52-17_rank06.jpg
+  caption: The video shows a paved walkway with a herringbone pattern, leading towards a large building with a white facade and multiple windows. The walkway is lined with lush green trees and a few people can be seen walking in the distance. There are orange banners hanging from the trees, and a street lamp is visible on the right side of the walkway. The sky is overcast, and the overall color scheme of the video is a mix of green, orange, and gray.
+  pkl: 1673884335.704203.pkl  saved=False
+
+rank=07  time=2023-01-16 15:52:20  pos=[-56.387, 87.068, -2.058]  frame=2023-01-16_15-52-20_rank07.jpg
+  caption: The video starts with a view of a brick pathway that leads through a campus. The bricks are a warm, reddish-brown color and are arranged in a herringbone pattern. The pathway is lined with lush green trees that provide a canopy over the walkway. On either side of the pathway, there are buildings with white walls and large windows. A few people can be seen walking on the pathway, some alone and others in groups. There are also a few bicycles parked on the side of the pathway. The sky is overcast, and the overall atmosphere of the video is calm and peaceful.
+  pkl: 1673884338.704676.pkl  saved=False
+
+rank=08  time=2023-01-16 15:52:11  pos=[-57.423, 78.655, -2.129]  frame=2023-01-16_15-52-11_rank08.jpg
+  caption: The video shows a paved pathway with a herringbone pattern. The pathway is surrounded by trees and buildings. There are a few people walking on the pathway. The sky is overcast.
+  pkl: 1673884329.703198.pkl  saved=False
+
+rank=09  time=2023-01-16 15:52:14  pos=[-57.194, 81.538, -2.114]  frame=2023-01-16_15-52-14_rank09.jpg
+  caption: The video shows a wide, paved pathway with a herringbone pattern. The pathway is lined with large, mature trees with green leaves, and there are buildings visible in the background. The sky is overcast, and the overall color scheme is a mix of green, brown, and gray. There are a few people walking on the pathway, but they are not the main focus of the video. The buildings in the background appear to be academic or administrative buildings, and there are no visible signs or banners. The pathway seems to be well-maintained, and there are no visible litter or debris. The video does not show any events or activities taking place, and there are no sounds that can be heard.
+  pkl: 1673884332.703631.pkl  saved=False
+
+rank=10  time=2023-01-16 15:52:17  pos=[-56.939, 84.4, -2.098]  frame=2023-01-16_15-52-17_rank10.jpg
+  caption: The video shows a paved walkway with a herringbone pattern, leading towards a large building with a white facade and multiple windows. The walkway is lined with lush green trees and a few people can be seen walking in the distance. There are orange banners hanging from the trees, and a street lamp is visible on the right side of the walkway. The sky is overcast, and the overall color scheme of the video is a mix of green, orange, and gray.
+  pkl: 1673884335.704203.pkl  saved=False
+
+rank=11  time=2023-01-16 15:52:20  pos=[-56.387, 87.068, -2.058]  frame=2023-01-16_15-52-20_rank11.jpg
+  caption: The video starts with a view of a brick pathway that leads through a campus. The bricks are a warm, reddish-brown color and are arranged in a herringbone pattern. The pathway is lined with lush green trees that provide a canopy over the walkway. On either side of the pathway, there are buildings with white walls and large windows. A few people can be seen walking on the pathway, some alone and others in groups. There are also a few bicycles parked on the side of the pathway. The sky is overcast, and the overall atmosphere of the video is calm and peaceful.
+  pkl: 1673884338.704676.pkl  saved=False

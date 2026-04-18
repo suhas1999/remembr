@@ -1,0 +1,127 @@
+All 42 captions in question window:
+
+time=2023-01-16 15:56:42  pos=[-90.154, 203.466, -1.885]  frame=2023-01-16_15-56-42.jpg  saved=False
+  The video begins with a view of a large glass window that reflects the interior of a building. The window is framed by a metal structure and is set in a wall with a wooden slat design. The floor in front of the window is made of polished concrete and has a metal grate. As the video progresses, the camera moves to the right, revealing more of the building's interior. The building has a modern design with a high ceiling and large windows that allow natural light to flood in. The walls are painted white, and there are several tables and chairs arranged in the space. There are also several people walking around, some sitting at the tables, and others standing and talking. The overall atmosphere of the building is calm and quiet.
+
+time=2023-01-16 15:56:45  pos=[-90.325, 203.516, -1.884]  frame=2023-01-16_15-56-45.jpg  saved=False
+  The video begins with a view of a glass door leading into a large, open space. The floor is shiny and reflective, and the walls are made of wood and glass. There are several tables and chairs scattered throughout the room, and a few people can be seen sitting at them. The ceiling is high and made of wood, with lights hanging down from it. The room is well-lit, with natural light coming in through the large windows. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:48  pos=[-91.033, 203.713, -1.887]  frame=2023-01-16_15-56-48.jpg  saved=False
+  The video shows a spacious university building with a modern design. The floor is made of shiny tiles that reflect the light from the large windows on the far wall. There are several tables and chairs scattered throughout the room, some of which are stacked against the wall. The walls are made of wood and glass, giving the room a bright and airy feel. There are a few people in the room, some sitting at the tables and others walking around. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:51  pos=[-91.945, 203.836, -1.897]  frame=2023-01-16_15-56-51.jpg  saved=False
+  The video shows a large, open, and well-lit university building with a shiny tiled floor. There are several rows of white chairs with black stripes lined up against the wall. In the center of the room, there are three gray, cone-shaped sculptures. The walls are made of wood and glass, allowing natural light to flood the space. In the background, there is a red couch and a few people sitting and talking. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:54  pos=[-94.023, 203.913, -1.919]  frame=2023-01-16_15-56-54.jpg  saved=False
+  The video shows a large, open space with a shiny, tiled floor. There are several white chairs lined up against the wall, and a few red benches in the middle of the room. The walls are made of wood and glass, and there are large windows that let in a lot of natural light. The ceiling is high, and there are several light fixtures hanging from it. There are a few people walking around, and some are sitting on the benches. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:57  pos=[-94.765, 203.953, -1.922]  frame=2023-01-16_15-56-57.jpg  saved=False
+  The video shows a spacious and well-lit university campus with a shiny tiled floor. There are several people walking around, some alone and some in groups. The students appear to be engaged in conversation and are dressed in casual clothing. There are also a few faculty members visible, wearing more formal attire. The campus is surrounded by modern buildings with large windows that let in plenty of natural light. There are several benches and tables scattered throughout the area, providing a place for students to sit and study. The overall atmosphere is calm and peaceful, with students going about their daily activities.
+
+time=2023-01-16 15:57:00  pos=[-96.981, 203.953, -1.936]  frame=2023-01-16_15-57-00.jpg  saved=False
+  The video shows a large, open space with a shiny, reflective floor. There are several red benches lined up against the wall, and a few people are sitting on them. The walls are made of glass and metal, and there are large windows that let in a lot of natural light. The ceiling is made of wood and has several lights hanging from it. There are also a few tables and chairs scattered around the space. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:57:03  pos=[-99.272, 202.828, -1.977]  frame=2023-01-16_15-57-03.jpg  saved=False
+  The video shows a young man wearing a black jacket and white pants walking through a large, modern building with a shiny, reflective floor. He is holding a white piece of paper in his hand and appears to be looking at it as he walks. The building has large windows that let in a lot of natural light, and there are several black chairs lined up against the wall. The man walks past these chairs and continues down the hallway. The walls of the building are painted a light color, and there are several doors and signs visible. The overall atmosphere of the building is quiet and calm.
+
+time=2023-01-16 15:57:06  pos=[-100.961, 201.246, -2.025]  frame=2023-01-16_15-57-06.jpg  saved=False
+  The video shows a man walking down a shiny tiled hallway in a university building. He is wearing a blue jacket, khaki pants, and brown shoes. He is carrying a white paper in his hand. The hallway has several black chairs lined up against the wall, and there are three blue informational signs hanging on the wall. The man walks past a gray trash can and a wooden bench. The lighting in the hallway is bright, and the walls are painted yellow.
+
+time=2023-01-16 15:57:09  pos=[-101.479, 200.374, -2.054]  frame=2023-01-16_15-57-09.jpg  saved=False
+  The video shows a long, empty hallway with a shiny, polished floor. The walls are painted a light beige color, and there are several doors on the left side of the hallway. On the right side, there is a bench and a trash can. The ceiling has recessed lighting, and there are several posters and signs hanging on the walls. There are no people visible in the hallway.
+
+time=2023-01-16 15:57:12  pos=[-101.514, 200.049, -2.056]  frame=2023-01-16_15-57-12.jpg  saved=False
+  The video shows a long, empty hallway with a shiny tiled floor. There is a large concrete pillar in the middle of the hallway. The walls are painted yellow and there are several doors on the right side of the hallway. There are also several posters hanging on the walls. The ceiling has fluorescent lights and there are no people visible in the hallway.
+
+time=2023-01-16 15:57:15  pos=[-101.528, 199.821, -2.064]  frame=2023-01-16_15-57-15.jpg  saved=False
+  The video shows a long, empty hallway with a shiny, polished floor. The walls are painted a light beige color, and there are several doors on the left side of the hallway. The doors have frosted glass windows and are closed. On the right side of the hallway, there is a bench with a black metal frame and a wooden seat. The bench is empty. The ceiling has recessed lighting and there are several signs hanging on the walls. The signs are blue with white text and are located near the ceiling. There are no people visible in the hallway. The overall atmosphere of the hallway is quiet and empty.
+
+time=2023-01-16 15:57:18  pos=[-101.559, 199.576, -2.063]  frame=2023-01-16_15-57-18.jpg  saved=False
+  In the video, I see a group of students walking down a long hallway. The students are dressed in casual clothing, with some wearing backpacks. The hallway is lined with large windows that let in natural light. There are several doors along the hallway, and some of them are open. The walls are painted a light color, and there are posters hanging on them. There are also benches and tables placed along the hallway. The floor is made of tiles, and there is a large pillar in the middle of the hallway. The students seem to be engaged in conversation as they walk down the hallway.
+
+time=2023-01-16 15:57:21  pos=[-102.159, 198.248, -2.101]  frame=2023-01-16_15-57-21.jpg  saved=False
+  In the video, I see a group of students walking down a long hallway. The students are wearing casual clothing and appear to be engaged in conversation. The hallway is well-lit with fluorescent lights and has a polished concrete floor. On the right side of the hallway, there is a row of lockers and benches. The lockers are metal and have a combination lock on the front. The benches are wooden and are placed against the wall. There are also posters on the wall, but the content of the posters is not clear. The students are walking towards the end of the hallway, and there is no one else visible in the hallway.
+
+time=2023-01-16 15:57:24  pos=[-102.784, 195.741, -2.165]  frame=2023-01-16_15-57-24.jpg  saved=False
+  The video begins with a view of a long, empty hallway in a university building. The floor is shiny and reflects the overhead lights. The walls are white with some orange accents. There are several doors on both sides of the hallway, some of which are open. The ceiling has fluorescent lights that illuminate the hallway. There are no people visible in the hallway, and no activities are taking place. The hallway leads to a brighter area in the distance, possibly a common area or a lobby. The overall atmosphere is quiet and serene.
+
+time=2023-01-16 15:57:27  pos=[-103.25, 192.992, -2.226]  frame=2023-01-16_15-57-27.jpg  saved=False
+  The video begins with a view of a long, empty hallway with shiny white tiles. The walls are painted a light beige color and there are several doors on either side of the hallway. The ceiling is white with fluorescent lights. As the video progresses, the camera moves forward down the hallway, and we can see a yellow caution sign on the right side of the hallway. The sign has a black exclamation mark on it. The hallway is well-lit and appears to be clean and well-maintained. There are no people visible in the hallway, and no activities or events are taking place. The video ends as the camera reaches the end of the hallway.
+
+time=2023-01-16 15:57:30  pos=[-103.635, 190.209, -2.292]  frame=2023-01-16_15-57-30.jpg  saved=False
+  The video shows a long, empty hallway with shiny white linoleum flooring. The walls are painted a light beige color and there are several doors on either side of the hallway. The doors are a dark brown color and have silver handles. There are a few framed pictures hanging on the walls. At the end of the hallway, there is a large glass window that lets in natural light. The ceiling has fluorescent lights that illuminate the hallway. There are no people or objects in the hallway, and no events or activities are taking place. The hallway appears to be quiet and empty.
+
+time=2023-01-16 15:57:33  pos=[-103.715, 187.468, -2.349]  frame=2023-01-16_15-57-33.jpg  saved=False
+  The video shows a long, empty hallway with shiny beige linoleum flooring. The walls are white, and there are several doors on either side of the hallway. The doors are mostly closed, and there are no signs or decorations on them. At the end of the hallway, there is a large glass window that lets in natural light. The ceiling has fluorescent lights that are turned on. There are no people or objects in the hallway, and there are no events or activities taking place. The hallway appears to be clean and well-maintained.
+
+time=2023-01-16 15:57:36  pos=[-103.94, 184.699, -2.409]  frame=2023-01-16_15-57-36.jpg  saved=False
+  The video shows a long, empty hallway in a university building. The floor is shiny and reflects the overhead lights. The walls are painted white and there are doors on either side of the hallway. The doors are closed and there are no signs or posters on them. There are no people visible in the hallway. The ceiling has recessed lighting and there are no visible windows. The hallway leads to a bright, open area with more doors and windows. The overall atmosphere is quiet and calm.
+
+time=2023-01-16 15:57:39  pos=[-104.097, 181.828, -2.474]  frame=2023-01-16_15-57-39.jpg  saved=False
+  The video shows a long, empty hallway with shiny white tiles on the floor. The walls are white and there are glass doors on the right side of the hallway. There is a red exit sign hanging from the ceiling in the distance. The hallway is well-lit by fluorescent lights. There are no people or objects in the hallway. The hallway appears to be in a university building.
+
+time=2023-01-16 15:57:42  pos=[-104.284, 178.905, -2.527]  frame=2023-01-16_15-57-42.jpg  saved=False
+  The video shows a long, empty hallway with a shiny, white tiled floor. The walls are painted white and there are several doors on the left side. The ceiling has recessed lighting and there are a few windows on the right side. There are no people or objects in the hallway. The hallway leads to a bright, open area with a few tables and chairs in the distance. There is a blue umbrella visible through one of the windows.
+
+time=2023-01-16 15:57:45  pos=[-104.51, 175.939, -2.584]  frame=2023-01-16_15-57-45.jpg  saved=False
+  The video shows a wide, clean hallway with a shiny, beige tiled floor. The walls are white, and there are several doors on the left side. There are also several potted plants placed at regular intervals along the hallway. On the right side, there is a railing that runs the length of the hallway. At the end of the hallway, there is a seating area with tables and chairs. There are a few people walking down the hallway, and some are sitting in the seating area. The lighting is bright, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:57:48  pos=[-104.611, 173.116, -2.546]  frame=2023-01-16_15-57-48.jpg  saved=False
+  The video shows a wide, open hallway with a light-colored tiled floor. There are several doors on the left side of the hallway, and a large window on the right side. The walls are painted white, and there are several framed pictures hanging on them. There are a few tables and chairs set up in the hallway, and a large potted plant is sitting near the window. There are no people visible in the hallway, and no activities are taking place. The lighting in the hallway is bright, and the overall atmosphere is quiet and peaceful.
+
+time=2023-01-16 15:57:51  pos=[-104.614, 170.224, -2.407]  frame=2023-01-16_15-57-51.jpg  saved=False
+  The video shows a spacious and well-lit university lobby with a tiled floor. There are several tables and chairs arranged in the space, some of which are occupied by students who appear to be studying or working on their laptops. The walls are adorned with various artworks and posters, adding a touch of color and creativity to the space. There are also several large windows that allow natural light to flood in, creating a bright and welcoming atmosphere. The lobby seems to be a popular spot for students to gather, study, or socialize.
+
+time=2023-01-16 15:57:54  pos=[-104.143, 167.464, -2.434]  frame=2023-01-16_15-57-54.jpg  saved=False
+  The video shows a large, open space with a tiled floor. The tiles are square and have a light beige color. There are several tables and chairs arranged in the space, with some tables having white tablecloths on them. The chairs are made of wood and have a light brown color. On the walls, there are several paintings and posters. The paintings are of different sizes and colors, and they are hung at different heights. The posters are mostly black and white. There is a large window in the background that lets in natural light. There are no people in the space, and it appears to be empty.
+
+time=2023-01-16 15:57:57  pos=[-103.527, 164.644, -2.488]  frame=2023-01-16_15-57-57.jpg  saved=False
+  In the video, I see a group of students walking down a hallway. The students are dressed in casual clothing, with some wearing jeans and t-shirts, while others are in more formal attire. They are engaged in conversation and appear to be in a relaxed mood. The hallway is lined with posters and artwork, adding a creative and vibrant atmosphere to the space. The walls are painted in a neutral color, and the floor is tiled. There are several tables and chairs set up in the hallway, suggesting that this area is used for socializing and studying. The lighting is bright and natural, with sunlight streaming in through the windows. Overall, the video captures a lively and dynamic student environment.
+
+time=2023-01-16 15:58:00  pos=[-102.997, 161.855, -2.541]  frame=2023-01-16_15-58-00.jpg  saved=False
+  The video begins with a view of a large, open hallway with beige tiled flooring. The walls are painted a light beige color and are adorned with several framed pictures. There are two tables with chairs on either side of the hallway, and a trash can is visible near one of the tables. The hallway leads to a set of double doors at the end, which appear to be the entrance to a classroom or lecture hall. The lighting in the hallway is bright, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:58:03  pos=[-102.855, 159.091, -2.589]  frame=2023-01-16_15-58-03.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a light beige tiled floor. The ceiling has rectangular lights that are evenly spaced. On the left side of the hallway, there is a blue recycling bin and a black trash can. On the right side, there are several closed doors with gold-colored door frames. The hallway is well-lit and appears to be clean and well-maintained. There are no people or other objects visible in the hallway.
+
+time=2023-01-16 15:58:06  pos=[-102.974, 156.538, -2.644]  frame=2023-01-16_15-58-06.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a tiled floor. There are several doors on either side of the hallway, and a few windows with blinds. The ceiling has fluorescent lights. There are no people or objects in the hallway. The hallway appears to be in a university building.
+
+time=2023-01-16 15:58:09  pos=[-102.844, 154.286, -2.69]  frame=2023-01-16_15-58-09.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a tiled floor. The hallway is well-lit by fluorescent lights on the ceiling. There are three framed pictures hanging on the wall, each with blue and white stripes. The hallway leads to a door at the end. There is a black trash can on the right side of the hallway. No people or other objects are visible in the hallway.
+
+time=2023-01-16 15:58:12  pos=[-102.792, 151.702, -2.727]  frame=2023-01-16_15-58-12.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a tiled floor. The tiles are square and have a light beige color. The walls are adorned with framed pictures and a wooden handrail runs along the right side of the hallway. The ceiling has recessed lighting and there are no people or objects in the hallway. The hallway leads to a bright, open space at the end.
+
+time=2023-01-16 15:58:15  pos=[-103.1, 148.955, -2.794]  frame=2023-01-16_15-58-15.jpg  saved=False
+  The video begins with a view of a long, empty hallway. The floor is tiled with square tiles in a light beige color, and the walls are painted in a light yellow color. There are two windows on the left wall, each with blue and white striped curtains. The ceiling is white and has two fluorescent lights on. There is a black trash can on the right wall, near the end of the hallway. The hallway leads to a door at the end, which is slightly ajar. There are no people or other objects in the hallway.
+
+time=2023-01-16 15:58:18  pos=[-103.24, 146.098, -2.845]  frame=2023-01-16_15-58-18.jpg  saved=False
+  The video shows a long hallway with beige walls and a tiled floor. The tiles are square and have a light beige color. The walls are adorned with framed pictures and a blue and white striped window. There are two trash cans, one black and one gray, placed on the right side of the hallway. The ceiling has recessed lighting and a wooden trim. There are no people visible in the hallway.
+
+time=2023-01-16 15:58:21  pos=[-103.402, 143.216, -2.896]  frame=2023-01-16_15-58-21.jpg  saved=False
+  In the video, I see a group of students walking down a long hallway. The hallway is lined with beige walls and has a tiled floor. There are several doors on either side of the hallway, and there are framed pictures hanging on the walls. The students are wearing casual clothing, and some of them are carrying backpacks. The lighting in the hallway is bright, and there are no windows visible. The students appear to be engaged in conversation as they walk down the hallway.
+
+time=2023-01-16 15:58:24  pos=[-103.595, 140.334, -2.95]  frame=2023-01-16_15-58-24.jpg  saved=False
+  In the video, I see a group of students walking down a hallway. The students are dressed in casual attire, with some wearing backpacks. The hallway is lined with wooden doors on either side, and there are framed pictures hanging on the walls. The floor is tiled, and there is a large window at the end of the hallway that lets in natural light. The students are engaged in conversation, and one of them is carrying a book. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:58:27  pos=[-103.819, 137.456, -3.006]  frame=2023-01-16_15-58-27.jpg  saved=False
+  The video begins with a view of a large, open hallway with a tiled floor. The tiles are square and have a light beige color. The walls of the hallway are painted a light yellow color and have framed pictures hanging on them. There are two doors on the right side of the hallway, and a set of double doors at the end of the hallway. The ceiling has recessed lighting and a curved design. There are no people visible in the hallway.
+
+time=2023-01-16 15:58:30  pos=[-104.082, 134.59, -3.057]  frame=2023-01-16_15-58-30.jpg  saved=False
+  The video shows a long hallway with beige walls and a tiled floor. There are two doors on either side of the hallway, and a trash can is placed near the door on the left. The ceiling has fluorescent lights, and there are no people visible in the hallway. The hallway leads to a bright, open space with a large window.
+
+time=2023-01-16 15:58:33  pos=[-104.388, 131.74, -3.104]  frame=2023-01-16_15-58-33.jpg  saved=False
+  The video begins with a view of a long hallway with beige tiled flooring and a person walking away from the camera. The person is wearing a blue jacket, khaki pants, and white sneakers. As the video progresses, the person continues to walk down the hallway, passing by a trash can and a door with a red sign. The hallway is well-lit with fluorescent lights and has wooden doors on either side. There are no other people visible in the hallway.
+
+time=2023-01-16 15:58:36  pos=[-104.595, 128.918, -3.151]  frame=2023-01-16_15-58-36.jpg  saved=False
+  The video shows a young man wearing a blue jacket and khaki pants walking down a tiled hallway in a university building. He is carrying a backpack and appears to be heading towards the exit. The hallway is well-lit and has wooden doors on either side. There is a yellow caution sign on the left side of the hallway. The man walks steadily and confidently, passing by a potted plant and a sign that reads "OPEN HOSPITALITY". The video ends as the man exits the building.
+
+time=2023-01-16 15:58:39  pos=[-104.669, 126.052, -3.193]  frame=2023-01-16_15-58-39.jpg  saved=False
+  In the video, a person is walking down a hallway in a university building. The person is wearing a black jacket and carrying a backpack. The hallway is tiled and has a sign on the wall that reads "Oden Institute." There are two doors on either side of the hallway, and a potted plant is placed in the corner. The person is walking towards a door at the end of the hallway.
+
+time=2023-01-16 15:58:42  pos=[-104.765, 123.128, -3.231]  frame=2023-01-16_15-58-42.jpg  saved=False
+  In the video, a young man wearing a black jacket and blue jeans is walking down a long hallway with beige tiled flooring. The hallway is well-lit with overhead lights and has a wooden door on the right side. There is a potted plant on the left side of the hallway. The young man is walking towards the camera and appears to be in a hurry. As he walks, he passes by a sign on the wall that reads "University of Texas". The hallway leads to a large glass door that opens to the outside. Through the glass door, you can see trees and a building in the background. The young man walks past the glass door and continues down the hallway.
+
+time=2023-01-16 15:58:46  pos=[-105.013, 120.235, -3.27]  frame=2023-01-16_15-58-46.jpg  saved=False
+  The video begins with a view of a large, open room with a tiled floor. The tiles are square and have a light color. There is a large window on one side of the room that lets in natural light. Through the window, you can see a tree and a building outside. There is a potted plant in the corner of the room, and a few paintings hanging on the wall. A person is walking towards the window, and another person is standing near the entrance of the room. The walls of the room are white, and there are a few doors leading to other rooms. The overall atmosphere of the room is calm and quiet.

@@ -1,0 +1,35 @@
+Index:     20
+ID:        SHORT_39a4eb19-b64e-4289-abcf-92ea6c3debba
+Category:  SHORT
+Type:      duration
+Window:    2023-01-16 15:58:33 → 2023-01-16 15:59:55 (82.0s)
+
+Question:
+How long have you been outside?
+
+Ground truth answer:
+{
+  "text": [
+    "1 minutes"
+  ],
+  "duration": 1.0
+}
+
+Agent response:
+{
+  "type": "duration",
+  "text": "You have been outside for approximately 1 minute and 22 seconds",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": "1.37",
+  "time": null
+}
+
+Error metrics:
+{
+  "duration_error": 0.3700000000000001
+}
+
+Elapsed: 26.7s
+Retrieved 4 captions from 28 in window.

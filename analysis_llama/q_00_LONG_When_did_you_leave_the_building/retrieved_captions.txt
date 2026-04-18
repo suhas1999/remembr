@@ -1,0 +1,52 @@
+Question: When did you leave the building?
+Type: time | Category: LONG
+Window: 2023-01-16 15:55:32 → 2023-01-16 16:03:02 (449.9s)
+Total retrieved: 12
+
+rank=00  time=2023-01-16 15:55:32  pos=[-48.623, 189.433, -1.079]  frame=2023-01-16_15-55-32_rank00.jpg
+  caption: The video shows a serene campus environment with a clear blue sky overhead. The main focus is on a brick pathway that is lined with large, mature trees with lush green leaves. The pathway is bordered by a concrete curb on one side and a grassy area on the other. There are a few people walking along the pathway, enjoying the beautiful day. In the distance, you can see a large building with white columns and a red roof, which appears to be a university building. The building has several windows and a flagpole with a flag flying in the breeze. The overall atmosphere of the video is peaceful and inviting, with the natural beauty of the campus setting.
+  pkl: 1673884531.323784.pkl  saved=False
+
+rank=01  time=2023-01-16 15:55:35  pos=[-48.614, 189.609, -1.073]  frame=2023-01-16_15-55-35_rank01.jpg
+  caption: The video shows a wide, paved walkway with a herringbone pattern. The walkway is lined with large, leafy trees that provide shade. On the right side of the walkway, there is a grassy area with a few bushes and a street lamp. In the distance, there are several buildings with white walls and large windows. The sky is overcast, and there are no people or vehicles visible in the video. The colors in the video are mostly muted, with the green of the trees and grass contrasting with the beige of the walkway and the white of the buildings. The video does not show any specific events or activities taking place.
+  pkl: 1673884534.324159.pkl  saved=False
+
+rank=02  time=2023-01-16 15:55:38  pos=[-48.611, 189.688, -1.086]  frame=2023-01-16_15-55-38_rank02.jpg
+  caption: In the video, there are a few people walking on the sidewalk. They are dressed in casual clothing and appear to be students. The sidewalk is made of brick and has a herringbone pattern. There are trees lining the sidewalk, and the leaves on the ground suggest that it is autumn. The buildings in the background are white and have multiple windows. There is a street lamp on the sidewalk, and the sky is overcast.
+  pkl: 1673884537.324475.pkl  saved=False
+
+rank=03  time=2023-01-16 15:55:41  pos=[-48.682, 190.134, -1.083]  frame=2023-01-16_15-55-41_rank03.jpg
+  caption: The video shows a wide, paved pathway with a herringbone pattern of beige and brown bricks. The pathway is bordered by a concrete curb on the right side and a grassy area with fallen leaves on the left side. The pathway is lined with large, mature trees with green leaves, providing shade and a pleasant atmosphere. In the distance, there are several buildings with white walls and red roofs, possibly academic or administrative buildings. The sky is overcast, and there are no people or moving vehicles visible in the video. The overall scene is peaceful and serene, with the pathway inviting for a leisurely walk or jog.
+  pkl: 1673884540.32477.pkl  saved=False
+
+rank=04  time=2023-01-16 15:55:32  pos=[-48.623, 189.433, -1.079]  frame=2023-01-16_15-55-32_rank04.jpg
+  caption: The video shows a serene campus environment with a clear blue sky overhead. The main focus is on a brick pathway that is lined with large, mature trees with lush green leaves. The pathway is bordered by a concrete curb on one side and a grassy area on the other. There are a few people walking along the pathway, enjoying the beautiful day. In the distance, you can see a large building with white columns and a red roof, which appears to be a university building. The building has several windows and a flagpole with a flag flying in the breeze. The overall atmosphere of the video is peaceful and inviting, with the natural beauty of the campus setting.
+  pkl: 1673884531.323784.pkl  saved=False
+
+rank=05  time=2023-01-16 15:55:35  pos=[-48.614, 189.609, -1.073]  frame=2023-01-16_15-55-35_rank05.jpg
+  caption: The video shows a wide, paved walkway with a herringbone pattern. The walkway is lined with large, leafy trees that provide shade. On the right side of the walkway, there is a grassy area with a few bushes and a street lamp. In the distance, there are several buildings with white walls and large windows. The sky is overcast, and there are no people or vehicles visible in the video. The colors in the video are mostly muted, with the green of the trees and grass contrasting with the beige of the walkway and the white of the buildings. The video does not show any specific events or activities taking place.
+  pkl: 1673884534.324159.pkl  saved=False
+
+rank=06  time=2023-01-16 15:55:38  pos=[-48.611, 189.688, -1.086]  frame=2023-01-16_15-55-38_rank06.jpg
+  caption: In the video, there are a few people walking on the sidewalk. They are dressed in casual clothing and appear to be students. The sidewalk is made of brick and has a herringbone pattern. There are trees lining the sidewalk, and the leaves on the ground suggest that it is autumn. The buildings in the background are white and have multiple windows. There is a street lamp on the sidewalk, and the sky is overcast.
+  pkl: 1673884537.324475.pkl  saved=False
+
+rank=07  time=2023-01-16 15:55:41  pos=[-48.682, 190.134, -1.083]  frame=2023-01-16_15-55-41_rank07.jpg
+  caption: The video shows a wide, paved pathway with a herringbone pattern of beige and brown bricks. The pathway is bordered by a concrete curb on the right side and a grassy area with fallen leaves on the left side. The pathway is lined with large, mature trees with green leaves, providing shade and a pleasant atmosphere. In the distance, there are several buildings with white walls and red roofs, possibly academic or administrative buildings. The sky is overcast, and there are no people or moving vehicles visible in the video. The overall scene is peaceful and serene, with the pathway inviting for a leisurely walk or jog.
+  pkl: 1673884540.32477.pkl  saved=False
+
+rank=08  time=2023-01-16 16:03:02  pos=[1.417, 2.277, -0.168]  frame=2023-01-16_16-03-02_rank08.jpg
+  caption: The video shows a university campus with a brick building in the background. There are two people walking on the sidewalk in front of the building. One person is wearing a black jacket and the other is wearing a white shirt. There is a bench on the sidewalk and a sign that says "LOADING ZONE" on the side of the building. The sky is clear and it is daytime.
+  pkl: 1673884981.162944.pkl  saved=False
+
+rank=09  time=2023-01-16 16:02:59  pos=[1.548, 5.132, -0.246]  frame=2023-01-16_16-02-59_rank09.jpg
+  caption: In the video, I see a group of students walking on the sidewalk. They are all wearing backpacks and seem to be in a hurry. The building in the background has a brick facade and large windows. There is a metal bench on the sidewalk and a sign that says "Loading Zone" on the side of the building. The sky is overcast and the ground is wet, suggesting that it has recently rained.
+  pkl: 1673884978.061462.pkl  saved=False
+
+rank=10  time=2023-01-16 16:02:56  pos=[1.561, 7.962, -0.288]  frame=2023-01-16_16-02-56_rank10.jpg
+  caption: The video shows a university campus with a large brick building in the background. The building has large windows and a white garage door. In front of the building, there is a concrete parking lot with tire marks on it. There are a few bicycles parked on the side of the building. The sky is overcast and there are no people visible in the video.
+  pkl: 1673884975.061446.pkl  saved=False
+
+rank=11  time=2023-01-16 16:02:53  pos=[1.225, 10.837, -0.329]  frame=2023-01-16_16-02-53_rank11.jpg
+  caption: The video shows a university campus with a large brick building in the background. The building has large windows and a green awning. In front of the building, there is a parking lot with a few cars parked. The ground is made of concrete and there are a few trees scattered around the area. There are no people visible in the video.
+  pkl: 1673884971.963718.pkl  saved=False

@@ -1,0 +1,35 @@
+Index:     1
+ID:        LONG_8f32d561-e898-453c-ae99-2e53745389e1
+Category:  LONG
+Type:      time
+Window:    2023-01-16 15:52:11 → 2023-01-16 16:00:53 (521.9s)
+
+Question:
+When did you first enter the building?
+
+Ground truth answer:
+{
+  "text": [
+    "-2.52 minutes ago"
+  ],
+  "time": -2.52
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You first entered the building 8.42 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "8.42"
+}
+
+Error metrics:
+{
+  "time_error": 10.94
+}
+
+Elapsed: 45.3s
+Retrieved 12 captions from 174 in window.

@@ -1,0 +1,35 @@
+Index:     8
+ID:        LONG_82e9a231-76cf-446e-9a04-4afd6c831b2d
+Category:  LONG
+Type:      binary
+Window:    2023-01-16 15:53:29 → 2023-01-16 16:03:24 (594.6s)
+
+Question:
+Was the brick sidewalk busy?
+
+Ground truth answer:
+{
+  "text": [
+    "no",
+    "no"
+  ]
+}
+
+Agent response:
+{
+  "type": "binary",
+  "text": "It did not seem like the brick sidewalk was busy.",
+  "binary": "no",
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": null
+}
+
+Error metrics:
+{
+  "binary_correct": 1
+}
+
+Elapsed: 38.4s
+Retrieved 4 captions from 198 in window.

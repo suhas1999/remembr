@@ -1,0 +1,40 @@
+Index:     9
+ID:        LONG_38a496dc-1afd-4e26-b8b2-c6640cab0499
+Category:  LONG
+Type:      position
+Window:    2023-01-16 15:51:08 → 2023-01-16 16:00:44 (576.0s)
+
+Question:
+Where are the closest elevators?
+
+Ground truth answer:
+{
+  "position": [
+    -0.06957677419354844,
+    0.057285709677419326,
+    -0.00011361290322580658
+  ]
+}
+
+Agent response:
+{
+  "type": "position",
+  "text": "The closest elevators are located at (-55.351, 88.848, -2.085) and (-56.387, 87.068, -2.058)",
+  "binary": null,
+  "position": [
+    -55.351,
+    88.848,
+    -2.085
+  ],
+  "orientation": "[0.0]",
+  "duration": null,
+  "time": null
+}
+
+Error metrics:
+{
+  "position_error": 104.61440364167608
+}
+
+Elapsed: 44.5s
+Retrieved 12 captions from 192 in window.

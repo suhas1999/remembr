@@ -1,0 +1,32 @@
+Index:     10
+ID:        MEDIUM_3373f674-4a26-465b-9a08-8ca73651a0af
+Category:  MEDIUM
+Type:      text
+Window:    2023-01-16 15:56:30 → 2023-01-16 15:58:39 (129.6s)
+
+Question:
+What color jacket was the person who opened the door for you wearing?
+
+Ground truth answer:
+{
+  "text": [
+    "They were wearing a blue puffer jacket"
+  ]
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "The person who opened the door for you was wearing a black jacket 1.7 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "1.7"
+}
+
+Error metrics:
+{}
+
+Elapsed: 39.7s
+Retrieved 14 captions from 44 in window.

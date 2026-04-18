@@ -1,0 +1,5 @@
+Question: Where is the nearest recycling bin?
+Type: position | Category: LONG
+Window: 2023-01-16 15:50:35 → 2023-01-16 15:59:49 (554.6s)
+Total retrieved: 0
+

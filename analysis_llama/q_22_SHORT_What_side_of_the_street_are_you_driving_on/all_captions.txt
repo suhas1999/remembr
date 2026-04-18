@@ -1,0 +1,79 @@
+All 26 captions in question window:
+
+time=2023-01-16 15:54:38  pos=[-50.466, 160.245, -1.639]  frame=2023-01-16_15-54-38.jpg  saved=False
+  The video shows a university campus with a brick walkway leading towards a building. There are several trees on either side of the walkway, and a few people can be seen walking in the distance. The building in the background has a sign that reads "University of Texas." The sky is overcast, and the overall color scheme of the video is muted with shades of brown, green, and gray.
+
+time=2023-01-16 15:54:41  pos=[-50.467, 160.193, -1.64]  frame=2023-01-16_15-54-41.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern made of beige bricks. The walkway is lined with lush green trees and bushes on both sides, creating a serene and inviting atmosphere. On the right side of the walkway, there is a concrete curb separating the walkway from a grassy area. In the distance, there are buildings with white walls and red roofs, possibly academic buildings or dormitories. There are a few people walking on the walkway, but they are too far away to see any specific details about them. The sky is overcast, suggesting it might be a cool or cloudy day.
+
+time=2023-01-16 15:54:44  pos=[-50.486, 160.259, -1.638]  frame=2023-01-16_15-54-44.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern of yellow and brown bricks. The walkway is lined with lush green trees and neatly trimmed bushes. On the right side of the walkway, there is a concrete curb separating the walkway from a grassy area. In the distance, there are several buildings with white walls and red roofs. There are no people or moving objects visible in the video. The sky is overcast, and the overall atmosphere is calm and serene.
+
+time=2023-01-16 15:54:47  pos=[-50.636, 161.26, -1.64]  frame=2023-01-16_15-54-47.jpg  saved=False
+  The video begins with a view of a brick walkway that leads towards a large building with a white facade. The walkway is lined with lush green trees and bushes, and there are orange signs on the trees. The sky is overcast, and the ground is wet, suggesting that it has recently rained. As the camera pans to the right, we see more of the building, which has multiple windows and a large entrance. There are a few people walking on the walkway, but they are too far away to see any details about them. The overall atmosphere is calm and serene.
+
+time=2023-01-16 15:54:50  pos=[-50.888, 163.81, -1.609]  frame=2023-01-16_15-54-50.jpg  saved=False
+  In the video, I see a group of students walking on a brick pathway. The students are dressed in casual attire, with some wearing backpacks. The pathway is lined with trees and has a concrete curb on the side. There are buildings visible in the background, and the sky is overcast. The students appear to be engaged in conversation as they walk.
+
+time=2023-01-16 15:54:53  pos=[-50.986, 166.68, -1.572]  frame=2023-01-16_15-54-53.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern, leading through a campus with large trees on either side. The trees have thick trunks and lush green leaves. The sky is overcast, and there are no people visible in the video. The walkway is bordered by a concrete curb on the right side. There are no visible signs or banners, and the campus buildings are not in view. The video does not show any movement or action.
+
+time=2023-01-16 15:54:56  pos=[-51.047, 169.559, -1.525]  frame=2023-01-16_15-54-56.jpg  saved=False
+  The video shows a long, straight pathway made of yellow and brown bricks. The pathway is lined with large, green trees on both sides, and there are buildings visible in the background. There are a few people walking on the pathway, and some are sitting on benches. There are also a few cars parked on the side of the road. The sky is overcast, and the overall atmosphere is calm and peaceful.
+
+time=2023-01-16 15:54:59  pos=[-51.024, 172.386, -1.479]  frame=2023-01-16_15-54-59.jpg  saved=False
+  The video shows a wide, paved pathway made of beige bricks with a herringbone pattern. The pathway is lined with large, mature trees with green leaves, providing shade and a natural border. On the left side of the pathway, there are several buildings with white walls and red roofs. The buildings appear to be part of the university campus. On the right side of the pathway, there is a grassy area with a few bushes and a metal fence. The sky is overcast, and there are no people or vehicles visible in the video.
+
+time=2023-01-16 15:55:02  pos=[-50.59, 175.142, -1.416]  frame=2023-01-16_15-55-02.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern. The walkway is lined with large, mature trees with green leaves. On the right side of the walkway, there is a modern building with large windows and a metal railing. A few people can be seen walking on the walkway, some alone and some in groups. There are also a few benches and trash cans placed along the walkway. The sky is overcast, and the overall color scheme of the video is dominated by shades of green, gray, and brown.
+
+time=2023-01-16 15:55:05  pos=[-50.109, 177.905, -1.349]  frame=2023-01-16_15-55-05.jpg  saved=False
+  In the video, I see a group of students walking on a brick pathway. They are all wearing backpacks and seem to be in a hurry. The pathway is lined with large trees that provide shade for the students. In the background, there is a large brick building with a clock tower. The sky is overcast, and the students are wearing jackets.
+
+time=2023-01-16 15:55:08  pos=[-49.594, 180.719, -1.284]  frame=2023-01-16_15-55-08.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern. The walkway is lined with lush green trees and bushes. On the right side of the walkway, there is a modern building with large windows and a curved roof. The sky is overcast, and there are no people or moving objects in the video. The colors in the video are mostly muted, with the green of the trees and bushes providing a contrast to the grey of the walkway and building. The video does not show any events or activities taking place.
+
+time=2023-01-16 15:55:11  pos=[-49.293, 183.166, -1.229]  frame=2023-01-16_15-55-11.jpg  saved=False
+  The video begins with a view of a brick pathway with a herringbone pattern, bordered by a concrete curb. The pathway is lined with lush green trees and bushes, and a building with white columns can be seen in the background. As the video progresses, a few people come into view. There is a woman wearing a black dress and white sneakers walking towards the camera, and a man in a blue shirt and black pants walking away from the camera. The sky is overcast, and the overall atmosphere is calm and serene.
+
+time=2023-01-16 15:55:14  pos=[-49.3, 185.107, -1.189]  frame=2023-01-16_15-55-14.jpg  saved=False
+  The video shows a young woman with long dark hair, wearing a black hoodie and white sneakers, walking down a brick pathway. She is holding a white paper in her hand. The pathway is lined with large trees and has a sidewalk on the right side. There is a sign on a pole that reads "MAKE YOUR TEXAS". A man in a blue jacket and khaki pants walks by the woman, carrying a backpack. The sky is overcast and the ground is covered with fallen leaves.
+
+time=2023-01-16 15:55:17  pos=[-48.976, 187.309, -1.133]  frame=2023-01-16_15-55-17.jpg  saved=False
+  The video shows a young man wearing a blue jacket, khaki pants, and white sneakers walking along a brick sidewalk. He is carrying a white paper in his hand. The brick sidewalk is lined with large trees with green leaves, and there is a building with white walls and large windows in the background. The sky is overcast, and there are no other people visible in the video.
+
+time=2023-01-16 15:55:20  pos=[-48.746, 188.492, -1.108]  frame=2023-01-16_15-55-20.jpg  saved=False
+  The video shows a young man wearing a blue jacket and khaki pants walking down a brick pathway. He is holding a white paper in his hand and appears to be reading it. The pathway is lined with large trees and there are buildings visible in the background. The man is walking towards the camera and seems to be in a hurry. There are no other people visible in the video.
+
+time=2023-01-16 15:55:23  pos=[-48.725, 188.706, -1.109]  frame=2023-01-16_15-55-23.jpg  saved=False
+  The video shows a young man wearing a red shirt and khaki pants walking down a brick pathway. He is holding a white paper in his hand and appears to be reading it. The pathway is lined with trees and there are buildings visible in the background. The man is walking towards the camera and seems to be in a hurry. There are no other people visible in the video.
+
+time=2023-01-16 15:55:26  pos=[-48.69, 188.879, -1.1]  frame=2023-01-16_15-55-26.jpg  saved=False
+  In the video, a young man wearing a black jacket and khaki pants is walking down a brick sidewalk. The sidewalk is lined with large, green trees with thick trunks and sprawling branches. The ground is covered with brown leaves, indicating that it might be autumn. There is a white building with multiple windows in the background. The sky is overcast, and the overall color scheme of the video is muted with a lot of browns and greens.
+
+time=2023-01-16 15:55:29  pos=[-48.648, 189.177, -1.091]  frame=2023-01-16_15-55-29.jpg  saved=False
+  The video shows a person walking on a brick pathway. The pathway is lined with trees and has a sidewalk on the right side. The person is wearing a white shirt and black pants. There are buildings visible in the background. The sky is clear and blue.
+
+time=2023-01-16 15:55:32  pos=[-48.623, 189.433, -1.079]  frame=2023-01-16_15-55-32.jpg  saved=False
+  The video shows a serene campus environment with a clear blue sky overhead. The main focus is on a brick pathway that is lined with large, mature trees with lush green leaves. The pathway is bordered by a concrete curb on one side and a grassy area on the other. There are a few people walking along the pathway, enjoying the beautiful day. In the distance, you can see a large building with white columns and a red roof, which appears to be a university building. The building has several windows and a flagpole with a flag flying in the breeze. The overall atmosphere of the video is peaceful and inviting, with the natural beauty of the campus setting.
+
+time=2023-01-16 15:55:35  pos=[-48.614, 189.609, -1.073]  frame=2023-01-16_15-55-35.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern. The walkway is lined with large, leafy trees that provide shade. On the right side of the walkway, there is a grassy area with a few bushes and a street lamp. In the distance, there are several buildings with white walls and large windows. The sky is overcast, and there are no people or vehicles visible in the video. The colors in the video are mostly muted, with the green of the trees and grass contrasting with the beige of the walkway and the white of the buildings. The video does not show any specific events or activities taking place.
+
+time=2023-01-16 15:55:38  pos=[-48.611, 189.688, -1.086]  frame=2023-01-16_15-55-38.jpg  saved=False
+  In the video, there are a few people walking on the sidewalk. They are dressed in casual clothing and appear to be students. The sidewalk is made of brick and has a herringbone pattern. There are trees lining the sidewalk, and the leaves on the ground suggest that it is autumn. The buildings in the background are white and have multiple windows. There is a street lamp on the sidewalk, and the sky is overcast.
+
+time=2023-01-16 15:55:41  pos=[-48.682, 190.134, -1.083]  frame=2023-01-16_15-55-41.jpg  saved=False
+  The video shows a wide, paved pathway with a herringbone pattern of beige and brown bricks. The pathway is bordered by a concrete curb on the right side and a grassy area with fallen leaves on the left side. The pathway is lined with large, mature trees with green leaves, providing shade and a pleasant atmosphere. In the distance, there are several buildings with white walls and red roofs, possibly academic or administrative buildings. The sky is overcast, and there are no people or moving vehicles visible in the video. The overall scene is peaceful and serene, with the pathway inviting for a leisurely walk or jog.
+
+time=2023-01-16 15:55:44  pos=[-50.124, 191.542, -1.088]  frame=2023-01-16_15-55-44.jpg  saved=False
+  The video shows a wide, open plaza with a distinctive herringbone pattern on the ground. The plaza is surrounded by large, mature trees with sprawling branches that provide shade to the area. In the background, there are several buildings with modern architecture, including a large white building with a glass facade and a smaller brick building. There are a few people walking around the plaza, but they are too far away to see any specific details about them. There are also a few street lamps and benches scattered throughout the plaza. The sky is clear and blue, indicating that it is a sunny day.
+
+time=2023-01-16 15:55:47  pos=[-52.467, 193.163, -1.099]  frame=2023-01-16_15-55-47.jpg  saved=False
+  In the video, I see a group of students walking across the campus. They are all wearing backpacks and appear to be in a hurry. The campus is surrounded by tall buildings with large windows. There are several trees scattered throughout the area, providing shade for the students. The ground is covered in a patterned brick walkway, and there is a sign on the ground that reads "Welcome to the University of XYZ". The sky is clear and blue, and it seems to be a sunny day.
+
+time=2023-01-16 15:55:50  pos=[-54.771, 194.674, -1.079]  frame=2023-01-16_15-55-50.jpg  saved=False
+  The video shows a university campus with a brick walkway leading to a building with large windows. There is a sign on the walkway that says "Welcome to the University of Texas at Austin." There are several trees on the campus, and a few people can be seen walking around. The sky is clear and blue.
+
+time=2023-01-16 15:55:53  pos=[-57.455, 195.698, -1.047]  frame=2023-01-16_15-55-53.jpg  saved=False
+  In the video, I see a group of students walking on the sidewalk. They are all dressed in casual attire, with some wearing jackets and others in sweaters. The students are engaged in conversation as they walk. The sidewalk is lined with trees and bushes, and there are benches placed at intervals. The buildings in the background are made of brick and have large windows. There is a sign on the sidewalk that reads "Welcome to the University of Texas at Austin." The sky is overcast, and the overall atmosphere is calm and peaceful.

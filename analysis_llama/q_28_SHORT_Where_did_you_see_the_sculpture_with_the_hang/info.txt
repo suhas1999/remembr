@@ -1,0 +1,36 @@
+Index:     28
+ID:        SHORT_b928a4aa-a1fb-4161-ad8c-78e6f1e78eca
+Category:  SHORT
+Type:      position
+Window:    2023-01-16 16:00:38 → 2023-01-16 16:02:17 (99.1s)
+
+Question:
+Where did you see the sculpture with the hanging boats?
+
+Ground truth answer:
+{
+  "position": [
+    -0.06957677419354844,
+    0.057285709677419326,
+    -0.00011361290322580658
+  ]
+}
+
+Agent response:
+{
+  "type": "position",
+  "text": "Unfortunately, I couldn't find any information about a sculpture with hanging boats in my memories. My current location is [-14.58, 36.58, -1.31] and the last time I saw something was at 16:02:17.",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": null
+}
+
+Error metrics:
+{
+  "position_error": 0.0901254289771615
+}
+
+Elapsed: 41.5s
+Retrieved 12 captions from 34 in window.

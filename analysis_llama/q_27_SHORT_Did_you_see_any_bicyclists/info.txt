@@ -1,0 +1,35 @@
+Index:     27
+ID:        SHORT_426931a9-038a-48a3-a27b-0f7b12948a81
+Category:  SHORT
+Type:      binary
+Window:    2023-01-16 16:00:23 → 2023-01-16 16:01:35 (72.1s)
+
+Question:
+Did you see any bicyclists?
+
+Ground truth answer:
+{
+  "text": [
+    "yes",
+    "yes"
+  ]
+}
+
+Agent response:
+{
+  "type": "binary",
+  "text": "Yes, I saw bicyclists earlier, but not recently.",
+  "binary": "yes",
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": null
+}
+
+Error metrics:
+{
+  "binary_correct": 1
+}
+
+Elapsed: 37.9s
+Retrieved 13 captions from 25 in window.

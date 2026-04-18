@@ -1,0 +1,36 @@
+Index:     15
+ID:        MEDIUM_11801608-016d-4367-8247-4a885afef25d
+Category:  MEDIUM
+Type:      position
+Window:    2023-01-16 16:00:01 → 2023-01-16 16:03:11 (190.0s)
+
+Question:
+Where did you see the sculpture with the hanging boats?
+
+Ground truth answer:
+{
+  "position": [
+    -0.06957677419354844,
+    0.057285709677419326,
+    -0.00011361290322580658
+  ]
+}
+
+Agent response:
+{
+  "type": "text",
+  "text": null,
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": null
+}
+
+Error metrics:
+{
+  "position_error": 0.0901254289771615
+}
+
+Elapsed: 42.7s
+Retrieved 12 captions from 64 in window.

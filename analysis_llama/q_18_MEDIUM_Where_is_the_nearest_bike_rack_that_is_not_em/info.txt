@@ -1,0 +1,36 @@
+Index:     18
+ID:        MEDIUM_c6c87c47-04c3-44ca-a1be-053153b740c5
+Category:  MEDIUM
+Type:      position
+Window:    2023-01-16 15:58:33 → 2023-01-16 16:03:14 (281.0s)
+
+Question:
+Where is the nearest bike rack that is not empty?
+
+Ground truth answer:
+{
+  "position": [
+    -0.06957677419354844,
+    0.057285709677419326,
+    -0.00011361290322580658
+  ]
+}
+
+Agent response:
+{
+  "type": "position",
+  "text": "The nearest bike rack that is not empty is likely located near the brick building with a white garage door",
+  "binary": null,
+  "position": null,
+  "orientation": "[0, 0, 0]",
+  "duration": null,
+  "time": null
+}
+
+Error metrics:
+{
+  "position_error": 0.0901254289771615
+}
+
+Elapsed: 36.2s
+Retrieved 4 captions from 94 in window.

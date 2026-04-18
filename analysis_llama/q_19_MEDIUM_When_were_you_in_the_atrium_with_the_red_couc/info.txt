@@ -1,0 +1,35 @@
+Index:     19
+ID:        MEDIUM_254c3f52-e4ed-4828-ba85-42a500ff8676
+Category:  MEDIUM
+Type:      time
+Window:    2023-01-16 15:56:42 → 2023-01-16 15:58:46 (123.7s)
+
+Question:
+When were you in the atrium with the red couches?
+
+Ground truth answer:
+{
+  "text": [
+    "-4.63 minutes ago"
+  ],
+  "time": -4.63
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You were in the atrium with the red couches 2 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "2.0"
+}
+
+Error metrics:
+{
+  "time_error": 6.63
+}
+
+Elapsed: 37.8s
+Retrieved 12 captions from 42 in window.

@@ -1,0 +1,513 @@
+{
+    "version": 0.1,
+    "responses": [
+        {
+            "question": "You started moving at 2023-01-16 15:55:32. The current time is 2023-01-16 16:03:02 and you are located at [1.42, 2.28, -0.17]. \n When did you leave the building?",
+            "id": "LONG_5a6cef0c-175d-4779-bfd4-f7b193fb9039",
+            "response": {
+                "type": "time",
+                "text": "You left the building approximately 7.5 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "7.5"
+            },
+            "error": {
+                "time_error": 7.86
+            },
+            "elapsed": 41.01160287857056
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:52:11. The current time is 2023-01-16 16:00:53 and you are located at [-56.28, 77.78, -2.15]. \n When did you first enter the building?",
+            "id": "LONG_8f32d561-e898-453c-ae99-2e53745389e1",
+            "response": {
+                "type": "time",
+                "text": "You first entered the building 8.42 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "8.42"
+            },
+            "error": {
+                "time_error": 10.94
+            },
+            "elapsed": 45.297569274902344
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:51:56. The current time is 2023-01-16 16:03:21 and you are located at [-0.34, 0.06, -0.01]. \n How long were you in the building for?",
+            "id": "LONG_cbe5ca33-b001-47c4-9397-aca6d275e5e4",
+            "response": {
+                "type": "duration",
+                "text": "You were in the building for 11 minutes and 25 seconds.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": "11.42",
+                "time": null
+            },
+            "error": {
+                "duration_error": 9.120000000000001
+            },
+            "elapsed": 25.568068504333496
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:52:29. The current time is 2023-01-16 16:00:44 and you are located at [-55.74, 86.31, -2.11]. \n Where is the closest place to sit?",
+            "id": "LONG_115fe136-a8ee-43f7-858d-a0a357c03fad",
+            "response": {
+                "type": "position",
+                "text": "Unfortunately, I don't know of any specific place to sit near my current location.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 36.275566816329956
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:50:05. The current time is 2023-01-16 16:02:08 and you are located at [-22.67, 37.41, -1.5]. \n Where is the yellow police call pole?",
+            "id": "LONG_7213d1b5-0f7a-4361-b779-c6689042ae8a",
+            "response": {
+                "type": "position",
+                "text": "I'm unsure where the yellow police call pole is located, but it might be near one of the buildings or areas I saw.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 38.31279897689819
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:52:17. The current time is 2023-01-16 16:02:26 and you are located at [-7.12, 33.57, -0.96]. \n Where is the statue in front of the Bill and Melinda Gates Computer Science building?",
+            "id": "LONG_74167a94-2255-4d16-bb78-db37801acc0a",
+            "response": {
+                "type": "position",
+                "text": "Unfortunately, I'm unsure where the statue in front of the Bill and Melinda Gates Computer Science building is located.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 41.29601573944092
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:50:35. The current time is 2023-01-16 15:59:49 and you are located at [-75.76, 93.43, -2.43]. \n Where is the nearest recycling bin?",
+            "id": "LONG_f4661173-26c9-4939-824c-a238736d53ef",
+            "response": {
+                "type": "position",
+                "text": "Unfortunately, I don't know the location of the nearest recycling bin. You may want to check with local authorities or waste management services for more information.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 33.247952461242676
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:52:05. The current time is 2023-01-16 16:01:47 and you are located at [-42.04, 39.9, -1.99]. \n Where did you see the sculpture with the hanging boats?",
+            "id": "LONG_242c13b6-b47f-4022-9697-02611d770526",
+            "response": {
+                "type": "position",
+                "text": "I'm sorry, but I don't have any information about a sculpture with hanging boats in my memories.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 42.44013500213623
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:53:29. The current time is 2023-01-16 16:03:24 and you are located at [-0.07, 0.06, -0.0]. \n Was the brick sidewalk busy?",
+            "id": "LONG_82e9a231-76cf-446e-9a04-4afd6c831b2d",
+            "response": {
+                "type": "binary",
+                "text": "It did not seem like the brick sidewalk was busy.",
+                "binary": "no",
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "binary_correct": 1
+            },
+            "elapsed": 38.40773320198059
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:51:08. The current time is 2023-01-16 16:00:44 and you are located at [-55.74, 86.31, -2.11]. \n Where are the closest elevators?",
+            "id": "LONG_38a496dc-1afd-4e26-b8b2-c6640cab0499",
+            "response": {
+                "type": "position",
+                "text": "The closest elevators are located at (-55.351, 88.848, -2.085) and (-56.387, 87.068, -2.058)",
+                "binary": null,
+                "position": [
+                    -55.351,
+                    88.848,
+                    -2.085
+                ],
+                "orientation": "[0.0]",
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 104.61440364167608
+            },
+            "elapsed": 44.47537565231323
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:56:30. The current time is 2023-01-16 15:58:39 and you are located at [-104.67, 126.05, -3.19]. \n What color jacket was the person who opened the door for you wearing?",
+            "id": "MEDIUM_3373f674-4a26-465b-9a08-8ca73651a0af",
+            "response": {
+                "type": "time",
+                "text": "The person who opened the door for you was wearing a black jacket 1.7 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "1.7"
+            },
+            "error": {},
+            "elapsed": 39.69160032272339
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:51:59. The current time is 2023-01-16 15:56:45 and you are located at [-90.33, 203.52, -1.88]. \n Where is the statue in front of the Bill and Melinda Gates Computer Science building?",
+            "id": "MEDIUM_28199d34-e26c-4b79-8775-943431d3a68a",
+            "response": {
+                "type": "position",
+                "text": "I'm not sure about the location of the statue in front of the Bill and Melinda Gates Computer Science building.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 44.680765867233276
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:53:29. The current time is 2023-01-16 15:57:06 and you are located at [-100.96, 201.25, -2.03]. \n What side of the brick sidewalk were you walking on?",
+            "id": "MEDIUM_afd2f89f-f0b9-4082-9136-e2122475c3cd",
+            "response": {
+                "type": "position",
+                "text": "It is likely that you were walking on the left side of the brick sidewalk.",
+                "binary": null,
+                "position": null,
+                "orientation": "[0.0]",
+                "duration": null,
+                "time": null
+            },
+            "error": {},
+            "elapsed": 37.44478106498718
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:54:17. The current time is 2023-01-16 16:00:47 and you are located at [-55.92, 83.52, -2.11]. \n Where is the closest place to sit?",
+            "id": "MEDIUM_02da6f10-4ce1-4eb3-a416-c4522e9c8133",
+            "response": {
+                "type": "position",
+                "text": "Unfortunately, I couldn't find any information about a specific place to sit near your current location.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 38.52407431602478
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:55:14. The current time is 2023-01-16 16:00:26 and you are located at [-54.6, 91.01, -2.04]. \n When did you first enter the building?",
+            "id": "MEDIUM_9595c924-7840-4964-8bd0-d6e3080bcd65",
+            "response": {
+                "type": "time",
+                "text": "You first entered the building 6 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "6.0"
+            },
+            "error": {
+                "time_error": 8.97
+            },
+            "elapsed": 45.0010552406311
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:00:01. The current time is 2023-01-16 16:03:11 and you are located at [-1.22, -1.41, -0.04]. \n Where did you see the sculpture with the hanging boats?",
+            "id": "MEDIUM_11801608-016d-4367-8247-4a885afef25d",
+            "response": {
+                "type": "text",
+                "text": null,
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 42.687164545059204
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:56:21. The current time is 2023-01-16 16:01:32 and you are located at [-55.47, 43.57, -2.26]. \n What were the color of the couches near where I entered the building?",
+            "id": "MEDIUM_022ee3b7-38a6-4a36-9f48-fa656ea3cf21",
+            "response": {
+                "type": "text",
+                "text": "Unfortunately, I did not see any couches near where you entered the building. However, I did see several tables and chairs arranged in the background of one of the videos.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {},
+            "elapsed": 38.739731550216675
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:59:55. The current time is 2023-01-16 16:03:02 and you are located at [1.42, 2.28, -0.17]. \n When did you cross the brick street?",
+            "id": "MEDIUM_b5b98312-f881-422d-b2cb-4b9c5696948b",
+            "response": {
+                "type": "time",
+                "text": "You crossed the brick street 3.4 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "3.4"
+            },
+            "error": {
+                "time_error": 3.76
+            },
+            "elapsed": 37.648818254470825
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:58:33. The current time is 2023-01-16 16:03:14 and you are located at [-1.21, -0.9, -0.05]. \n Where is the nearest bike rack that is not empty?",
+            "id": "MEDIUM_c6c87c47-04c3-44ca-a1be-053153b740c5",
+            "response": {
+                "type": "position",
+                "text": "The nearest bike rack that is not empty is likely located near the brick building with a white garage door",
+                "binary": null,
+                "position": null,
+                "orientation": "[0, 0, 0]",
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 36.2157986164093
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:56:42. The current time is 2023-01-16 15:58:46 and you are located at [-105.01, 120.24, -3.27]. \n When were you in the atrium with the red couches?",
+            "id": "MEDIUM_254c3f52-e4ed-4828-ba85-42a500ff8676",
+            "response": {
+                "type": "time",
+                "text": "You were in the atrium with the red couches 2 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "2.0"
+            },
+            "error": {
+                "time_error": 6.63
+            },
+            "elapsed": 37.825056314468384
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:58:33. The current time is 2023-01-16 15:59:55 and you are located at [-70.33, 92.86, -2.26]. \n How long have you been outside?",
+            "id": "SHORT_39a4eb19-b64e-4289-abcf-92ea6c3debba",
+            "response": {
+                "type": "duration",
+                "text": "You have been outside for approximately 1 minute and 22 seconds",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": "1.37",
+                "time": null
+            },
+            "error": {
+                "duration_error": 0.3700000000000001
+            },
+            "elapsed": 26.737314224243164
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:58:49. The current time is 2023-01-16 16:00:04 and you are located at [-63.15, 92.12, -2.13]. \n When did you leave the building?",
+            "id": "SHORT_37a3097f-a357-4af3-8a84-244e1b767ddf",
+            "response": {
+                "type": "time",
+                "text": "You left the building 1.2 minutes ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "1.2"
+            },
+            "error": {
+                "time_error": 4.52
+            },
+            "elapsed": 36.84640312194824
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:54:38. The current time is 2023-01-16 15:55:53 and you are located at [-57.45, 195.7, -1.05]. \n What side of the street are you driving on?",
+            "id": "SHORT_31d323c2-930f-4111-85b0-d92e960ee600",
+            "response": {
+                "type": "binary",
+                "text": "I am driving on the left side of the street",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {},
+            "elapsed": 39.52942967414856
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:01:14. The current time is 2023-01-16 16:02:50 and you are located at [0.84, 13.73, -0.37]. \n When did you get off of the brick sidewalk?",
+            "id": "SHORT_bbfb623d-89d7-4698-9e91-be03c2720fc8",
+            "response": {
+                "type": "time",
+                "text": "It has been 1.73 minutes since you started moving.",
+                "binary": null,
+                "position": [
+                    0.84,
+                    13.73,
+                    -0.37
+                ],
+                "orientation": "[0.0,0.0,0.0]",
+                "duration": null,
+                "time": "1.73"
+            },
+            "error": {
+                "time_error": 2.29
+            },
+            "elapsed": 37.763145446777344
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:02:14. The current time is 2023-01-16 16:03:21 and you are located at [-0.34, 0.06, -0.01]. \n Where did you see a red fire hydrant?",
+            "id": "SHORT_f20ba66d-74e4-4e2e-9a91-ac2576f16e0a",
+            "response": {
+                "type": "position",
+                "text": "I'm unsure where you saw a red fire hydrant, but it's possible that it was nearby when we last checked the area around us at [-0.34, 0.06, -0.01].",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "1.07"
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 34.59077286720276
+        },
+        {
+            "question": "You started moving at 2023-01-16 15:58:58. The current time is 2023-01-16 15:59:55 and you are located at [-70.33, 92.86, -2.26]. \n Which direction did you turn after leaving the building?",
+            "id": "SHORT_a29d9195-acc1-46ea-a225-95816e21e802",
+            "response": {
+                "type": "time",
+                "text": "You turned approximately 1 minute ago",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": "1.0"
+            },
+            "error": {},
+            "elapsed": 40.77322554588318
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:02:35. The current time is 2023-01-16 16:03:05 and you are located at [1.11, -0.21, -0.01]. \n Did you see a red fire hydrant?",
+            "id": "SHORT_103d708a-b002-415c-ab49-ff02f654c490",
+            "response": {
+                "type": "binary",
+                "text": "No, I did not see a red fire hydrant.",
+                "binary": "no",
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "binary_correct": 0
+            },
+            "elapsed": 38.143009424209595
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:00:23. The current time is 2023-01-16 16:01:35 and you are located at [-53.1, 42.26, -2.22]. \n Did you see any bicyclists?",
+            "id": "SHORT_426931a9-038a-48a3-a27b-0f7b12948a81",
+            "response": {
+                "type": "binary",
+                "text": "Yes, I saw bicyclists earlier, but not recently.",
+                "binary": "yes",
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "binary_correct": 1
+            },
+            "elapsed": 37.855417251586914
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:00:38. The current time is 2023-01-16 16:02:17 and you are located at [-14.58, 36.58, -1.31]. \n Where did you see the sculpture with the hanging boats?",
+            "id": "SHORT_b928a4aa-a1fb-4161-ad8c-78e6f1e78eca",
+            "response": {
+                "type": "position",
+                "text": "Unfortunately, I couldn't find any information about a sculpture with hanging boats in my memories. My current location is [-14.58, 36.58, -1.31] and the last time I saw something was at 16:02:17.",
+                "binary": null,
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "position_error": 0.0901254289771615
+            },
+            "elapsed": 41.547733306884766
+        },
+        {
+            "question": "You started moving at 2023-01-16 16:02:47. The current time is 2023-01-16 16:03:24 and you are located at [-0.07, 0.06, -0.0]. \n Are you stopped in a loading zone right now?",
+            "id": "SHORT_21548fa5-15ca-4f06-923e-a99b0fb2253a",
+            "response": {
+                "type": "binary",
+                "text": "No",
+                "binary": "no",
+                "position": null,
+                "orientation": null,
+                "duration": null,
+                "time": null
+            },
+            "error": {
+                "binary_correct": 0
+            },
+            "elapsed": 39.82705283164978
+        }
+    ]
+}

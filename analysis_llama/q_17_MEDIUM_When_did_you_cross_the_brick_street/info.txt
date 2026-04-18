@@ -1,0 +1,35 @@
+Index:     17
+ID:        MEDIUM_b5b98312-f881-422d-b2cb-4b9c5696948b
+Category:  MEDIUM
+Type:      time
+Window:    2023-01-16 15:59:55 → 2023-01-16 16:03:02 (186.8s)
+
+Question:
+When did you cross the brick street?
+
+Ground truth answer:
+{
+  "text": [
+    "-0.36 minutes ago"
+  ],
+  "time": -0.36
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You crossed the brick street 3.4 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "3.4"
+}
+
+Error metrics:
+{
+  "time_error": 3.76
+}
+
+Elapsed: 37.6s
+Retrieved 12 captions from 63 in window.

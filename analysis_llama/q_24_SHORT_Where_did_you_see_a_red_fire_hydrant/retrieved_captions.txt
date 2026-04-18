@@ -1,0 +1,5 @@
+Question: Where did you see a red fire hydrant?
+Type: position | Category: SHORT
+Window: 2023-01-16 16:02:14 → 2023-01-16 16:03:21 (66.9s)
+Total retrieved: 0
+

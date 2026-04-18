@@ -1,0 +1,20 @@
+Question: How long have you been outside?
+Type: duration | Category: SHORT
+Window: 2023-01-16 15:58:33 → 2023-01-16 15:59:55 (82.0s)
+Total retrieved: 4
+
+rank=00  time=2023-01-16 15:58:33  pos=[-104.388, 131.74, -3.104]  frame=2023-01-16_15-58-33_rank00.jpg
+  caption: The video begins with a view of a long hallway with beige tiled flooring and a person walking away from the camera. The person is wearing a blue jacket, khaki pants, and white sneakers. As the video progresses, the person continues to walk down the hallway, passing by a trash can and a door with a red sign. The hallway is well-lit with fluorescent lights and has wooden doors on either side. There are no other people visible in the hallway.
+  pkl: 1673884712.453442.pkl  saved=False
+
+rank=01  time=2023-01-16 15:58:36  pos=[-104.595, 128.918, -3.151]  frame=2023-01-16_15-58-36_rank01.jpg
+  caption: The video shows a young man wearing a blue jacket and khaki pants walking down a tiled hallway in a university building. He is carrying a backpack and appears to be heading towards the exit. The hallway is well-lit and has wooden doors on either side. There is a yellow caution sign on the left side of the hallway. The man walks steadily and confidently, passing by a potted plant and a sign that reads "OPEN HOSPITALITY". The video ends as the man exits the building.
+  pkl: 1673884715.453737.pkl  saved=False
+
+rank=02  time=2023-01-16 15:58:39  pos=[-104.669, 126.052, -3.193]  frame=2023-01-16_15-58-39_rank02.jpg
+  caption: In the video, a person is walking down a hallway in a university building. The person is wearing a black jacket and carrying a backpack. The hallway is tiled and has a sign on the wall that reads "Oden Institute." There are two doors on either side of the hallway, and a potted plant is placed in the corner. The person is walking towards a door at the end of the hallway.
+  pkl: 1673884718.454014.pkl  saved=False
+
+rank=03  time=2023-01-16 15:58:42  pos=[-104.765, 123.128, -3.231]  frame=2023-01-16_15-58-42_rank03.jpg
+  caption: In the video, a young man wearing a black jacket and blue jeans is walking down a long hallway with beige tiled flooring. The hallway is well-lit with overhead lights and has a wooden door on the right side. There is a potted plant on the left side of the hallway. The young man is walking towards the camera and appears to be in a hurry. As he walks, he passes by a sign on the wall that reads "University of Texas". The hallway leads to a large glass door that opens to the outside. Through the glass door, you can see trees and a building in the background. The young man walks past the glass door and continues down the hallway.
+  pkl: 1673884721.454289.pkl  saved=False

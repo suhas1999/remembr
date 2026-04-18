@@ -1,0 +1,35 @@
+Index:     14
+ID:        MEDIUM_9595c924-7840-4964-8bd0-d6e3080bcd65
+Category:  MEDIUM
+Type:      time
+Window:    2023-01-16 15:55:14 → 2023-01-16 16:00:26 (311.2s)
+
+Question:
+When did you first enter the building?
+
+Ground truth answer:
+{
+  "text": [
+    "-2.97 minutes ago"
+  ],
+  "time": -2.97
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You first entered the building 6 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "6.0"
+}
+
+Error metrics:
+{
+  "time_error": 8.97
+}
+
+Elapsed: 45.0s
+Retrieved 12 captions from 104 in window.

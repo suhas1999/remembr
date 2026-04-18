@@ -1,0 +1,313 @@
+All 104 captions in question window:
+
+time=2023-01-16 15:56:21  pos=[-79.618, 201.338, -2.053]  frame=2023-01-16_15-56-21.jpg  saved=False
+  The video shows a university campus with a large building in the background. The building has multiple windows and appears to be made of brick. There is a large tree in front of the building, and a metal bench is visible in the foreground. The ground is made of concrete, and there is a metal grate on the ground. There are no people or animals visible in the video. The sky is overcast, and the overall color scheme of the video is gray and brown.
+
+time=2023-01-16 15:56:24  pos=[-80.674, 203.412, -1.987]  frame=2023-01-16_15-56-24.jpg  saved=False
+  The video starts with a view of a large building with a sign that reads "COMPUTER SCIENCE". The building has large glass windows and a metal gate. The ground is made of grey tiles and there is a stone wall in front of the building. A person wearing a black jacket and blue jeans walks into the frame from the right side. The person has a backpack and is walking towards the building. The sky is overcast and there are no other people visible in the video.
+
+time=2023-01-16 15:56:27  pos=[-82.981, 203.951, -1.944]  frame=2023-01-16_15-56-27.jpg  saved=False
+  The video shows a young man wearing a blue jacket and white pants walking towards the entrance of a building. The building has large glass doors with the words "Bill & Melinda Gates Computer Science" written above them. The man is carrying a black backpack and appears to be entering the building. The ground is made of gray stone tiles, and there are two large concrete blocks on either side of the entrance. The sky is overcast, and there are no other people visible in the video.
+
+time=2023-01-16 15:56:30  pos=[-85.333, 203.775, -1.916]  frame=2023-01-16_15-56-30.jpg  saved=False
+  The video shows a young man wearing a blue jacket, beige pants, and white sneakers. He is standing outside a modern building with large glass windows. The man is holding a white paper and appears to be reading it. He is standing on a gray stone platform with a black mat in front of the building. The building has a sign that reads "UNIVERSITY". There are no other people or objects in the video. The man seems to be alone and focused on the paper he is holding.
+
+time=2023-01-16 15:56:33  pos=[-87.575, 203.572, -1.884]  frame=2023-01-16_15-56-33.jpg  saved=False
+  The video begins with a close-up shot of a black doormat lying on a tiled floor. The camera then pans to the right, revealing a set of glass doors with silver handles. The doors are open, and through them, we can see the interior of a building with a high ceiling and large windows. The windows allow natural light to flood the space, creating a bright and airy atmosphere. In the background, we can see people walking around and furniture arranged in a way that suggests this is a public space, possibly a lobby or common area. The camera continues to pan to the right, giving us a wider view of the interior. The walls are white, and the floor is made of polished tiles that reflect the light from the windows. Overall, the video gives us a glimpse into a modern and well-lit university campus building.
+
+time=2023-01-16 15:56:36  pos=[-88.985, 203.595, -1.875]  frame=2023-01-16_15-56-36.jpg  saved=False
+  The video shows a large, open space with a shiny floor and a black mat in the foreground. There are several tables and chairs arranged in the background, and a large wooden structure can be seen. The walls are made of glass, and there are several people walking around. The lighting is bright, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:39  pos=[-89.938, 203.467, -1.885]  frame=2023-01-16_15-56-39.jpg  saved=False
+  The video shows a large glass door with a black mat in front of it. Through the glass door, you can see a spacious room with a high ceiling and large windows. The room is empty, with no people or furniture visible. The walls are made of wood and there are several large windows that let in a lot of natural light. The floor is made of shiny tiles and there are several large pillars in the room. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:42  pos=[-90.154, 203.466, -1.885]  frame=2023-01-16_15-56-42.jpg  saved=False
+  The video begins with a view of a large glass window that reflects the interior of a building. The window is framed by a metal structure and is set in a wall with a wooden slat design. The floor in front of the window is made of polished concrete and has a metal grate. As the video progresses, the camera moves to the right, revealing more of the building's interior. The building has a modern design with a high ceiling and large windows that allow natural light to flood in. The walls are painted white, and there are several tables and chairs arranged in the space. There are also several people walking around, some sitting at the tables, and others standing and talking. The overall atmosphere of the building is calm and quiet.
+
+time=2023-01-16 15:56:45  pos=[-90.325, 203.516, -1.884]  frame=2023-01-16_15-56-45.jpg  saved=False
+  The video begins with a view of a glass door leading into a large, open space. The floor is shiny and reflective, and the walls are made of wood and glass. There are several tables and chairs scattered throughout the room, and a few people can be seen sitting at them. The ceiling is high and made of wood, with lights hanging down from it. The room is well-lit, with natural light coming in through the large windows. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:48  pos=[-91.033, 203.713, -1.887]  frame=2023-01-16_15-56-48.jpg  saved=False
+  The video shows a spacious university building with a modern design. The floor is made of shiny tiles that reflect the light from the large windows on the far wall. There are several tables and chairs scattered throughout the room, some of which are stacked against the wall. The walls are made of wood and glass, giving the room a bright and airy feel. There are a few people in the room, some sitting at the tables and others walking around. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:51  pos=[-91.945, 203.836, -1.897]  frame=2023-01-16_15-56-51.jpg  saved=False
+  The video shows a large, open, and well-lit university building with a shiny tiled floor. There are several rows of white chairs with black stripes lined up against the wall. In the center of the room, there are three gray, cone-shaped sculptures. The walls are made of wood and glass, allowing natural light to flood the space. In the background, there is a red couch and a few people sitting and talking. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:54  pos=[-94.023, 203.913, -1.919]  frame=2023-01-16_15-56-54.jpg  saved=False
+  The video shows a large, open space with a shiny, tiled floor. There are several white chairs lined up against the wall, and a few red benches in the middle of the room. The walls are made of wood and glass, and there are large windows that let in a lot of natural light. The ceiling is high, and there are several light fixtures hanging from it. There are a few people walking around, and some are sitting on the benches. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:56:57  pos=[-94.765, 203.953, -1.922]  frame=2023-01-16_15-56-57.jpg  saved=False
+  The video shows a spacious and well-lit university campus with a shiny tiled floor. There are several people walking around, some alone and some in groups. The students appear to be engaged in conversation and are dressed in casual clothing. There are also a few faculty members visible, wearing more formal attire. The campus is surrounded by modern buildings with large windows that let in plenty of natural light. There are several benches and tables scattered throughout the area, providing a place for students to sit and study. The overall atmosphere is calm and peaceful, with students going about their daily activities.
+
+time=2023-01-16 15:57:00  pos=[-96.981, 203.953, -1.936]  frame=2023-01-16_15-57-00.jpg  saved=False
+  The video shows a large, open space with a shiny, reflective floor. There are several red benches lined up against the wall, and a few people are sitting on them. The walls are made of glass and metal, and there are large windows that let in a lot of natural light. The ceiling is made of wood and has several lights hanging from it. There are also a few tables and chairs scattered around the space. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:57:03  pos=[-99.272, 202.828, -1.977]  frame=2023-01-16_15-57-03.jpg  saved=False
+  The video shows a young man wearing a black jacket and white pants walking through a large, modern building with a shiny, reflective floor. He is holding a white piece of paper in his hand and appears to be looking at it as he walks. The building has large windows that let in a lot of natural light, and there are several black chairs lined up against the wall. The man walks past these chairs and continues down the hallway. The walls of the building are painted a light color, and there are several doors and signs visible. The overall atmosphere of the building is quiet and calm.
+
+time=2023-01-16 15:57:06  pos=[-100.961, 201.246, -2.025]  frame=2023-01-16_15-57-06.jpg  saved=False
+  The video shows a man walking down a shiny tiled hallway in a university building. He is wearing a blue jacket, khaki pants, and brown shoes. He is carrying a white paper in his hand. The hallway has several black chairs lined up against the wall, and there are three blue informational signs hanging on the wall. The man walks past a gray trash can and a wooden bench. The lighting in the hallway is bright, and the walls are painted yellow.
+
+time=2023-01-16 15:57:09  pos=[-101.479, 200.374, -2.054]  frame=2023-01-16_15-57-09.jpg  saved=False
+  The video shows a long, empty hallway with a shiny, polished floor. The walls are painted a light beige color, and there are several doors on the left side of the hallway. On the right side, there is a bench and a trash can. The ceiling has recessed lighting, and there are several posters and signs hanging on the walls. There are no people visible in the hallway.
+
+time=2023-01-16 15:57:12  pos=[-101.514, 200.049, -2.056]  frame=2023-01-16_15-57-12.jpg  saved=False
+  The video shows a long, empty hallway with a shiny tiled floor. There is a large concrete pillar in the middle of the hallway. The walls are painted yellow and there are several doors on the right side of the hallway. There are also several posters hanging on the walls. The ceiling has fluorescent lights and there are no people visible in the hallway.
+
+time=2023-01-16 15:57:15  pos=[-101.528, 199.821, -2.064]  frame=2023-01-16_15-57-15.jpg  saved=False
+  The video shows a long, empty hallway with a shiny, polished floor. The walls are painted a light beige color, and there are several doors on the left side of the hallway. The doors have frosted glass windows and are closed. On the right side of the hallway, there is a bench with a black metal frame and a wooden seat. The bench is empty. The ceiling has recessed lighting and there are several signs hanging on the walls. The signs are blue with white text and are located near the ceiling. There are no people visible in the hallway. The overall atmosphere of the hallway is quiet and empty.
+
+time=2023-01-16 15:57:18  pos=[-101.559, 199.576, -2.063]  frame=2023-01-16_15-57-18.jpg  saved=False
+  In the video, I see a group of students walking down a long hallway. The students are dressed in casual clothing, with some wearing backpacks. The hallway is lined with large windows that let in natural light. There are several doors along the hallway, and some of them are open. The walls are painted a light color, and there are posters hanging on them. There are also benches and tables placed along the hallway. The floor is made of tiles, and there is a large pillar in the middle of the hallway. The students seem to be engaged in conversation as they walk down the hallway.
+
+time=2023-01-16 15:57:21  pos=[-102.159, 198.248, -2.101]  frame=2023-01-16_15-57-21.jpg  saved=False
+  In the video, I see a group of students walking down a long hallway. The students are wearing casual clothing and appear to be engaged in conversation. The hallway is well-lit with fluorescent lights and has a polished concrete floor. On the right side of the hallway, there is a row of lockers and benches. The lockers are metal and have a combination lock on the front. The benches are wooden and are placed against the wall. There are also posters on the wall, but the content of the posters is not clear. The students are walking towards the end of the hallway, and there is no one else visible in the hallway.
+
+time=2023-01-16 15:57:24  pos=[-102.784, 195.741, -2.165]  frame=2023-01-16_15-57-24.jpg  saved=False
+  The video begins with a view of a long, empty hallway in a university building. The floor is shiny and reflects the overhead lights. The walls are white with some orange accents. There are several doors on both sides of the hallway, some of which are open. The ceiling has fluorescent lights that illuminate the hallway. There are no people visible in the hallway, and no activities are taking place. The hallway leads to a brighter area in the distance, possibly a common area or a lobby. The overall atmosphere is quiet and serene.
+
+time=2023-01-16 15:57:27  pos=[-103.25, 192.992, -2.226]  frame=2023-01-16_15-57-27.jpg  saved=False
+  The video begins with a view of a long, empty hallway with shiny white tiles. The walls are painted a light beige color and there are several doors on either side of the hallway. The ceiling is white with fluorescent lights. As the video progresses, the camera moves forward down the hallway, and we can see a yellow caution sign on the right side of the hallway. The sign has a black exclamation mark on it. The hallway is well-lit and appears to be clean and well-maintained. There are no people visible in the hallway, and no activities or events are taking place. The video ends as the camera reaches the end of the hallway.
+
+time=2023-01-16 15:57:30  pos=[-103.635, 190.209, -2.292]  frame=2023-01-16_15-57-30.jpg  saved=False
+  The video shows a long, empty hallway with shiny white linoleum flooring. The walls are painted a light beige color and there are several doors on either side of the hallway. The doors are a dark brown color and have silver handles. There are a few framed pictures hanging on the walls. At the end of the hallway, there is a large glass window that lets in natural light. The ceiling has fluorescent lights that illuminate the hallway. There are no people or objects in the hallway, and no events or activities are taking place. The hallway appears to be quiet and empty.
+
+time=2023-01-16 15:57:33  pos=[-103.715, 187.468, -2.349]  frame=2023-01-16_15-57-33.jpg  saved=False
+  The video shows a long, empty hallway with shiny beige linoleum flooring. The walls are white, and there are several doors on either side of the hallway. The doors are mostly closed, and there are no signs or decorations on them. At the end of the hallway, there is a large glass window that lets in natural light. The ceiling has fluorescent lights that are turned on. There are no people or objects in the hallway, and there are no events or activities taking place. The hallway appears to be clean and well-maintained.
+
+time=2023-01-16 15:57:36  pos=[-103.94, 184.699, -2.409]  frame=2023-01-16_15-57-36.jpg  saved=False
+  The video shows a long, empty hallway in a university building. The floor is shiny and reflects the overhead lights. The walls are painted white and there are doors on either side of the hallway. The doors are closed and there are no signs or posters on them. There are no people visible in the hallway. The ceiling has recessed lighting and there are no visible windows. The hallway leads to a bright, open area with more doors and windows. The overall atmosphere is quiet and calm.
+
+time=2023-01-16 15:57:39  pos=[-104.097, 181.828, -2.474]  frame=2023-01-16_15-57-39.jpg  saved=False
+  The video shows a long, empty hallway with shiny white tiles on the floor. The walls are white and there are glass doors on the right side of the hallway. There is a red exit sign hanging from the ceiling in the distance. The hallway is well-lit by fluorescent lights. There are no people or objects in the hallway. The hallway appears to be in a university building.
+
+time=2023-01-16 15:57:42  pos=[-104.284, 178.905, -2.527]  frame=2023-01-16_15-57-42.jpg  saved=False
+  The video shows a long, empty hallway with a shiny, white tiled floor. The walls are painted white and there are several doors on the left side. The ceiling has recessed lighting and there are a few windows on the right side. There are no people or objects in the hallway. The hallway leads to a bright, open area with a few tables and chairs in the distance. There is a blue umbrella visible through one of the windows.
+
+time=2023-01-16 15:57:45  pos=[-104.51, 175.939, -2.584]  frame=2023-01-16_15-57-45.jpg  saved=False
+  The video shows a wide, clean hallway with a shiny, beige tiled floor. The walls are white, and there are several doors on the left side. There are also several potted plants placed at regular intervals along the hallway. On the right side, there is a railing that runs the length of the hallway. At the end of the hallway, there is a seating area with tables and chairs. There are a few people walking down the hallway, and some are sitting in the seating area. The lighting is bright, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:57:48  pos=[-104.611, 173.116, -2.546]  frame=2023-01-16_15-57-48.jpg  saved=False
+  The video shows a wide, open hallway with a light-colored tiled floor. There are several doors on the left side of the hallway, and a large window on the right side. The walls are painted white, and there are several framed pictures hanging on them. There are a few tables and chairs set up in the hallway, and a large potted plant is sitting near the window. There are no people visible in the hallway, and no activities are taking place. The lighting in the hallway is bright, and the overall atmosphere is quiet and peaceful.
+
+time=2023-01-16 15:57:51  pos=[-104.614, 170.224, -2.407]  frame=2023-01-16_15-57-51.jpg  saved=False
+  The video shows a spacious and well-lit university lobby with a tiled floor. There are several tables and chairs arranged in the space, some of which are occupied by students who appear to be studying or working on their laptops. The walls are adorned with various artworks and posters, adding a touch of color and creativity to the space. There are also several large windows that allow natural light to flood in, creating a bright and welcoming atmosphere. The lobby seems to be a popular spot for students to gather, study, or socialize.
+
+time=2023-01-16 15:57:54  pos=[-104.143, 167.464, -2.434]  frame=2023-01-16_15-57-54.jpg  saved=False
+  The video shows a large, open space with a tiled floor. The tiles are square and have a light beige color. There are several tables and chairs arranged in the space, with some tables having white tablecloths on them. The chairs are made of wood and have a light brown color. On the walls, there are several paintings and posters. The paintings are of different sizes and colors, and they are hung at different heights. The posters are mostly black and white. There is a large window in the background that lets in natural light. There are no people in the space, and it appears to be empty.
+
+time=2023-01-16 15:57:57  pos=[-103.527, 164.644, -2.488]  frame=2023-01-16_15-57-57.jpg  saved=False
+  In the video, I see a group of students walking down a hallway. The students are dressed in casual clothing, with some wearing jeans and t-shirts, while others are in more formal attire. They are engaged in conversation and appear to be in a relaxed mood. The hallway is lined with posters and artwork, adding a creative and vibrant atmosphere to the space. The walls are painted in a neutral color, and the floor is tiled. There are several tables and chairs set up in the hallway, suggesting that this area is used for socializing and studying. The lighting is bright and natural, with sunlight streaming in through the windows. Overall, the video captures a lively and dynamic student environment.
+
+time=2023-01-16 15:58:00  pos=[-102.997, 161.855, -2.541]  frame=2023-01-16_15-58-00.jpg  saved=False
+  The video begins with a view of a large, open hallway with beige tiled flooring. The walls are painted a light beige color and are adorned with several framed pictures. There are two tables with chairs on either side of the hallway, and a trash can is visible near one of the tables. The hallway leads to a set of double doors at the end, which appear to be the entrance to a classroom or lecture hall. The lighting in the hallway is bright, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:58:03  pos=[-102.855, 159.091, -2.589]  frame=2023-01-16_15-58-03.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a light beige tiled floor. The ceiling has rectangular lights that are evenly spaced. On the left side of the hallway, there is a blue recycling bin and a black trash can. On the right side, there are several closed doors with gold-colored door frames. The hallway is well-lit and appears to be clean and well-maintained. There are no people or other objects visible in the hallway.
+
+time=2023-01-16 15:58:06  pos=[-102.974, 156.538, -2.644]  frame=2023-01-16_15-58-06.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a tiled floor. There are several doors on either side of the hallway, and a few windows with blinds. The ceiling has fluorescent lights. There are no people or objects in the hallway. The hallway appears to be in a university building.
+
+time=2023-01-16 15:58:09  pos=[-102.844, 154.286, -2.69]  frame=2023-01-16_15-58-09.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a tiled floor. The hallway is well-lit by fluorescent lights on the ceiling. There are three framed pictures hanging on the wall, each with blue and white stripes. The hallway leads to a door at the end. There is a black trash can on the right side of the hallway. No people or other objects are visible in the hallway.
+
+time=2023-01-16 15:58:12  pos=[-102.792, 151.702, -2.727]  frame=2023-01-16_15-58-12.jpg  saved=False
+  The video shows a long, empty hallway with beige walls and a tiled floor. The tiles are square and have a light beige color. The walls are adorned with framed pictures and a wooden handrail runs along the right side of the hallway. The ceiling has recessed lighting and there are no people or objects in the hallway. The hallway leads to a bright, open space at the end.
+
+time=2023-01-16 15:58:15  pos=[-103.1, 148.955, -2.794]  frame=2023-01-16_15-58-15.jpg  saved=False
+  The video begins with a view of a long, empty hallway. The floor is tiled with square tiles in a light beige color, and the walls are painted in a light yellow color. There are two windows on the left wall, each with blue and white striped curtains. The ceiling is white and has two fluorescent lights on. There is a black trash can on the right wall, near the end of the hallway. The hallway leads to a door at the end, which is slightly ajar. There are no people or other objects in the hallway.
+
+time=2023-01-16 15:58:18  pos=[-103.24, 146.098, -2.845]  frame=2023-01-16_15-58-18.jpg  saved=False
+  The video shows a long hallway with beige walls and a tiled floor. The tiles are square and have a light beige color. The walls are adorned with framed pictures and a blue and white striped window. There are two trash cans, one black and one gray, placed on the right side of the hallway. The ceiling has recessed lighting and a wooden trim. There are no people visible in the hallway.
+
+time=2023-01-16 15:58:21  pos=[-103.402, 143.216, -2.896]  frame=2023-01-16_15-58-21.jpg  saved=False
+  In the video, I see a group of students walking down a long hallway. The hallway is lined with beige walls and has a tiled floor. There are several doors on either side of the hallway, and there are framed pictures hanging on the walls. The students are wearing casual clothing, and some of them are carrying backpacks. The lighting in the hallway is bright, and there are no windows visible. The students appear to be engaged in conversation as they walk down the hallway.
+
+time=2023-01-16 15:58:24  pos=[-103.595, 140.334, -2.95]  frame=2023-01-16_15-58-24.jpg  saved=False
+  In the video, I see a group of students walking down a hallway. The students are dressed in casual attire, with some wearing backpacks. The hallway is lined with wooden doors on either side, and there are framed pictures hanging on the walls. The floor is tiled, and there is a large window at the end of the hallway that lets in natural light. The students are engaged in conversation, and one of them is carrying a book. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 15:58:27  pos=[-103.819, 137.456, -3.006]  frame=2023-01-16_15-58-27.jpg  saved=False
+  The video begins with a view of a large, open hallway with a tiled floor. The tiles are square and have a light beige color. The walls of the hallway are painted a light yellow color and have framed pictures hanging on them. There are two doors on the right side of the hallway, and a set of double doors at the end of the hallway. The ceiling has recessed lighting and a curved design. There are no people visible in the hallway.
+
+time=2023-01-16 15:58:30  pos=[-104.082, 134.59, -3.057]  frame=2023-01-16_15-58-30.jpg  saved=False
+  The video shows a long hallway with beige walls and a tiled floor. There are two doors on either side of the hallway, and a trash can is placed near the door on the left. The ceiling has fluorescent lights, and there are no people visible in the hallway. The hallway leads to a bright, open space with a large window.
+
+time=2023-01-16 15:58:33  pos=[-104.388, 131.74, -3.104]  frame=2023-01-16_15-58-33.jpg  saved=False
+  The video begins with a view of a long hallway with beige tiled flooring and a person walking away from the camera. The person is wearing a blue jacket, khaki pants, and white sneakers. As the video progresses, the person continues to walk down the hallway, passing by a trash can and a door with a red sign. The hallway is well-lit with fluorescent lights and has wooden doors on either side. There are no other people visible in the hallway.
+
+time=2023-01-16 15:58:36  pos=[-104.595, 128.918, -3.151]  frame=2023-01-16_15-58-36.jpg  saved=False
+  The video shows a young man wearing a blue jacket and khaki pants walking down a tiled hallway in a university building. He is carrying a backpack and appears to be heading towards the exit. The hallway is well-lit and has wooden doors on either side. There is a yellow caution sign on the left side of the hallway. The man walks steadily and confidently, passing by a potted plant and a sign that reads "OPEN HOSPITALITY". The video ends as the man exits the building.
+
+time=2023-01-16 15:58:39  pos=[-104.669, 126.052, -3.193]  frame=2023-01-16_15-58-39.jpg  saved=False
+  In the video, a person is walking down a hallway in a university building. The person is wearing a black jacket and carrying a backpack. The hallway is tiled and has a sign on the wall that reads "Oden Institute." There are two doors on either side of the hallway, and a potted plant is placed in the corner. The person is walking towards a door at the end of the hallway.
+
+time=2023-01-16 15:58:42  pos=[-104.765, 123.128, -3.231]  frame=2023-01-16_15-58-42.jpg  saved=False
+  In the video, a young man wearing a black jacket and blue jeans is walking down a long hallway with beige tiled flooring. The hallway is well-lit with overhead lights and has a wooden door on the right side. There is a potted plant on the left side of the hallway. The young man is walking towards the camera and appears to be in a hurry. As he walks, he passes by a sign on the wall that reads "University of Texas". The hallway leads to a large glass door that opens to the outside. Through the glass door, you can see trees and a building in the background. The young man walks past the glass door and continues down the hallway.
+
+time=2023-01-16 15:58:46  pos=[-105.013, 120.235, -3.27]  frame=2023-01-16_15-58-46.jpg  saved=False
+  The video begins with a view of a large, open room with a tiled floor. The tiles are square and have a light color. There is a large window on one side of the room that lets in natural light. Through the window, you can see a tree and a building outside. There is a potted plant in the corner of the room, and a few paintings hanging on the wall. A person is walking towards the window, and another person is standing near the entrance of the room. The walls of the room are white, and there are a few doors leading to other rooms. The overall atmosphere of the room is calm and quiet.
+
+time=2023-01-16 15:58:49  pos=[-105.913, 117.552, -3.314]  frame=2023-01-16_15-58-49.jpg  saved=False
+  The video shows a person walking into a building. The building has a tiled floor and a large glass window. The person is wearing a black jacket and black pants. There is a red and white sign on the wall near the entrance. The building appears to be a university building.
+
+time=2023-01-16 15:58:52  pos=[-106.641, 114.768, -3.361]  frame=2023-01-16_15-58-52.jpg  saved=False
+  In the video, I see a young man wearing a red t-shirt and jeans walking towards the entrance of a building. The building has a sign that reads "Emergency Exit Only" and there is a black mat on the floor. The man is carrying a backpack and appears to be in a hurry. There are trees visible in the background and the sky is overcast.
+
+time=2023-01-16 15:58:55  pos=[-106.987, 112.359, -3.395]  frame=2023-01-16_15-58-55.jpg  saved=False
+  The video shows a young man wearing a red Texas A&M t-shirt and black pants walking through a glass door. He is carrying a white bag and appears to be in a hurry. The door has a sign that reads "Emergency Exit Only" and "Pardon Our Appearance" on it. There is a black mat on the floor in front of the door. As the man walks through the door, he passes by a black trash can and a purple sign that says "PARKING". The background shows a tree-lined street with buildings in the distance.
+
+time=2023-01-16 15:58:58  pos=[-107.086, 110.833, -3.435]  frame=2023-01-16_15-58-58.jpg  saved=False
+  In the video, I see a group of students walking towards the camera. They are all wearing backpacks and appear to be in a hurry. The students are of various ethnicities and are dressed in casual attire. The campus is surrounded by tall buildings and lush green trees. The sky is overcast, and the ground is wet, indicating that it has recently rained. The students are walking on a concrete path that leads to a building with a glass door. There are no other people visible in the video.
+
+time=2023-01-16 15:59:01  pos=[-107.26, 108.084, -3.546]  frame=2023-01-16_15-59-01.jpg  saved=False
+  The video shows a wide concrete walkway with a few scattered leaves on it. The walkway is lined with lush green trees and bushes on both sides, creating a natural border. In the distance, there are several modern buildings with large windows and glass facades. The sky is overcast, and the overall color scheme of the video is a mix of gray, green, and brown. There are no people or moving objects visible in the video. The walkway appears to be empty and quiet, with no visible activity or events taking place.
+
+time=2023-01-16 15:59:04  pos=[-107.492, 105.239, -3.616]  frame=2023-01-16_15-59-04.jpg  saved=False
+  The video starts with a view of a concrete walkway that is surrounded by trees. The trees have green leaves and the walkway is clean with no visible litter. There are a few benches on the side of the walkway. As the video progresses, a few people can be seen walking on the walkway. They are dressed in casual clothing and appear to be students. The buildings in the background are made of brick and have large windows. There are a few cars parked on the street next to the walkway. The sky is overcast and the overall atmosphere of the video is calm and peaceful.
+
+time=2023-01-16 15:59:07  pos=[-107.511, 102.59, -3.573]  frame=2023-01-16_15-59-07.jpg  saved=False
+  The video shows a wide, open plaza with a concrete surface. There are a few trees on the left side of the frame, and a tall building can be seen in the background. The sky is overcast, and there are no people or moving objects visible in the video. The trees have green leaves, and the building has a modern design with large windows. There are no visible signs or banners. The plaza appears to be empty and quiet.
+
+time=2023-01-16 15:59:10  pos=[-107.5, 100.0, -3.498]  frame=2023-01-16_15-59-10.jpg  saved=False
+  In the video, I see a wide, open plaza with a concrete surface. There are a few trees scattered around the area, providing some shade. The buildings in the background are tall and modern, with large windows and a mix of brick and glass exteriors. There are no people visible in the video, which gives the area a quiet and peaceful atmosphere. The sky is overcast, and the overall color scheme of the video is muted with grays, browns, and greens.
+
+time=2023-01-16 15:59:13  pos=[-106.455, 97.838, -3.42]  frame=2023-01-16_15-59-13.jpg  saved=False
+  The video shows a quiet campus with a few students walking around. There are several trees lining the sidewalk, and a street lamp is visible in the foreground. The buildings in the background are modern and appear to be part of the university's academic facilities. The sky is overcast, and the overall atmosphere is calm and peaceful.
+
+time=2023-01-16 15:59:16  pos=[-104.824, 95.854, -3.34]  frame=2023-01-16_15-59-16.jpg  saved=False
+  The video shows a wide, empty street with a sidewalk on the left side. There are several trees with green leaves on both sides of the street. The sky is overcast, and there are no people or vehicles visible in the video. The buildings in the background are made of brick and have multiple windows. There is a street lamp on the right side of the sidewalk. The sidewalk is made of concrete and has a few leaves scattered on it.
+
+time=2023-01-16 15:59:19  pos=[-102.62, 95.489, -3.277]  frame=2023-01-16_15-59-19.jpg  saved=False
+  In the video, I see a group of students walking on a concrete sidewalk. They are all wearing backpacks and seem to be engaged in a conversation. The sidewalk is lined with large, mature trees with green leaves, and there are street lamps evenly spaced along the path. The students are walking in the same direction, and there is a building with a white facade and large windows in the background. The sky is clear and blue, and the overall atmosphere is peaceful and calm.
+
+time=2023-01-16 15:59:22  pos=[-100.033, 95.08, -3.201]  frame=2023-01-16_15-59-22.jpg  saved=False
+  In the video, I see a group of students walking on a sidewalk. They are all dressed in casual clothing, with some wearing backpacks. The sidewalk is lined with trees and lampposts, and there are buildings visible in the background. The students are engaged in conversation and seem to be enjoying their walk. The weather appears to be pleasant, and the students are dressed for mild temperatures. The buildings in the background have a modern architectural style, and the trees are lush and green. The lampposts are evenly spaced along the sidewalk, and the sidewalk itself is clean and well-maintained. The students seem to be in a relaxed mood, and there is a sense of camaraderie among them. Overall, the video captures a typical day on a university campus, with students going about their daily activities.
+
+time=2023-01-16 15:59:25  pos=[-97.44, 94.601, -3.118]  frame=2023-01-16_15-59-25.jpg  saved=False
+  The video shows a concrete sidewalk with a metal pole on the left side. There are trees with green leaves on the right side of the sidewalk. The sky is overcast, and there are no people or vehicles visible in the video. The sidewalk appears to be clean and well-maintained. The trees are tall and provide shade over the sidewalk. The metal pole is grey and has a sign attached to it. The video does not show any buildings or other structures.
+
+time=2023-01-16 15:59:28  pos=[-94.731, 94.345, -3.034]  frame=2023-01-16_15-59-28.jpg  saved=False
+  The video shows a concrete sidewalk lined with large, green trees. The sidewalk is empty, with no people walking on it. There is a street running parallel to the sidewalk, with no cars visible. The sky is overcast, and the overall color scheme of the video is a mix of green from the trees, gray from the sidewalk and street, and white from the overcast sky. The trees are tall and have thick trunks, and the sidewalk is clean and well-maintained. There are no signs or banners visible in the video. The video does not show any people, animals, or moving objects.
+
+time=2023-01-16 15:59:31  pos=[-92.121, 94.28, -2.944]  frame=2023-01-16_15-59-31.jpg  saved=False
+  The video shows a concrete sidewalk lined with large trees with green leaves. There are no people visible in the video. The sidewalk is empty and there are no activities or events taking place. The trees are tall and have thick trunks, and the leaves are lush and green. The sky is not visible in the video. There are no buildings or other structures visible in the video. The video does not show any animals or vehicles. The video is shot during the day.
+
+time=2023-01-16 15:59:34  pos=[-89.433, 94.352, -2.857]  frame=2023-01-16_15-59-34.jpg  saved=False
+  The video shows a concrete sidewalk lined with trees on one side and a grassy area with fallen leaves on the other. There are no people visible in the video. The trees have green leaves and the grass is a mix of green and brown. There is a street with a yellow curb on the right side of the sidewalk. In the background, there are buildings and a street sign. The sky is clear and blue.
+
+time=2023-01-16 15:59:37  pos=[-86.639, 94.158, -2.771]  frame=2023-01-16_15-59-37.jpg  saved=False
+  The video shows a concrete sidewalk lined with trees and a street on the other side. There are a few people walking on the sidewalk, including a man in a blue shirt and a woman in a white dress. There are also a few cars parked on the street, including a white SUV and a black sedan. The trees on the sidewalk have green leaves and the sky is clear. There are no visible buildings or other structures in the video.
+
+time=2023-01-16 15:59:40  pos=[-83.977, 93.872, -2.692]  frame=2023-01-16_15-59-40.jpg  saved=False
+  The video shows a concrete sidewalk lined with trees and a street lamp. The sidewalk is empty with no people walking on it. There are buildings visible in the background, and the sky is clear. The trees have green leaves, and the street lamp is gray. There are no cars or other vehicles visible in the video. The buildings in the background are modern and appear to be part of the university campus. The video does not show any events or activities taking place.
+
+time=2023-01-16 15:59:43  pos=[-81.153, 93.51, -2.605]  frame=2023-01-16_15-59-43.jpg  saved=False
+  The video shows a concrete sidewalk lined with trees and bushes. There are a few people walking on the sidewalk, some are alone while others are in groups. The buildings in the background are tall and modern, with large windows and glass facades. The sky is clear and blue. There are no cars on the street, and the overall atmosphere is calm and peaceful.
+
+time=2023-01-16 15:59:46  pos=[-78.452, 93.581, -2.509]  frame=2023-01-16_15-59-46.jpg  saved=False
+  The video shows a concrete walkway lined with trees and bushes. The trees have green leaves and brown trunks, and the bushes are a mix of green and brown. There is a yellow pole on the sidewalk. In the background, there is a large building with a glass facade. The sky is overcast. There are no people or animals visible in the video.
+
+time=2023-01-16 15:59:49  pos=[-75.761, 93.427, -2.429]  frame=2023-01-16_15-59-49.jpg  saved=False
+  The video shows a concrete sidewalk lined with trees and bushes. There is a yellow pole with a light on top of it. In the background, there is a large building with a glass facade. The sky is clear and blue. There are no people or animals visible in the video. The trees have green leaves and the bushes are brown. The light on the pole is off. The building has several windows and a large entrance.
+
+time=2023-01-16 15:59:52  pos=[-72.929, 93.132, -2.342]  frame=2023-01-16_15-59-52.jpg  saved=False
+  The video shows a concrete sidewalk with a yellow pole on the left side. There are a few trees with green leaves on the left side of the sidewalk. On the right side of the sidewalk, there is a large building with a glass facade. The sky is overcast and the ground is covered with fallen leaves. There are no people or animals visible in the video. The video does not show any events or activities.
+
+time=2023-01-16 15:59:55  pos=[-70.331, 92.864, -2.262]  frame=2023-01-16_15-59-55.jpg  saved=False
+  The video begins with a view of a yellow "HELP" sign on the left side of the frame. The camera then pans to the right, revealing a concrete sidewalk that leads towards a large building with a glass facade. The building appears to be a modern structure with several floors. As the camera continues to pan, a street lamp and a few trees come into view. The trees have green leaves and are located on the right side of the sidewalk. The sky is clear and blue, indicating that it is a sunny day. There are no people or vehicles visible in the video, and no specific activities or events can be observed. The overall atmosphere of the video is calm and quiet.
+
+time=2023-01-16 15:59:58  pos=[-67.695, 92.616, -2.179]  frame=2023-01-16_15-59-58.jpg  saved=False
+  The video shows a young woman, approximately in her early 20s, with long brown hair, wearing a blue tank top and black shorts. She is jogging on a brick pathway in a university campus. The pathway is lined with large trees and a tall building with large windows can be seen in the background. The sky is clear and it appears to be a sunny day. The woman is wearing white sneakers and is jogging at a steady pace. There are no other people visible in the video.
+
+time=2023-01-16 16:00:01  pos=[-65.18, 92.342, -2.12]  frame=2023-01-16_16-00-01.jpg  saved=False
+  In the video, there is a young woman wearing a blue tank top and black shorts. She is running on a brick sidewalk that has a herringbone pattern. The sidewalk is lined with trees and there are buildings on either side. The woman is running towards the camera and there are a few other people in the background. The sky is clear and it appears to be a sunny day.
+
+time=2023-01-16 16:00:04  pos=[-63.151, 92.116, -2.125]  frame=2023-01-16_16-00-04.jpg  saved=False
+  The video shows a young woman with long dark hair, wearing a brown jacket, blue jeans, and black boots. She is walking on a brick pathway with a zigzag pattern. The pathway is surrounded by green grass and trees. In the background, there is a large brick building with several windows. The sky is overcast, and there are no other people visible in the video. The woman walks confidently and appears to be enjoying her walk.
+
+time=2023-01-16 16:00:07  pos=[-60.573, 91.904, -2.156]  frame=2023-01-16_16-00-07.jpg  saved=False
+  The video begins with a close-up of a person's feet walking on a brick sidewalk. The person is wearing black shoes and blue jeans. As the video progresses, the camera pans up to reveal a wider view of the campus. The sidewalk is lined with trees and buildings, and there are a few people walking around. The buildings are made of brick and have large windows. There are also a few bicycles parked on the side of the road. The sky is overcast, and the overall color scheme of the video is muted with browns, greens, and grays.
+
+time=2023-01-16 16:00:10  pos=[-58.695, 92.191, -2.152]  frame=2023-01-16_16-00-10.jpg  saved=False
+  The video shows a young man, approximately in his early 20s, with short brown hair, wearing a black jacket and blue jeans. He is walking on a brick pathway that has a herringbone pattern. The pathway is lined with trees and bushes. In the background, there is a large building with multiple windows. There are also several bicycles parked on the side of the pathway. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:00:13  pos=[-58.363, 92.075, -2.155]  frame=2023-01-16_16-00-13.jpg  saved=False
+  The video begins with a view of a brick-patterned sidewalk. The bricks are arranged in a herringbone pattern and are a light brown color. There is a small patch of grass next to the sidewalk and a street sign in the distance. As the video progresses, a person wearing a blue jacket, beige pants, and white shoes walks into the frame from the right side. The person is carrying a black backpack and is walking at a steady pace. The background of the video includes a large building with large windows and a sculpture made of metal. The sky is overcast and the overall color tone of the video is muted.
+
+time=2023-01-16 16:00:16  pos=[-56.991, 90.71, -2.11]  frame=2023-01-16_16-00-16.jpg  saved=False
+  In the video, there is a young man wearing a black jacket, khaki pants, and white sneakers walking on a brick sidewalk. He is carrying a backpack and appears to be walking towards a large building with a modern design. The building has large windows and is surrounded by trees. There is a metal sculpture on the sidewalk near the building. The sky is overcast, and there are no other people visible in the video.
+
+time=2023-01-16 16:00:20  pos=[-55.295, 89.917, -2.061]  frame=2023-01-16_16-00-20.jpg  saved=False
+  The video starts with a view of a quiet street with a large building on the left and a sidewalk on the right. The sidewalk is made of brick and has a small patch of grass in the middle. There are a few trees on the left side of the street, and a street sign is visible in the distance. As the video progresses, a person wearing a red jacket and white pants walks into the frame from the right side. The person is carrying a white paper bag and is walking towards the camera. The person's face is not visible. The video ends with the person walking out of the frame, and the street remains quiet and empty.
+
+time=2023-01-16 16:00:23  pos=[-54.707, 90.626, -2.048]  frame=2023-01-16_16-00-23.jpg  saved=False
+  The video begins with a close-up of a person walking on a sidewalk. The person is wearing a blue jacket, beige pants, and white sneakers. They are carrying a white paper in their hand. As the camera pans out, we see that the person is walking on a sidewalk made of gray concrete, with a street lamp and a small bush in the foreground. In the background, there are trees with green leaves and a building with a white facade and windows. The person continues walking down the sidewalk, and the camera follows them until they are out of frame.
+
+time=2023-01-16 16:00:26  pos=[-54.604, 91.012, -2.043]  frame=2023-01-16_16-00-26.jpg  saved=False
+  The video starts with a view of a brick sidewalk next to a concrete walkway. There are several trees with green leaves on the left side of the sidewalk. On the right side, there is a street lamp and a small patch of grass with some bushes. In the distance, there are several buildings with white walls and windows. As the video progresses, a few people can be seen walking on the sidewalk. They are wearing casual clothes and appear to be students. The sky is overcast, and there are no visible clouds.
+
+time=2023-01-16 16:00:29  pos=[-54.638, 90.949, -2.038]  frame=2023-01-16_16-00-29.jpg  saved=False
+  In the video, I see a group of students walking down a brick pathway. The pathway is lined with large trees and has a sidewalk on the right side. There are buildings on both sides of the pathway. The students are wearing casual clothing and appear to be engaged in conversation. The trees have green leaves and the buildings are made of brick. There is a street lamp on the right side of the pathway. The sky is overcast and the overall atmosphere is calm.
+
+time=2023-01-16 16:00:32  pos=[-54.665, 90.935, -2.045]  frame=2023-01-16_16-00-32.jpg  saved=False
+  In the video, I see a group of students walking down a brick pathway. The pathway is lined with large, mature trees that provide shade for the students. The students are dressed in casual attire, with some wearing backpacks. The pathway is bordered by a concrete sidewalk on one side and a grassy area on the other. In the distance, there is a large building with a clock tower. The sky is clear and blue, and it appears to be a sunny day. The students seem to be engaged in conversation as they walk.
+
+time=2023-01-16 16:00:35  pos=[-54.557, 91.016, -2.043]  frame=2023-01-16_16-00-35.jpg  saved=False
+  The video shows a wide, paved walkway lined with large, mature trees with green leaves. The walkway is made up of alternating light and dark brown tiles, creating a patterned effect. On the right side of the walkway, there is a neatly trimmed green hedge. To the left, there is a sidewalk made of gray concrete. A gray metal lamppost stands on the sidewalk, and a few people can be seen walking in the distance. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:00:38  pos=[-54.688, 90.733, -2.052]  frame=2023-01-16_16-00-38.jpg  saved=False
+  The video begins with a view of a brick-patterned walkway leading towards a building with a white facade and large windows. The walkway is lined with trees and lampposts. As the video progresses, we see more of the campus, including a street with cars parked on the side and a few people walking. The buildings are mostly modern with glass and concrete structures. There are also some sculptures and benches scattered around the campus. The sky is overcast, and the overall color scheme is a mix of earth tones and greys.
+
+time=2023-01-16 16:00:41  pos=[-55.351, 88.848, -2.085]  frame=2023-01-16_16-00-41.jpg  saved=False
+  The video shows a young man in a black shirt and shorts walking down a brick-patterned sidewalk. He is walking towards the camera and appears to be in a hurry. The sidewalk is lined with trees and there are buildings visible in the background. There are also a few other people walking in the opposite direction. The sky is overcast and the overall atmosphere is calm.
+
+time=2023-01-16 16:00:44  pos=[-55.74, 86.312, -2.105]  frame=2023-01-16_16-00-44.jpg  saved=False
+  The video shows a young man wearing a black t-shirt and shorts, walking down a brick pathway. The pathway is lined with trees and buildings on either side. The man is walking towards the camera and appears to be in a relaxed mood. In the background, there is a large metal sculpture that stands out against the sky. The sculpture is made up of multiple metal rods that are arranged in a way that they create a sense of movement. The colors in the video are mostly natural tones, with the red of the bricks, the green of the trees, and the grey of the buildings and sculpture. The man's black clothing stands out against this backdrop.
+
+time=2023-01-16 16:00:47  pos=[-55.92, 83.516, -2.114]  frame=2023-01-16_16-00-47.jpg  saved=False
+  The video shows a young man wearing a blue t-shirt and black shorts walking on a brick-patterned sidewalk. He is wearing blue sneakers and has short brown hair. As he walks, he passes by a modern sculpture made of metal with a silver color. The sculpture is located on the left side of the sidewalk. In the background, there are tall buildings with large windows and a few trees with green leaves. The sky is overcast, and there are no other people visible in the video.
+
+time=2023-01-16 16:00:50  pos=[-56.083, 80.659, -2.139]  frame=2023-01-16_16-00-50.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern of light brown bricks. The walkway is bordered by a concrete sidewalk on one side and a grassy area with trees on the other. In the distance, there are several tall buildings, including a large, modern structure with a unique, metallic sculpture on top. The sky is overcast, and there are a few people walking on the walkway, some alone and others in groups. There are no visible events or activities taking place, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:00:53  pos=[-56.277, 77.778, -2.146]  frame=2023-01-16_16-00-53.jpg  saved=False
+  The video shows a wide, paved walkway with a unique herringbone pattern. The walkway is bordered by a concrete sidewalk on one side and a metal railing on the other. The railing has a modern design with a curved top. There are several trees lining the walkway, providing shade and greenery. In the background, there are tall buildings that appear to be part of the university's campus. The sky is overcast, and there are a few people walking on the walkway. The video does not show any specific events or activities.
+
+time=2023-01-16 16:00:56  pos=[-56.367, 74.95, -2.162]  frame=2023-01-16_16-00-56.jpg  saved=False
+  In the video, there are several people walking on a brick pathway. The pathway is lined with trees and buildings on both sides. There are a few people riding bicycles on the pathway. The sky is clear and there are no clouds visible. The buildings on the sides of the pathway are tall and appear to be apartment buildings. The trees on the pathway are green and healthy. There are no cars visible in the video. The people walking on the pathway are dressed in casual clothing. The video does not show any events or activities taking place.
+
+time=2023-01-16 16:00:59  pos=[-56.454, 72.14, -2.182]  frame=2023-01-16_16-00-59.jpg  saved=False
+  In the video, I see a group of students walking down a brick pathway on a university campus. The pathway is lined with trees and buildings on both sides. The students are dressed in casual clothing, with some wearing backpacks. The buildings are multi-storied and appear to be academic buildings. There are benches and trash cans placed along the pathway. The sky is overcast, and the overall atmosphere is calm and peaceful.
+
+time=2023-01-16 16:01:02  pos=[-56.705, 69.278, -2.19]  frame=2023-01-16_16-01-02.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern in shades of beige and brown. The walkway is lined with lush green trees and bushes on both sides, creating a serene and inviting atmosphere. There are several tall buildings visible in the background, suggesting that the campus is located in an urban area. The sky is overcast, and the overall color palette of the video is muted, with a lot of greys and greens. There are a few people walking on the walkway, but they are not the main focus of the video. The video does not show any events or activities taking place, and there are no sounds or music in the background.
+
+time=2023-01-16 16:01:05  pos=[-57.002, 66.426, -2.221]  frame=2023-01-16_16-01-05.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern. The walkway is lined with trees and benches on one side. There are tall buildings on both sides of the walkway. The sky is overcast. There are a few people walking on the walkway. There are no cars on the road. There is a sign on a pole on the walkway. There are no animals visible in the video.
+
+time=2023-01-16 16:01:08  pos=[-57.356, 63.575, -2.225]  frame=2023-01-16_16-01-08.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern. The walkway is lined with trees and lampposts on both sides. There are several buildings visible in the background, including a tall apartment building. The sky is overcast, and there are no people visible in the video. The colors in the video are muted, with the beige of the walkway and the green of the trees being the most prominent. The video does not show any movement or action.
+
+time=2023-01-16 16:01:11  pos=[-57.742, 60.727, -2.241]  frame=2023-01-16_16-01-11.jpg  saved=False
+  The video starts with a view of a brick pathway leading towards a large building. The pathway is made up of bricks in a herringbone pattern, with a concrete border on both sides. The building in the distance is a large, multi-story structure with numerous windows and a flat roof. There are a few trees scattered around the building, and a few cars parked in the distance. The sky is overcast, and the overall color scheme of the video is muted with a lot of grays and browns.
+
+time=2023-01-16 16:01:14  pos=[-58.037, 57.963, -2.251]  frame=2023-01-16_16-01-14.jpg  saved=False
+  In the video, I see a group of students walking on a brick pathway. The pathway is lined with trees and has a few yellow bollards. The students are wearing casual clothing, and some are carrying backpacks. The buildings in the background are tall and made of brick. There are a few cars parked on the side of the road. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:01:17  pos=[-58.107, 55.309, -2.266]  frame=2023-01-16_16-01-17.jpg  saved=False
+  The video shows a view of a university campus with a brick walkway in the foreground. The walkway has a herringbone pattern and is lined with yellow bollards. There are several buildings in the background, including a tall apartment building and a white building with a clock tower. The sky is overcast, and there are a few people walking on the sidewalk. There are also a few cars parked on the street. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:01:20  pos=[-58.205, 52.864, -2.281]  frame=2023-01-16_16-01-20.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern. The walkway is lined with yellow bollards on either side. There are a few people walking on the walkway, and some are sitting on benches. The buildings in the background are tall and made of concrete. There are trees lining the walkway, and there is a street with cars parked on the side. The sky is overcast, and the overall color scheme of the video is muted with a lot of grays and browns.
+
+time=2023-01-16 16:01:23  pos=[-58.67, 50.087, -2.293]  frame=2023-01-16_16-01-23.jpg  saved=False
+  The video starts with a view of a brick-patterned walkway with two yellow and silver bollards in the foreground. The walkway is lined with tall buildings on both sides, and there are trees and street lamps visible. The sky is overcast, and there are no people visible in the video. The camera pans to the right, showing more of the walkway and buildings. The buildings are mostly beige and gray, with some having red brick accents. There are no cars or other vehicles visible in the video. The video ends with the camera panning to the left, showing more of the walkway and buildings.
+
+time=2023-01-16 16:01:26  pos=[-58.704, 47.382, -2.299]  frame=2023-01-16_16-01-26.jpg  saved=False
+  The video starts with a view of a brick-patterned sidewalk. The bricks are arranged in a herringbone pattern and are a light brown color. The sidewalk is lined with tall buildings on both sides, and there are trees and street lamps scattered along the sidewalk. In the distance, there are cars parked on the street. As the video progresses, a person wearing a white shirt and blue jeans walks by on the sidewalk. The person is carrying a black bag and appears to be walking at a leisurely pace. The buildings in the background have multiple windows and are made of concrete. The sky is overcast, and there is no visible sun.
+
+time=2023-01-16 16:01:29  pos=[-57.616, 45.275, -2.273]  frame=2023-01-16_16-01-29.jpg  saved=False
+  The video shows a large, gray concrete building with multiple windows and a green hedge in front of it. The building appears to be a university building. There is a sidewalk made of brown bricks next to the building. The sidewalk is empty and there are no people walking on it. There are also no cars or other vehicles visible in the video. The sky is overcast and the overall color scheme of the video is gray and brown.
+
+time=2023-01-16 16:01:32  pos=[-55.471, 43.574, -2.261]  frame=2023-01-16_16-01-32.jpg  saved=False
+  The video shows a wide shot of a university campus with a large concrete building on the right side. The building has multiple windows and is surrounded by green bushes. There is a sidewalk in the foreground with a few benches and a trash can. The sky is clear and blue. There are no people or moving objects in the video. The building appears to be a dormitory or academic building. The bushes are well-maintained and the sidewalk is clean. The video does not show any specific events or activities.

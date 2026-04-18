@@ -1,0 +1,52 @@
+Question: When did you get off of the brick sidewalk?
+Type: time | Category: SHORT
+Window: 2023-01-16 16:01:14 → 2023-01-16 16:02:50 (96.3s)
+Total retrieved: 12
+
+rank=00  time=2023-01-16 16:02:50  pos=[0.838, 13.729, -0.375]  frame=2023-01-16_16-02-50_rank00.jpg
+  caption: The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older students as well. They are all dressed in casual clothing, with some wearing jeans and t-shirts, while others are in more formal attire. The students are walking in different directions, some are in groups, while others are walking alone. The campus is surrounded by trees and has several buildings with brick walls and large windows. There are also benches and tables scattered around the campus. The weather is sunny and the sky is clear.
+  pkl: 1673884968.961397.pkl  saved=False
+
+rank=01  time=2023-01-16 16:02:47  pos=[0.417, 16.619, -0.419]  frame=2023-01-16_16-02-47_rank01.jpg
+  caption: The video shows a large brick building with arched windows and a green dumpster in front of it. There is a parking lot in front of the building with a few cars parked. The sky is overcast and the ground is wet, suggesting that it has recently rained. There are no people visible in the video.
+  pkl: 1673884965.861486.pkl  saved=False
+
+rank=02  time=2023-01-16 16:02:44  pos=[-0.059, 19.546, -0.458]  frame=2023-01-16_16-02-44_rank02.jpg
+  caption: The video shows a large, brick building with arched windows and a green door. There is a red curb on the side of the road and a fire hydrant on the sidewalk. The road is empty and there are no people or vehicles visible. The sky is overcast and the building appears to be a few stories tall. The building has a sign that reads "University of XYZ". The video does not show any other buildings or landmarks.
+  pkl: 1673884962.762715.pkl  saved=False
+
+rank=03  time=2023-01-16 16:02:41  pos=[-0.571, 22.428, -0.485]  frame=2023-01-16_16-02-41_rank03.jpg
+  caption: The video opens with a view of a large brick building with arched windows. The building appears to be an old industrial structure, possibly a factory or warehouse. The ground is covered in gravel, and there are several large green dumpsters lined up against the building. There are no people visible in the video, and the area seems deserted. The sky is overcast, and the overall atmosphere is quiet and still.
+  pkl: 1673884959.762223.pkl  saved=False
+
+rank=04  time=2023-01-16 16:02:50  pos=[0.838, 13.729, -0.375]  frame=2023-01-16_16-02-50_rank04.jpg
+  caption: The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older students as well. They are all dressed in casual clothing, with some wearing jeans and t-shirts, while others are in more formal attire. The students are walking in different directions, some are in groups, while others are walking alone. The campus is surrounded by trees and has several buildings with brick walls and large windows. There are also benches and tables scattered around the campus. The weather is sunny and the sky is clear.
+  pkl: 1673884968.961397.pkl  saved=False
+
+rank=05  time=2023-01-16 16:02:47  pos=[0.417, 16.619, -0.419]  frame=2023-01-16_16-02-47_rank05.jpg
+  caption: The video shows a large brick building with arched windows and a green dumpster in front of it. There is a parking lot in front of the building with a few cars parked. The sky is overcast and the ground is wet, suggesting that it has recently rained. There are no people visible in the video.
+  pkl: 1673884965.861486.pkl  saved=False
+
+rank=06  time=2023-01-16 16:02:44  pos=[-0.059, 19.546, -0.458]  frame=2023-01-16_16-02-44_rank06.jpg
+  caption: The video shows a large, brick building with arched windows and a green door. There is a red curb on the side of the road and a fire hydrant on the sidewalk. The road is empty and there are no people or vehicles visible. The sky is overcast and the building appears to be a few stories tall. The building has a sign that reads "University of XYZ". The video does not show any other buildings or landmarks.
+  pkl: 1673884962.762715.pkl  saved=False
+
+rank=07  time=2023-01-16 16:02:41  pos=[-0.571, 22.428, -0.485]  frame=2023-01-16_16-02-41_rank07.jpg
+  caption: The video opens with a view of a large brick building with arched windows. The building appears to be an old industrial structure, possibly a factory or warehouse. The ground is covered in gravel, and there are several large green dumpsters lined up against the building. There are no people visible in the video, and the area seems deserted. The sky is overcast, and the overall atmosphere is quiet and still.
+  pkl: 1673884959.762223.pkl  saved=False
+
+rank=08  time=2023-01-16 16:02:50  pos=[0.838, 13.729, -0.375]  frame=2023-01-16_16-02-50_rank08.jpg
+  caption: The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older students as well. They are all dressed in casual clothing, with some wearing jeans and t-shirts, while others are in more formal attire. The students are walking in different directions, some are in groups, while others are walking alone. The campus is surrounded by trees and has several buildings with brick walls and large windows. There are also benches and tables scattered around the campus. The weather is sunny and the sky is clear.
+  pkl: 1673884968.961397.pkl  saved=False
+
+rank=09  time=2023-01-16 16:02:47  pos=[0.417, 16.619, -0.419]  frame=2023-01-16_16-02-47_rank09.jpg
+  caption: The video shows a large brick building with arched windows and a green dumpster in front of it. There is a parking lot in front of the building with a few cars parked. The sky is overcast and the ground is wet, suggesting that it has recently rained. There are no people visible in the video.
+  pkl: 1673884965.861486.pkl  saved=False
+
+rank=10  time=2023-01-16 16:02:44  pos=[-0.059, 19.546, -0.458]  frame=2023-01-16_16-02-44_rank10.jpg
+  caption: The video shows a large, brick building with arched windows and a green door. There is a red curb on the side of the road and a fire hydrant on the sidewalk. The road is empty and there are no people or vehicles visible. The sky is overcast and the building appears to be a few stories tall. The building has a sign that reads "University of XYZ". The video does not show any other buildings or landmarks.
+  pkl: 1673884962.762715.pkl  saved=False
+
+rank=11  time=2023-01-16 16:02:41  pos=[-0.571, 22.428, -0.485]  frame=2023-01-16_16-02-41_rank11.jpg
+  caption: The video opens with a view of a large brick building with arched windows. The building appears to be an old industrial structure, possibly a factory or warehouse. The ground is covered in gravel, and there are several large green dumpsters lined up against the building. There are no people visible in the video, and the area seems deserted. The sky is overcast, and the overall atmosphere is quiet and still.
+  pkl: 1673884959.762223.pkl  saved=False

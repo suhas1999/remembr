@@ -1,0 +1,35 @@
+Index:     0
+ID:        LONG_5a6cef0c-175d-4779-bfd4-f7b193fb9039
+Category:  LONG
+Type:      time
+Window:    2023-01-16 15:55:32 → 2023-01-16 16:03:02 (449.9s)
+
+Question:
+When did you leave the building?
+
+Ground truth answer:
+{
+  "text": [
+    "-0.36 minutes ago"
+  ],
+  "time": -0.36
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You left the building approximately 7.5 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "7.5"
+}
+
+Error metrics:
+{
+  "time_error": 7.86
+}
+
+Elapsed: 41.0s
+Retrieved 12 captions from 150 in window.

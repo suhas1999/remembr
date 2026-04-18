@@ -1,0 +1,35 @@
+Index:     21
+ID:        SHORT_37a3097f-a357-4af3-8a84-244e1b767ddf
+Category:  SHORT
+Type:      time
+Window:    2023-01-16 15:58:49 → 2023-01-16 16:00:04 (75.8s)
+
+Question:
+When did you leave the building?
+
+Ground truth answer:
+{
+  "text": [
+    "-3.32 minutes ago"
+  ],
+  "time": -3.32
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You left the building 1.2 minutes ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "1.2"
+}
+
+Error metrics:
+{
+  "time_error": 4.52
+}
+
+Elapsed: 36.8s
+Retrieved 12 captions from 26 in window.

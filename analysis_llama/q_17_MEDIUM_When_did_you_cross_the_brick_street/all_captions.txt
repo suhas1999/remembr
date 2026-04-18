@@ -1,0 +1,190 @@
+All 63 captions in question window:
+
+time=2023-01-16 15:59:55  pos=[-70.331, 92.864, -2.262]  frame=2023-01-16_15-59-55.jpg  saved=False
+  The video begins with a view of a yellow "HELP" sign on the left side of the frame. The camera then pans to the right, revealing a concrete sidewalk that leads towards a large building with a glass facade. The building appears to be a modern structure with several floors. As the camera continues to pan, a street lamp and a few trees come into view. The trees have green leaves and are located on the right side of the sidewalk. The sky is clear and blue, indicating that it is a sunny day. There are no people or vehicles visible in the video, and no specific activities or events can be observed. The overall atmosphere of the video is calm and quiet.
+
+time=2023-01-16 15:59:58  pos=[-67.695, 92.616, -2.179]  frame=2023-01-16_15-59-58.jpg  saved=False
+  The video shows a young woman, approximately in her early 20s, with long brown hair, wearing a blue tank top and black shorts. She is jogging on a brick pathway in a university campus. The pathway is lined with large trees and a tall building with large windows can be seen in the background. The sky is clear and it appears to be a sunny day. The woman is wearing white sneakers and is jogging at a steady pace. There are no other people visible in the video.
+
+time=2023-01-16 16:00:01  pos=[-65.18, 92.342, -2.12]  frame=2023-01-16_16-00-01.jpg  saved=False
+  In the video, there is a young woman wearing a blue tank top and black shorts. She is running on a brick sidewalk that has a herringbone pattern. The sidewalk is lined with trees and there are buildings on either side. The woman is running towards the camera and there are a few other people in the background. The sky is clear and it appears to be a sunny day.
+
+time=2023-01-16 16:00:04  pos=[-63.151, 92.116, -2.125]  frame=2023-01-16_16-00-04.jpg  saved=False
+  The video shows a young woman with long dark hair, wearing a brown jacket, blue jeans, and black boots. She is walking on a brick pathway with a zigzag pattern. The pathway is surrounded by green grass and trees. In the background, there is a large brick building with several windows. The sky is overcast, and there are no other people visible in the video. The woman walks confidently and appears to be enjoying her walk.
+
+time=2023-01-16 16:00:07  pos=[-60.573, 91.904, -2.156]  frame=2023-01-16_16-00-07.jpg  saved=False
+  The video begins with a close-up of a person's feet walking on a brick sidewalk. The person is wearing black shoes and blue jeans. As the video progresses, the camera pans up to reveal a wider view of the campus. The sidewalk is lined with trees and buildings, and there are a few people walking around. The buildings are made of brick and have large windows. There are also a few bicycles parked on the side of the road. The sky is overcast, and the overall color scheme of the video is muted with browns, greens, and grays.
+
+time=2023-01-16 16:00:10  pos=[-58.695, 92.191, -2.152]  frame=2023-01-16_16-00-10.jpg  saved=False
+  The video shows a young man, approximately in his early 20s, with short brown hair, wearing a black jacket and blue jeans. He is walking on a brick pathway that has a herringbone pattern. The pathway is lined with trees and bushes. In the background, there is a large building with multiple windows. There are also several bicycles parked on the side of the pathway. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:00:13  pos=[-58.363, 92.075, -2.155]  frame=2023-01-16_16-00-13.jpg  saved=False
+  The video begins with a view of a brick-patterned sidewalk. The bricks are arranged in a herringbone pattern and are a light brown color. There is a small patch of grass next to the sidewalk and a street sign in the distance. As the video progresses, a person wearing a blue jacket, beige pants, and white shoes walks into the frame from the right side. The person is carrying a black backpack and is walking at a steady pace. The background of the video includes a large building with large windows and a sculpture made of metal. The sky is overcast and the overall color tone of the video is muted.
+
+time=2023-01-16 16:00:16  pos=[-56.991, 90.71, -2.11]  frame=2023-01-16_16-00-16.jpg  saved=False
+  In the video, there is a young man wearing a black jacket, khaki pants, and white sneakers walking on a brick sidewalk. He is carrying a backpack and appears to be walking towards a large building with a modern design. The building has large windows and is surrounded by trees. There is a metal sculpture on the sidewalk near the building. The sky is overcast, and there are no other people visible in the video.
+
+time=2023-01-16 16:00:20  pos=[-55.295, 89.917, -2.061]  frame=2023-01-16_16-00-20.jpg  saved=False
+  The video starts with a view of a quiet street with a large building on the left and a sidewalk on the right. The sidewalk is made of brick and has a small patch of grass in the middle. There are a few trees on the left side of the street, and a street sign is visible in the distance. As the video progresses, a person wearing a red jacket and white pants walks into the frame from the right side. The person is carrying a white paper bag and is walking towards the camera. The person's face is not visible. The video ends with the person walking out of the frame, and the street remains quiet and empty.
+
+time=2023-01-16 16:00:23  pos=[-54.707, 90.626, -2.048]  frame=2023-01-16_16-00-23.jpg  saved=False
+  The video begins with a close-up of a person walking on a sidewalk. The person is wearing a blue jacket, beige pants, and white sneakers. They are carrying a white paper in their hand. As the camera pans out, we see that the person is walking on a sidewalk made of gray concrete, with a street lamp and a small bush in the foreground. In the background, there are trees with green leaves and a building with a white facade and windows. The person continues walking down the sidewalk, and the camera follows them until they are out of frame.
+
+time=2023-01-16 16:00:26  pos=[-54.604, 91.012, -2.043]  frame=2023-01-16_16-00-26.jpg  saved=False
+  The video starts with a view of a brick sidewalk next to a concrete walkway. There are several trees with green leaves on the left side of the sidewalk. On the right side, there is a street lamp and a small patch of grass with some bushes. In the distance, there are several buildings with white walls and windows. As the video progresses, a few people can be seen walking on the sidewalk. They are wearing casual clothes and appear to be students. The sky is overcast, and there are no visible clouds.
+
+time=2023-01-16 16:00:29  pos=[-54.638, 90.949, -2.038]  frame=2023-01-16_16-00-29.jpg  saved=False
+  In the video, I see a group of students walking down a brick pathway. The pathway is lined with large trees and has a sidewalk on the right side. There are buildings on both sides of the pathway. The students are wearing casual clothing and appear to be engaged in conversation. The trees have green leaves and the buildings are made of brick. There is a street lamp on the right side of the pathway. The sky is overcast and the overall atmosphere is calm.
+
+time=2023-01-16 16:00:32  pos=[-54.665, 90.935, -2.045]  frame=2023-01-16_16-00-32.jpg  saved=False
+  In the video, I see a group of students walking down a brick pathway. The pathway is lined with large, mature trees that provide shade for the students. The students are dressed in casual attire, with some wearing backpacks. The pathway is bordered by a concrete sidewalk on one side and a grassy area on the other. In the distance, there is a large building with a clock tower. The sky is clear and blue, and it appears to be a sunny day. The students seem to be engaged in conversation as they walk.
+
+time=2023-01-16 16:00:35  pos=[-54.557, 91.016, -2.043]  frame=2023-01-16_16-00-35.jpg  saved=False
+  The video shows a wide, paved walkway lined with large, mature trees with green leaves. The walkway is made up of alternating light and dark brown tiles, creating a patterned effect. On the right side of the walkway, there is a neatly trimmed green hedge. To the left, there is a sidewalk made of gray concrete. A gray metal lamppost stands on the sidewalk, and a few people can be seen walking in the distance. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:00:38  pos=[-54.688, 90.733, -2.052]  frame=2023-01-16_16-00-38.jpg  saved=False
+  The video begins with a view of a brick-patterned walkway leading towards a building with a white facade and large windows. The walkway is lined with trees and lampposts. As the video progresses, we see more of the campus, including a street with cars parked on the side and a few people walking. The buildings are mostly modern with glass and concrete structures. There are also some sculptures and benches scattered around the campus. The sky is overcast, and the overall color scheme is a mix of earth tones and greys.
+
+time=2023-01-16 16:00:41  pos=[-55.351, 88.848, -2.085]  frame=2023-01-16_16-00-41.jpg  saved=False
+  The video shows a young man in a black shirt and shorts walking down a brick-patterned sidewalk. He is walking towards the camera and appears to be in a hurry. The sidewalk is lined with trees and there are buildings visible in the background. There are also a few other people walking in the opposite direction. The sky is overcast and the overall atmosphere is calm.
+
+time=2023-01-16 16:00:44  pos=[-55.74, 86.312, -2.105]  frame=2023-01-16_16-00-44.jpg  saved=False
+  The video shows a young man wearing a black t-shirt and shorts, walking down a brick pathway. The pathway is lined with trees and buildings on either side. The man is walking towards the camera and appears to be in a relaxed mood. In the background, there is a large metal sculpture that stands out against the sky. The sculpture is made up of multiple metal rods that are arranged in a way that they create a sense of movement. The colors in the video are mostly natural tones, with the red of the bricks, the green of the trees, and the grey of the buildings and sculpture. The man's black clothing stands out against this backdrop.
+
+time=2023-01-16 16:00:47  pos=[-55.92, 83.516, -2.114]  frame=2023-01-16_16-00-47.jpg  saved=False
+  The video shows a young man wearing a blue t-shirt and black shorts walking on a brick-patterned sidewalk. He is wearing blue sneakers and has short brown hair. As he walks, he passes by a modern sculpture made of metal with a silver color. The sculpture is located on the left side of the sidewalk. In the background, there are tall buildings with large windows and a few trees with green leaves. The sky is overcast, and there are no other people visible in the video.
+
+time=2023-01-16 16:00:50  pos=[-56.083, 80.659, -2.139]  frame=2023-01-16_16-00-50.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern of light brown bricks. The walkway is bordered by a concrete sidewalk on one side and a grassy area with trees on the other. In the distance, there are several tall buildings, including a large, modern structure with a unique, metallic sculpture on top. The sky is overcast, and there are a few people walking on the walkway, some alone and others in groups. There are no visible events or activities taking place, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:00:53  pos=[-56.277, 77.778, -2.146]  frame=2023-01-16_16-00-53.jpg  saved=False
+  The video shows a wide, paved walkway with a unique herringbone pattern. The walkway is bordered by a concrete sidewalk on one side and a metal railing on the other. The railing has a modern design with a curved top. There are several trees lining the walkway, providing shade and greenery. In the background, there are tall buildings that appear to be part of the university's campus. The sky is overcast, and there are a few people walking on the walkway. The video does not show any specific events or activities.
+
+time=2023-01-16 16:00:56  pos=[-56.367, 74.95, -2.162]  frame=2023-01-16_16-00-56.jpg  saved=False
+  In the video, there are several people walking on a brick pathway. The pathway is lined with trees and buildings on both sides. There are a few people riding bicycles on the pathway. The sky is clear and there are no clouds visible. The buildings on the sides of the pathway are tall and appear to be apartment buildings. The trees on the pathway are green and healthy. There are no cars visible in the video. The people walking on the pathway are dressed in casual clothing. The video does not show any events or activities taking place.
+
+time=2023-01-16 16:00:59  pos=[-56.454, 72.14, -2.182]  frame=2023-01-16_16-00-59.jpg  saved=False
+  In the video, I see a group of students walking down a brick pathway on a university campus. The pathway is lined with trees and buildings on both sides. The students are dressed in casual clothing, with some wearing backpacks. The buildings are multi-storied and appear to be academic buildings. There are benches and trash cans placed along the pathway. The sky is overcast, and the overall atmosphere is calm and peaceful.
+
+time=2023-01-16 16:01:02  pos=[-56.705, 69.278, -2.19]  frame=2023-01-16_16-01-02.jpg  saved=False
+  The video shows a wide, paved walkway with a herringbone pattern in shades of beige and brown. The walkway is lined with lush green trees and bushes on both sides, creating a serene and inviting atmosphere. There are several tall buildings visible in the background, suggesting that the campus is located in an urban area. The sky is overcast, and the overall color palette of the video is muted, with a lot of greys and greens. There are a few people walking on the walkway, but they are not the main focus of the video. The video does not show any events or activities taking place, and there are no sounds or music in the background.
+
+time=2023-01-16 16:01:05  pos=[-57.002, 66.426, -2.221]  frame=2023-01-16_16-01-05.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern. The walkway is lined with trees and benches on one side. There are tall buildings on both sides of the walkway. The sky is overcast. There are a few people walking on the walkway. There are no cars on the road. There is a sign on a pole on the walkway. There are no animals visible in the video.
+
+time=2023-01-16 16:01:08  pos=[-57.356, 63.575, -2.225]  frame=2023-01-16_16-01-08.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern. The walkway is lined with trees and lampposts on both sides. There are several buildings visible in the background, including a tall apartment building. The sky is overcast, and there are no people visible in the video. The colors in the video are muted, with the beige of the walkway and the green of the trees being the most prominent. The video does not show any movement or action.
+
+time=2023-01-16 16:01:11  pos=[-57.742, 60.727, -2.241]  frame=2023-01-16_16-01-11.jpg  saved=False
+  The video starts with a view of a brick pathway leading towards a large building. The pathway is made up of bricks in a herringbone pattern, with a concrete border on both sides. The building in the distance is a large, multi-story structure with numerous windows and a flat roof. There are a few trees scattered around the building, and a few cars parked in the distance. The sky is overcast, and the overall color scheme of the video is muted with a lot of grays and browns.
+
+time=2023-01-16 16:01:14  pos=[-58.037, 57.963, -2.251]  frame=2023-01-16_16-01-14.jpg  saved=False
+  In the video, I see a group of students walking on a brick pathway. The pathway is lined with trees and has a few yellow bollards. The students are wearing casual clothing, and some are carrying backpacks. The buildings in the background are tall and made of brick. There are a few cars parked on the side of the road. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:01:17  pos=[-58.107, 55.309, -2.266]  frame=2023-01-16_16-01-17.jpg  saved=False
+  The video shows a view of a university campus with a brick walkway in the foreground. The walkway has a herringbone pattern and is lined with yellow bollards. There are several buildings in the background, including a tall apartment building and a white building with a clock tower. The sky is overcast, and there are a few people walking on the sidewalk. There are also a few cars parked on the street. The overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:01:20  pos=[-58.205, 52.864, -2.281]  frame=2023-01-16_16-01-20.jpg  saved=False
+  The video shows a paved walkway with a herringbone pattern. The walkway is lined with yellow bollards on either side. There are a few people walking on the walkway, and some are sitting on benches. The buildings in the background are tall and made of concrete. There are trees lining the walkway, and there is a street with cars parked on the side. The sky is overcast, and the overall color scheme of the video is muted with a lot of grays and browns.
+
+time=2023-01-16 16:01:23  pos=[-58.67, 50.087, -2.293]  frame=2023-01-16_16-01-23.jpg  saved=False
+  The video starts with a view of a brick-patterned walkway with two yellow and silver bollards in the foreground. The walkway is lined with tall buildings on both sides, and there are trees and street lamps visible. The sky is overcast, and there are no people visible in the video. The camera pans to the right, showing more of the walkway and buildings. The buildings are mostly beige and gray, with some having red brick accents. There are no cars or other vehicles visible in the video. The video ends with the camera panning to the left, showing more of the walkway and buildings.
+
+time=2023-01-16 16:01:26  pos=[-58.704, 47.382, -2.299]  frame=2023-01-16_16-01-26.jpg  saved=False
+  The video starts with a view of a brick-patterned sidewalk. The bricks are arranged in a herringbone pattern and are a light brown color. The sidewalk is lined with tall buildings on both sides, and there are trees and street lamps scattered along the sidewalk. In the distance, there are cars parked on the street. As the video progresses, a person wearing a white shirt and blue jeans walks by on the sidewalk. The person is carrying a black bag and appears to be walking at a leisurely pace. The buildings in the background have multiple windows and are made of concrete. The sky is overcast, and there is no visible sun.
+
+time=2023-01-16 16:01:29  pos=[-57.616, 45.275, -2.273]  frame=2023-01-16_16-01-29.jpg  saved=False
+  The video shows a large, gray concrete building with multiple windows and a green hedge in front of it. The building appears to be a university building. There is a sidewalk made of brown bricks next to the building. The sidewalk is empty and there are no people walking on it. There are also no cars or other vehicles visible in the video. The sky is overcast and the overall color scheme of the video is gray and brown.
+
+time=2023-01-16 16:01:32  pos=[-55.471, 43.574, -2.261]  frame=2023-01-16_16-01-32.jpg  saved=False
+  The video shows a wide shot of a university campus with a large concrete building on the right side. The building has multiple windows and is surrounded by green bushes. There is a sidewalk in the foreground with a few benches and a trash can. The sky is clear and blue. There are no people or moving objects in the video. The building appears to be a dormitory or academic building. The bushes are well-maintained and the sidewalk is clean. The video does not show any specific events or activities.
+
+time=2023-01-16 16:01:35  pos=[-53.095, 42.261, -2.219]  frame=2023-01-16_16-01-35.jpg  saved=False
+  The video shows a wide, empty concrete parking lot with a few small puddles of water scattered across the surface. The lot is surrounded by large, modern buildings with large windows and beige walls. There are a few small bushes and trees planted along the edges of the lot. The sky is overcast, and there are no people or vehicles visible in the video. The buildings appear to be part of a university campus, and the parking lot is likely used by students and staff.
+
+time=2023-01-16 16:01:38  pos=[-50.442, 41.422, -2.154]  frame=2023-01-16_16-01-38.jpg  saved=False
+  The video shows a wide, empty concrete road with a few scattered leaves on the ground. On the left side of the road, there is a row of bicycles parked against a metal railing. The bicycles are of various colors, including black, red, and silver. On the right side of the road, there is a large building with a modern design. The building has several windows and a few potted plants in front of it. The sky is overcast, and there are no people or moving vehicles visible in the video.
+
+time=2023-01-16 16:01:41  pos=[-47.672, 40.82, -2.149]  frame=2023-01-16_16-01-41.jpg  saved=False
+  In the video, I see a group of students walking towards the camera. They are all wearing backpacks and appear to be in a hurry. The students are mostly wearing casual clothing, with a few wearing jackets. The campus is surrounded by tall buildings with large windows. There are several benches and trash cans along the path. The sky is overcast, and the ground is wet, suggesting that it has recently rained. The students are walking on a concrete path with red and white lines. There are no cars or other vehicles visible in the video. The students seem to be engaged in conversation as they walk.
+
+time=2023-01-16 16:01:44  pos=[-44.863, 40.353, -2.087]  frame=2023-01-16_16-01-44.jpg  saved=False
+  The video begins with a view of a long, empty parking lot. The ground is made of concrete, and there are red lines painted on it. On the left side of the parking lot, there are several concrete pillars. On the right side, there is a large building with several windows. There are also a few trees scattered around the parking lot. The sky is overcast, and there are no people or cars visible in the video.
+
+time=2023-01-16 16:01:47  pos=[-42.039, 39.9, -1.995]  frame=2023-01-16_16-01-47.jpg  saved=False
+  In the video, I see a group of students walking down a concrete pathway. They are all wearing backpacks and appear to be in a hurry, possibly heading to a class. The pathway is lined with concrete bollards on either side, and there are tall buildings on either side of the pathway. The buildings are made of concrete and have large windows. There are also several trees and bushes scattered around the pathway. The sky is overcast, and the overall color scheme of the video is gray and muted.
+
+time=2023-01-16 16:01:50  pos=[-39.289, 39.294, -1.906]  frame=2023-01-16_16-01-50.jpg  saved=False
+  The video shows a wide, empty concrete pathway with a white line down the middle. On either side of the pathway, there are concrete walls with a few windows and doors. There are also a few trash cans and a fire hydrant on the right side of the pathway. In the background, there are a few buildings with large windows and a few bicycles parked on the left side of the pathway. The sky is overcast and the overall color scheme of the video is gray and muted.
+
+time=2023-01-16 16:01:53  pos=[-36.556, 38.594, -1.829]  frame=2023-01-16_16-01-53.jpg  saved=False
+  In the video, I see a group of students walking down a concrete pathway. The students are dressed in casual attire, with some wearing backpacks. The pathway is lined with concrete bollards and has a red line painted on the ground. On the right side of the pathway, there are several bicycles parked against a wall. The buildings on either side of the pathway are made of brick and have large windows. The sky is overcast, and the overall atmosphere is calm and quiet.
+
+time=2023-01-16 16:01:56  pos=[-33.829, 38.326, -1.761]  frame=2023-01-16_16-01-56.jpg  saved=False
+  The video shows a wide, empty concrete pathway with a red line running down the center. On either side of the pathway, there are concrete bollards with red stripes. To the left of the pathway, there is a row of bicycles parked against a wall. The bicycles are of various colors, but most are black or silver. On the right side of the pathway, there is a large building with a brick facade and multiple windows. The building has a tall tower with a clock on it. The sky is overcast, and there are no people visible in the video.
+
+time=2023-01-16 16:01:59  pos=[-30.97, 38.205, -1.689]  frame=2023-01-16_16-01-59.jpg  saved=False
+  The video shows a wide, empty concrete pathway with a red line running down the middle. On either side of the pathway, there are concrete bollards with red stripes. To the left of the pathway, there is a tall brick building with several windows. To the right, there is a white building with a large window. In the distance, there is a white van parked near the building. There are also several bicycles parked near the pathway. The sky is overcast, and there are no people visible in the video.
+
+time=2023-01-16 16:02:02  pos=[-28.26, 38.074, -1.618]  frame=2023-01-16_16-02-02.jpg  saved=False
+  The video shows a concrete pathway leading towards a large brick building with multiple windows. On the left side of the pathway, there are several bicycles parked in a row. On the right side, there is a white van parked with a red stripe on the side. The building has a large entrance with a set of stairs leading up to it. The sky is overcast, and there are no people visible in the video.
+
+time=2023-01-16 16:02:05  pos=[-25.409, 37.771, -1.555]  frame=2023-01-16_16-02-05.jpg  saved=False
+  The video shows a wide, empty parking lot with a few bicycles parked on the side. There are several large buildings in the background, with one tall building on the left and a smaller one on the right. The sky is overcast, and the ground is wet, suggesting that it has recently rained. There are no people visible in the video, and no movement or activity is taking place. The colors in the video are muted, with the buildings appearing in shades of gray and the bicycles in black and silver.
+
+time=2023-01-16 16:02:08  pos=[-22.666, 37.408, -1.502]  frame=2023-01-16_16-02-08.jpg  saved=False
+  In the video, I see a group of students walking towards the camera. They are wearing casual clothes and carrying backpacks. The students are of various ages and ethnicities. The campus is surrounded by tall buildings with large windows. There are several trees scattered around the campus. The ground is made of concrete and there are a few benches and trash cans. The sky is clear and it is a sunny day.
+
+time=2023-01-16 16:02:11  pos=[-19.994, 37.135, -1.447]  frame=2023-01-16_16-02-11.jpg  saved=False
+  In the video, I see a group of students walking across the campus. They are all wearing backpacks and seem to be in a hurry. The students are mostly wearing casual clothing, with some wearing jeans and t-shirts. The campus is surrounded by tall buildings, and there are several trees scattered around the area. The sky is overcast, and the weather appears to be cool. The students are walking in different directions, some towards the buildings and others towards the open spaces. There are no cars or other vehicles visible in the video. The students seem to be engaged in conversation with each other, and some are looking at their phones. The overall atmosphere of the campus is busy and lively.
+
+time=2023-01-16 16:02:14  pos=[-17.16, 36.912, -1.375]  frame=2023-01-16_16-02-14.jpg  saved=False
+  The video shows a wide, empty parking lot with a large brick building in the background. The building has several windows and a set of stairs leading up to the entrance. The parking lot is mostly empty, with only a few cars parked in the distance. The ground is made of concrete, and there are several concrete pillars scattered throughout the lot. The sky is overcast, and there are no people visible in the video.
+
+time=2023-01-16 16:02:17  pos=[-14.583, 36.579, -1.313]  frame=2023-01-16_16-02-17.jpg  saved=False
+  The video shows a large, empty parking lot with a concrete surface. The lot is surrounded by several buildings, including a large brick building with multiple windows and a smaller building with a green roof. There are several concrete pillars with pink stripes on the sides of the lot. In the background, there is a metal fence and a set of stairs leading up to a building. There are no people or vehicles visible in the lot. The sky is overcast, and the overall atmosphere is quiet and deserted.
+
+time=2023-01-16 16:02:20  pos=[-12.28, 35.831, -1.23]  frame=2023-01-16_16-02-20.jpg  saved=False
+  The video shows a wide, empty parking lot with a large building in the background. The building has a brick exterior and several windows. There are two concrete pillars on the right side of the frame, and a pink line runs along the ground near them. The sky is overcast, and there are no people or vehicles visible in the parking lot. The ground appears to be made of concrete, and there are no visible signs or markings. The overall atmosphere is quiet and deserted.
+
+time=2023-01-16 16:02:23  pos=[-9.759, 34.677, -1.097]  frame=2023-01-16_16-02-23.jpg  saved=False
+  In the video, I see a group of students walking across the campus. They are all wearing backpacks and seem to be in a hurry. The campus is surrounded by tall buildings with large windows. There is a pink line painted on the ground, possibly indicating a boundary or a path. The sky is overcast, and the weather seems to be cool. The students are all wearing jackets and long pants. There are no other people or objects in the video.
+
+time=2023-01-16 16:02:26  pos=[-7.118, 33.575, -0.961]  frame=2023-01-16_16-02-26.jpg  saved=False
+  The video shows a wide, empty parking lot in front of a large, multi-story brick building with a modern entrance. The building has large windows and a set of stairs leading up to the entrance. The parking lot is made of concrete and has a few small puddles of water. There are no cars or people in the parking lot. In the background, there is a smaller building with a red roof. The sky is overcast, and the overall color scheme of the video is gray and brown.
+
+time=2023-01-16 16:02:29  pos=[-4.841, 32.324, -0.819]  frame=2023-01-16_16-02-29.jpg  saved=False
+  The video shows a university campus with a large brick building on the left and a smaller brick building on the right. There is a concrete walkway in the middle with a metal railing on the left side. The sky is overcast and the ground is wet, suggesting it has recently rained. There are no people visible in the video. The buildings have large windows and there are no visible signs or banners. The colors in the video are muted due to the overcast weather.
+
+time=2023-01-16 16:02:32  pos=[-3.154, 30.347, -0.712]  frame=2023-01-16_16-02-32.jpg  saved=False
+  The video shows a large brick building with arched windows and a green dumpster in front of it. There is a red curb on the side of the road and a few leaves scattered on the ground. The sky is overcast and there are no people or vehicles visible in the video.
+
+time=2023-01-16 16:02:35  pos=[-2.033, 27.879, -0.63]  frame=2023-01-16_16-02-35.jpg  saved=False
+  The video shows a large brick building with arched windows and a green dumpster in front of it. There is a red curb on the side of the road and a manhole cover on the pavement. The sky is overcast and there are no people or vehicles visible in the video.
+
+time=2023-01-16 16:02:38  pos=[-1.158, 25.181, -0.539]  frame=2023-01-16_16-02-38.jpg  saved=False
+  The video shows a large brick building with arched windows and a green door. There are two green dumpsters in front of the building. The ground is made of concrete and there are a few leaves scattered around. The sky is cloudy and there are no people or animals visible in the video.
+
+time=2023-01-16 16:02:41  pos=[-0.571, 22.428, -0.485]  frame=2023-01-16_16-02-41.jpg  saved=False
+  The video opens with a view of a large brick building with arched windows. The building appears to be an old industrial structure, possibly a factory or warehouse. The ground is covered in gravel, and there are several large green dumpsters lined up against the building. There are no people visible in the video, and the area seems deserted. The sky is overcast, and the overall atmosphere is quiet and still.
+
+time=2023-01-16 16:02:44  pos=[-0.059, 19.546, -0.458]  frame=2023-01-16_16-02-44.jpg  saved=False
+  The video shows a large, brick building with arched windows and a green door. There is a red curb on the side of the road and a fire hydrant on the sidewalk. The road is empty and there are no people or vehicles visible. The sky is overcast and the building appears to be a few stories tall. The building has a sign that reads "University of XYZ". The video does not show any other buildings or landmarks.
+
+time=2023-01-16 16:02:47  pos=[0.417, 16.619, -0.419]  frame=2023-01-16_16-02-47.jpg  saved=False
+  The video shows a large brick building with arched windows and a green dumpster in front of it. There is a parking lot in front of the building with a few cars parked. The sky is overcast and the ground is wet, suggesting that it has recently rained. There are no people visible in the video.
+
+time=2023-01-16 16:02:50  pos=[0.838, 13.729, -0.375]  frame=2023-01-16_16-02-50.jpg  saved=False
+  The video shows a group of students walking around a university campus. They are all wearing backpacks and carrying books. The students are mostly young adults, with a few older students as well. They are all dressed in casual clothing, with some wearing jeans and t-shirts, while others are in more formal attire. The students are walking in different directions, some are in groups, while others are walking alone. The campus is surrounded by trees and has several buildings with brick walls and large windows. There are also benches and tables scattered around the campus. The weather is sunny and the sky is clear.
+
+time=2023-01-16 16:02:53  pos=[1.225, 10.837, -0.329]  frame=2023-01-16_16-02-53.jpg  saved=False
+  The video shows a university campus with a large brick building in the background. The building has large windows and a green awning. In front of the building, there is a parking lot with a few cars parked. The ground is made of concrete and there are a few trees scattered around the area. There are no people visible in the video.
+
+time=2023-01-16 16:02:56  pos=[1.561, 7.962, -0.288]  frame=2023-01-16_16-02-56.jpg  saved=False
+  The video shows a university campus with a large brick building in the background. The building has large windows and a white garage door. In front of the building, there is a concrete parking lot with tire marks on it. There are a few bicycles parked on the side of the building. The sky is overcast and there are no people visible in the video.
+
+time=2023-01-16 16:02:59  pos=[1.548, 5.132, -0.246]  frame=2023-01-16_16-02-59.jpg  saved=False
+  In the video, I see a group of students walking on the sidewalk. They are all wearing backpacks and seem to be in a hurry. The building in the background has a brick facade and large windows. There is a metal bench on the sidewalk and a sign that says "Loading Zone" on the side of the building. The sky is overcast and the ground is wet, suggesting that it has recently rained.
+
+time=2023-01-16 16:03:02  pos=[1.417, 2.277, -0.168]  frame=2023-01-16_16-03-02.jpg  saved=False
+  The video shows a university campus with a brick building in the background. There are two people walking on the sidewalk in front of the building. One person is wearing a black jacket and the other is wearing a white shirt. There is a bench on the sidewalk and a sign that says "LOADING ZONE" on the side of the building. The sky is clear and it is daytime.

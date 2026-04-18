@@ -1,0 +1,32 @@
+Index:     25
+ID:        SHORT_a29d9195-acc1-46ea-a225-95816e21e802
+Category:  SHORT
+Type:      text
+Window:    2023-01-16 15:58:58 → 2023-01-16 15:59:55 (57.5s)
+
+Question:
+Which direction did you turn after leaving the building?
+
+Ground truth answer:
+{
+  "text": [
+    "I turned left after driving off the sidewalk"
+  ]
+}
+
+Agent response:
+{
+  "type": "time",
+  "text": "You turned approximately 1 minute ago",
+  "binary": null,
+  "position": null,
+  "orientation": null,
+  "duration": null,
+  "time": "1.0"
+}
+
+Error metrics:
+{}
+
+Elapsed: 40.8s
+Retrieved 4 captions from 20 in window.
