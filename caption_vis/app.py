@@ -64,7 +64,7 @@ def extract_frame(idx):
 
 @app.route('/')
 def index():
-    return render_template('index.html', total=len(captions))
+    return render_template('index.html', total=len(captions), video_start=VIDEO_START_TIME)
 
 
 @app.route('/api/entry/<int:idx>')
