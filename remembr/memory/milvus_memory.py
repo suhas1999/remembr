@@ -54,6 +54,7 @@ class MilvusWrapper:
     def search(self, data, anns_field="text_embedding", limit=10, output_fields=None):
         if output_fields is None:
             output_fields = ["id", "caption", "position", "time", "theta"]
+        data = [float(x) for x in data]
         res = self.client.search(
             collection_name=self.collection_name,
             data=[data],
@@ -66,12 +67,12 @@ class MilvusWrapper:
 
 class MilvusMemory(Memory):
 
-    def __init__(self, db_collection_name: str, db_path='./remembr.db', db_ip=None, db_port=19530, time_offset=FIXED_SUBTRACT):
+    def __init__(self, db_collection_name: str, db_path='./remembr.db', db_ip=None, db_port=19530, time_offset=FIXED_SUBTRACT, embedder=None):
         self.db_collection_name = db_collection_name
         self.db_path = db_path
         self.time_offset = time_offset
 
-        self.embedder = HuggingFaceEmbeddings(model_name='mixedbread-ai/mxbai-embed-large-v1')
+        self.embedder = embedder or HuggingFaceEmbeddings(model_name='mixedbread-ai/mxbai-embed-large-v1')
         self.working_memory = []
         self.reset(drop_collection=False)
 
@@ -82,8 +83,10 @@ class MilvusMemory(Memory):
         if text_embedding is None:
             text_embedding = self.embedder.embed_query(memory_dict['caption'])
 
-        memory_dict['time'] = [(memory_dict['time'] - self.time_offset), 0.0]
-        memory_dict['text_embedding'] = text_embedding
+        memory_dict['time'] = [float(memory_dict['time'] - self.time_offset), 0.0]
+        memory_dict['text_embedding'] = [float(x) for x in text_embedding]
+        memory_dict['position'] = [float(x) for x in memory_dict['position']]
+        memory_dict['theta'] = float(memory_dict['theta'])
         self.milv_wrapper.insert([memory_dict])
 
     def get_working_memory(self) -> list[MemoryItem]:
@@ -125,19 +128,28 @@ class MilvusMemory(Memory):
         mdy_date = strftime('%m/%d/%Y', t)
         template = "%m/%d/%Y %H:%M:%S"
 
-        try:
-            res = bool(datetime.datetime.strptime(hms_time, template))
-        except ValueError:
-            res = False
-
         hms_time = hms_time.strip()
-        if not res:
-            hms_time = mdy_date + ' ' + hms_time
 
-        query = time.mktime(datetime.datetime.strptime(hms_time, template).timetuple()) - self.time_offset
+        parsed_dt = None
+        for fmt in (template, "%Y-%m-%d %H:%M:%S", "%H:%M:%S", "%H:%M"):
+            try:
+                parsed_dt = datetime.datetime.strptime(hms_time, fmt)
+                if fmt in ("%H:%M:%S", "%H:%M"):
+                    parsed_dt = parsed_dt.replace(year=t.tm_year, month=t.tm_mon, day=t.tm_mday)
+                break
+            except ValueError:
+                continue
+
+        if parsed_dt is None:
+            try:
+                parsed_dt = datetime.datetime.strptime(mdy_date + ' ' + hms_time, template)
+            except ValueError:
+                return "Could not parse time: " + hms_time
+
+        query = time.mktime(parsed_dt.timetuple()) - self.time_offset
 
         results = self.milv_wrapper.search(
-            [query, 0.0],
+            [float(query), 0.0],
             anns_field="time",
             limit=4,
         )
@@ -146,7 +158,7 @@ class MilvusMemory(Memory):
         return self.memory_to_string(docs)
 
     def search_by_text(self, query: str) -> str:
-        query_embedding = self.embedder.embed_query(query)
+        query_embedding = [float(x) for x in self.embedder.embed_query(query)]
         results = self.milv_wrapper.search(
             query_embedding,
             anns_field="text_embedding",

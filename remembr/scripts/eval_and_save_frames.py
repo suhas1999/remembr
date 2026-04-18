@@ -91,7 +91,7 @@ def find_caption_by_time(captions, target_time):
     return captions[idx]
 
 
-def load_memory(args, qa_instance, captions, caption_times):
+def load_memory(args, qa_instance, captions, caption_times, embedder=None):
     """Load captions in [start_time, end_time] into a fresh MilvusMemory."""
     start_time = qa_instance['start_time']
     end_time   = qa_instance['end_time']
@@ -99,7 +99,8 @@ def load_memory(args, qa_instance, captions, caption_times):
     memory = MilvusMemory(
         f"eval_frames_{args.sequence_id}",
         db_path=args.db_path,
-        time_offset=start_time
+        time_offset=start_time,
+        embedder=embedder,
     )
     memory.reset()
 
@@ -189,6 +190,9 @@ def main(args):
 
     os.makedirs(args.out_dir, exist_ok=True)
 
+    from langchain_huggingface import HuggingFaceEmbeddings
+    embedder = HuggingFaceEmbeddings(model_name='mixedbread-ai/mxbai-embed-large-v1')
+
     agent = ReMEmbRAgent(llm_type=args.llm, num_ctx=args.num_ctx, temperature=args.temperature)
 
     all_responses = []
@@ -211,7 +215,7 @@ def main(args):
         os.makedirs(win_path, exist_ok=True)
 
         # ── Load memory for this question window ──────────────────────────────
-        memory, window_captions = load_memory(args, qa, captions, caption_times)
+        memory, window_captions = load_memory(args, qa, captions, caption_times, embedder=embedder)
         agent.set_memory(memory)
 
         # ── Run agent ─────────────────────────────────────────────────────────

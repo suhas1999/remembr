@@ -240,6 +240,21 @@ python3 remembr/scripts/eval_and_save_frames.py \
 
 Both models use the same three-prompt agentic pipeline (`agent_system_prompt` → retrieval loop → `agent_gen_only_prompt` → `generate_system_prompt`). The only difference is the underlying LLM. Add `--max_questions 1` to run a single-question smoke test.
 
+### Viewing and comparing results
+
+Results are saved to `<out_dir>/eval_results/seq<N>_<caption_file>.json`. Use `scripts/show_results.py` to print a comparison table and save a Markdown report:
+
+```bash
+python3 scripts/show_results.py \
+  --results analysis_llama/eval_results/seq0_captions_Llama-3-VILA1.5-8b_3_secs.json \
+  --label "Llama3.1:8b seq0" \
+  --out_dir eval_reports
+```
+
+- Prints a formatted table comparing your results against the benchmark (GPT-4o, Codestral, Command-R, Llama3.1:8b).
+- Saves a Markdown report to `eval_reports/<results_filename>.md`.
+- Each run creates a separate file in `eval_reports/`, so different model versions and sequences can be compared side by side.
+
 ---
 
 ## Summary of version pinning that works
