@@ -368,12 +368,9 @@ class ReMEmbRAgent(Agent):
                 elif 'response' in parsed and isinstance(parsed['response'], dict):
                     parsed = parsed['response']
 
-            # then check it has all the required keys
-            keys_to_check_for = ["time", "text", "binary", "position", "duration"]
-
-            for key in keys_to_check_for:
-                if key not in parsed:
-                    raise ValueError(f"Missing key '{key}' during generate. Retrying...")
+            # fill in any missing optional keys with None
+            for key in ["time", "text", "binary", "position", "duration"]:
+                parsed.setdefault(key, None)
 
             if type(parsed['position']) == str:
                 try:

@@ -29,3 +29,13 @@
 **Problem:** `search_by_time` passed `[query, 0.0]` to Milvus where `query` could be a numpy scalar (result of `time.mktime(...) - self.time_offset` when `time_offset` is a numpy float from JSON). `struct.pack` requires Python native floats and raises `struct.error` on numpy types.
 
 **Fix:** Cast `query` to `float(query)` before passing it to `milv_wrapper.search`.
+
+---
+
+## 4. `Missing key 'duration' during generate` causes 3-attempt failure
+
+**File:** `remembr/agents/remembr_agent.py`
+
+**Problem:** `generate` required all keys (`time`, `text`, `binary`, `position`, `duration`) to be present in the LLM's JSON response. For question types that don't involve duration (or other fields), the LLM omits them, triggering a `ValueError` that retries 3 times and then crashes.
+
+**Fix:** Replaced the strict key-presence check with `setdefault(key, None)` for each optional key, matching `AgentOutput`'s own defaults.
