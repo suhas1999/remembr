@@ -294,7 +294,7 @@
       <div class="meta-section">
         <div class="meta-row"><span>Position (x,y,z)</span><span id="meta-pos">—</span></div>
         <div class="meta-row"><span>Theta</span><span id="meta-theta">—</span></div>
-        <div class="meta-row"><span>Unix time</span><span id="meta-unix">—</span></div>
+        <div class="meta-row"><span>Timestamp</span><span id="meta-unix">—</span></div>
       </div>
     </div>
   </div>
@@ -374,7 +374,7 @@ async function loadEntry(idx) {
     document.getElementById('meta-theta').textContent =
       data.theta != null ? data.theta.toFixed(4) : '—';
     document.getElementById('meta-unix').textContent =
-      data.time_unix ? data.time_unix.toFixed(3) : '—';
+      data.time_unix ? new Date(data.time_unix * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'}) : '—';
 
     document.getElementById('btn-prev').disabled = idx === 0;
     document.getElementById('btn-next').disabled = idx === TOTAL - 1;
