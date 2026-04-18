@@ -48,7 +48,7 @@
 
 **Problem:** In `insert`, `memory_dict['time']` and `memory_dict['text_embedding']` were stored as numpy types (numpy float from `time - time_offset`, numpy float32 from `embed_query`). This could cause the same `struct.pack` float errors at insert time or corrupt stored vectors.
 
-**Fix:** Cast `time` with `float(...)` and `text_embedding` with `[float(x) for x in ...]` before inserting.
+**Fix:** Cast `time` with `float(...)`, `text_embedding` with `[float(x) for x in ...]`, `position` with `[float(x) for x in ...]`, and `theta` with `float(...)` before inserting. Also added a blanket `[float(x) for x in data]` cast inside `MilvusWrapper.search` so no caller can accidentally pass numpy types.
 
 ---
 

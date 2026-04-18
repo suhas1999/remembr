@@ -54,6 +54,7 @@ class MilvusWrapper:
     def search(self, data, anns_field="text_embedding", limit=10, output_fields=None):
         if output_fields is None:
             output_fields = ["id", "caption", "position", "time", "theta"]
+        data = [float(x) for x in data]
         res = self.client.search(
             collection_name=self.collection_name,
             data=[data],
@@ -84,6 +85,8 @@ class MilvusMemory(Memory):
 
         memory_dict['time'] = [float(memory_dict['time'] - self.time_offset), 0.0]
         memory_dict['text_embedding'] = [float(x) for x in text_embedding]
+        memory_dict['position'] = [float(x) for x in memory_dict['position']]
+        memory_dict['theta'] = float(memory_dict['theta'])
         self.milv_wrapper.insert([memory_dict])
 
     def get_working_memory(self) -> list[MemoryItem]:
