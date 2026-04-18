@@ -32,6 +32,16 @@
 
 ---
 
+## 4. `struct.error: required argument is not a float` in `search_by_text`
+
+**File:** `remembr/memory/milvus_memory.py`
+
+**Problem:** `HuggingFaceEmbeddings.embed_query` returns numpy float32 values. Passing them directly to Milvus causes `struct.pack` to fail because it requires Python native floats.
+
+**Fix:** Wrap the embedding with `[float(x) for x in ...]` before passing to `milv_wrapper.search`.
+
+---
+
 ## 4. `Missing key 'duration' during generate` causes 3-attempt failure
 
 **File:** `remembr/agents/remembr_agent.py`

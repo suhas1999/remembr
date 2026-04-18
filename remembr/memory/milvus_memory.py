@@ -155,7 +155,7 @@ class MilvusMemory(Memory):
         return self.memory_to_string(docs)
 
     def search_by_text(self, query: str) -> str:
-        query_embedding = self.embedder.embed_query(query)
+        query_embedding = [float(x) for x in self.embedder.embed_query(query)]
         results = self.milv_wrapper.search(
             query_embedding,
             anns_field="text_embedding",
