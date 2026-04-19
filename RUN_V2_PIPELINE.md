@@ -104,6 +104,17 @@ gsutil -m cp -r gs://remember-data-bucket/remembr/data/questions ./data/
 > These become the ground truth answers for position/time questions, and the robot's current
 > position is injected into the question preamble. Nothing to do with v2 memory.
 
+> **If you can't access the GCS bucket**, you'll need to regenerate the question JSONs yourself.
+> This requires the **v1 VILA captions** (`captions_Llama-3-VILA1.5-8b_3_secs.json`) for each
+> sequence, which are produced by the v1 captioning pipeline (`remembr/scripts/preprocess_captions.py`
+> using the VILA 1.5 model). Once you have those captions at
+> `./data/captions/{seq_id}/captions/captions_Llama-3-VILA1.5-8b_3_secs.json`, run:
+> ```bash
+> conda run -n remembr python remembr/scripts/question_scripts/form_question_jsons.py \
+>     --caption_file captions_Llama-3-VILA1.5-8b_3_secs
+> ```
+> This processes all sequences at once and writes `./data/questions/{seq_id}/human_qa.json`.
+
 ---
 
 ### Step 4 — Run eval with v2 agent + GPT-4o
