@@ -86,9 +86,15 @@ conda run -n remembr python remembr/scripts/build_memory_v2.py \
 
 ---
 
-### Step 3 — Question JSONs (already done — do not re-run)
+### Step 3 — Question JSONs (download once, do not re-generate)
 
 `./data/questions/$SEQ_ID/human_qa.json` already exists for all sequences: **0, 3, 4, 6, 16, 21, 22**.
+Download from GCS if not present locally:
+
+```bash
+mkdir -p ./data/questions
+gsutil -m cp -r gs://remember-data-bucket/remembr/data/questions ./data/
+```
 
 > **Why does the script take a `--caption_file`?**  
 > It's a one-time preprocessing step, not part of the eval pipeline. Human annotators
