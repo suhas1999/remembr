@@ -50,7 +50,7 @@ class MilvusWrapperV2:
         schema.add_field("bge_embedding", DataType.FLOAT_VECTOR, dim=BGE_DIM)
         schema.add_field("position", DataType.FLOAT_VECTOR, dim=3)
         schema.add_field("theta", DataType.FLOAT)
-        schema.add_field("time", DataType.FLOAT)          # raw unix timestamp (scalar)
+        schema.add_field("time", DataType.DOUBLE)         # raw unix timestamp (scalar) — DOUBLE for full precision
         schema.add_field("caption", DataType.VARCHAR, max_length=3000)
         schema.add_field("image_path", DataType.VARCHAR, max_length=1000)
         schema.add_field("is_revisit", DataType.FLOAT)    # 0.0 = original, 1.0 = revisit

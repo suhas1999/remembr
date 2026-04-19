@@ -263,6 +263,34 @@ def build_memory(args):
     n_skipped_s1 = len(frames) - len(passing_indices)
     print(f"Stage 1: {len(passing_indices)} frames pass → VLM judge ({n_skipped_s1} skipped)")
 
+    # ── Save Stage 1 filtered frames ──────────────────────────────────────────
+    s1_frames_dir = os.path.join(args.keyframes_dir, f"stage1_frames_seq{args.seq_id}")
+    os.makedirs(s1_frames_dir, exist_ok=True)
+    s1_rows = []
+    for idx in passing_indices:
+        f = frames[idx]
+        ts = f["timestamp"]
+        fname = f"{ts:.6f}.jpg"
+        raw_images[idx].save(os.path.join(s1_frames_dir, fname), format="JPEG", quality=85)
+        s1_rows.append({
+            "timestamp": ts,
+            "datetime": strftime("%Y-%m-%d %H:%M:%S", localtime(ts)),
+            "position_x": f["position"][0],
+            "position_y": f["position"][1],
+            "position_z": f["position"][2],
+            "theta_deg": f["theta"],
+            "frame_index": idx,
+            "image_file": fname,
+        })
+    import csv
+    s1_csv_path = os.path.join(args.keyframes_dir, f"stage1_frames_seq{args.seq_id}.csv")
+    with open(s1_csv_path, "w", newline="") as csvf:
+        writer = csv.DictWriter(csvf, fieldnames=s1_rows[0].keys())
+        writer.writeheader()
+        writer.writerows(s1_rows)
+    print(f"Stage 1 frames saved: {len(s1_rows)} images → {s1_frames_dir}")
+    print(f"Stage 1 CSV: {s1_csv_path}")
+
     # ── Step 3: VLM judge only on passing frames ──────────────────────────────
     vlm_anchor_emb = None
     vlm_anchor_image = None
@@ -409,6 +437,32 @@ def build_memory(args):
         json.dump(summary, f, indent=2)
     print(f"Build summary saved to {summary_path}")
 
+    # ── Export captions as v1-compatible JSON (with extra v2 columns) ─────────
+    all_entries = memory.get_all()
+    v1_captions = []
+    for entry in sorted(all_entries, key=lambda e: e.get("time", 0)):
+        ts = entry.get("time", 0)
+        v1_captions.append({
+            # v1-compatible fields
+            "time": ts,
+            "datetime": strftime("%Y-%m-%d %H:%M:%S", localtime(ts)),
+            "position": entry.get("position", []),
+            "caption": entry.get("caption", ""),
+            # v2 extra columns
+            "image_path": entry.get("image_path", ""),
+            "is_revisit": entry.get("is_revisit", 0.0),
+            "original_id": entry.get("original_id", ""),
+            "location_change": entry.get("location_change", 0.0),
+            "theta_deg": entry.get("theta", 0.0),
+            "vlm_model": args.vlm_model,
+        })
+    captions_out_dir = os.path.join(args.data_dir, "captions", str(args.seq_id), "captions")
+    os.makedirs(captions_out_dir, exist_ok=True)
+    captions_json_path = os.path.join(captions_out_dir, f"captions_v2_{args.seq_id}.json")
+    with open(captions_json_path, "w") as f:
+        json.dump(v1_captions, f, indent=2)
+    print(f"v1-compatible captions saved to {captions_json_path} ({len(v1_captions)} entries)")
+
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -455,6 +509,8 @@ if __name__ == "__main__":
                         help="Gemini model for VLM judge (e.g. gemini-2.5-flash, gemini-1.5-pro)")
     parser.add_argument("--gemini_api_key", type=str, default=None,
                         help="Gemini API key (or set GEMINI_API_KEY env var)")
+    parser.add_argument("--data_dir", type=str, default="./data",
+                        help="Base data directory for saving captions JSON (captions/{seq_id}/captions/)")
     parser.add_argument("--device", type=str, default=None,
                         help="Device for SigLIP encoding: 'cuda', 'cpu', or None for auto-detect")
     parser.add_argument("--siglip_batch_size", type=int, default=32,
