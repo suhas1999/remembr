@@ -86,16 +86,17 @@ conda run -n remembr python remembr/scripts/build_memory_v2.py \
 
 ---
 
-### Step 3 — Form question JSONs (skip if already done)
+### Step 3 — Question JSONs (already done — do not re-run)
 
-```bash
-if [ ! -f "./data/questions/$SEQ_ID/human_qa.json" ]; then
-    conda run -n remembr python remembr/scripts/question_scripts/form_question_jsons.py \
-        --caption_file captions_Llama-3-VILA1.5-8b_3_secs
-fi
-```
+`./data/questions/$SEQ_ID/human_qa.json` already exists for all sequences: **0, 3, 4, 6, 16, 21, 22**.
 
-Questions are already formed for sequences 0, 3, 4, 6, 16, 21, 22.
+> **Why does the script take a `--caption_file`?**  
+> It's a one-time preprocessing step, not part of the eval pipeline. Human annotators
+> wrote `H:M:S` timestamps marking when events happened. The script looks up the nearest
+> v1 VILA caption (`captions_Llama-3-VILA1.5-8b_3_secs`) to each annotated timestamp to
+> extract the robot's ground-truth **position** and exact **unix timestamp** at that moment.
+> These become the ground truth answers for position/time questions, and the robot's current
+> position is injected into the question preamble. Nothing to do with v2 memory.
 
 ---
 
