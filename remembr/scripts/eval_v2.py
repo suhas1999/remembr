@@ -133,6 +133,9 @@ def main(args):
     all_responses = []
 
     for q_idx, qa in enumerate(questions):
+        if args.start_from is not None and q_idx < args.start_from:
+            continue
+
         question_text = qa["question"]
         q_type = qa["type"]
         q_id = qa["id"]
@@ -146,6 +149,11 @@ def main(args):
         out_path = os.path.join(args.out_dir, folder)
         ret_path = os.path.join(out_path, "retrieved_images")
         os.makedirs(ret_path, exist_ok=True)
+
+        # ── Skip if already done ──────────────────────────────────────────────
+        if os.path.exists(os.path.join(out_path, "info.txt")):
+            print(f"     [SKIP] already done")
+            continue
 
         # ── Set time window for this question ─────────────────────────────────
         # The v2 database covers the full sequence. We apply a time filter to
@@ -230,7 +238,7 @@ def main(args):
         }
         all_responses.append(out_dict)
         print(f"     Saved: {len(seen_paths)} images → {folder}/")
-        time.sleep(5)  # avoid TPM rate limit between questions
+        time.sleep(args.sleep)  # avoid TPM rate limit between questions
 
     # ── Full eval results JSON ────────────────────────────────────────────────
     results_dir = os.path.join(args.out_dir, "eval_results")
@@ -272,6 +280,10 @@ if __name__ == "__main__":
     parser.add_argument("--out_dir", type=str, default="./analysis_v2")
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--max_questions", type=int, default=None)
+    parser.add_argument("--start_from", type=int, default=None,
+                        help="Skip questions before this index (0-based)")
+    parser.add_argument("--sleep", type=float, default=5.0,
+                        help="Seconds to sleep between questions (default 5)")
     args = parser.parse_args()
 
     if args.openai_api_key:

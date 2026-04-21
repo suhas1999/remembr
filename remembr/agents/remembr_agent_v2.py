@@ -67,13 +67,17 @@ def _should_continue(state: AgentState) -> Literal["continue", "end"]:
     return "continue" if state["messages"][-1].tool_calls else "end"
 
 
-def _try_except_continue(state, func, max_retries=3):
+def _try_except_continue(state, func, max_retries=5):
+    import time as _time
     for attempt in range(max_retries):
         try:
             return func(state)
         except Exception as e:
             print(f"[WARN] {func.__name__} failed (attempt {attempt+1}/{max_retries}): {e}")
             traceback.print_exc()
+            wait = 15 * (2 ** attempt)
+            print(f"[WARN] retrying in {wait}s...")
+            _time.sleep(wait)
     raise RuntimeError(f"{func.__name__} failed after {max_retries} attempts")
 
 
@@ -535,7 +539,7 @@ def _call_vision_vlm(labeled_images: list, question: str, model: str = "gpt-4o")
         loaded += 1
 
     if loaded == 0:
-        return f"No valid image files found. Provided paths: {[p for _, p in labeled_images]}"
+        return f"No valid image files found. Provided paths: {[p for _, p, *_ in labeled_images]}"
 
     response = client.chat.completions.create(
         model=model,

@@ -20,6 +20,7 @@ import json
 import os
 import pickle
 import sys
+import time
 from io import BytesIO
 from time import strftime, localtime
 
@@ -37,7 +38,7 @@ from models.siglip_encoder import SigLIPEncoder
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
-SIMILARITY_THRESHOLD = 0.95  # Stage 1: skip if cosine sim to anchor > this value
+SIMILARITY_THRESHOLD = 0.95  # default; overridden by --threshold arg
 
 
 # ── Image encoding helpers ────────────────────────────────────────────────────
@@ -101,16 +102,26 @@ def call_vlm_judge(
             parts.append(_gemini_image_part(stored_img))
 
     from google.genai import types as genai_types
-    response = gemini_model.models.generate_content(
-        model=model,
-        contents=parts,
-        config=genai_types.GenerateContentConfig(
-            temperature=0,
-            max_output_tokens=512,
-            response_mime_type="application/json",
-            thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
-        ),
-    )
+    for _attempt in range(5):
+        try:
+            response = gemini_model.models.generate_content(
+                model=model,
+                contents=parts,
+                config=genai_types.GenerateContentConfig(
+                    temperature=0,
+                    max_output_tokens=512,
+                    response_mime_type="application/json",
+                    thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
+                ),
+            )
+            break
+        except Exception as _e:
+            if _attempt < 4:
+                wait = 15 * (2 ** _attempt)
+                print(f"  [WARN] Gemini API error (attempt {_attempt+1}/5): {_e}. Retrying in {wait}s...")
+                time.sleep(wait)
+            else:
+                raise
 
     raw = response.text.strip()
     # Strip markdown code fences if present
@@ -181,15 +192,25 @@ def generate_caption_with_window(
     for idx in sampled:
         parts.append(_gemini_image_part(raw_images[idx]))
 
-    response = gemini_model.models.generate_content(
-        model=model,
-        contents=parts,
-        config=genai_types.GenerateContentConfig(
-            temperature=0,
-            max_output_tokens=2048,
-            thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
-        ),
-    )
+    for _attempt in range(5):
+        try:
+            response = gemini_model.models.generate_content(
+                model=model,
+                contents=parts,
+                config=genai_types.GenerateContentConfig(
+                    temperature=0,
+                    max_output_tokens=2048,
+                    thinking_config=genai_types.ThinkingConfig(thinking_budget=0),
+                ),
+            )
+            break
+        except Exception as _e:
+            if _attempt < 4:
+                wait = 15 * (2 ** _attempt)
+                print(f"  [WARN] Gemini caption API error (attempt {_attempt+1}/5): {_e}. Retrying in {wait}s...")
+                time.sleep(wait)
+            else:
+                raise
     return response.text.strip()
 
 
@@ -252,11 +273,12 @@ def build_memory(args):
     # Roll through all embeddings with a moving anchor. Every frame that differs
     # enough (sim < threshold) gets its index recorded. This is instant (no VLM)
     # and gives us the exact set of frames to judge, matching inspect_siglip_filter.py.
-    print(f"\nRunning Stage 1 filter (threshold={SIMILARITY_THRESHOLD})...")
+    threshold = getattr(args, "threshold", SIMILARITY_THRESHOLD)
+    print(f"\nRunning Stage 1 filter (threshold={threshold})...")
     passing_indices = [0]  # first frame always passes
     s1_anchor = all_embs[0]
     for idx in range(1, len(all_embs)):
-        if float(np.dot(all_embs[idx], s1_anchor)) < SIMILARITY_THRESHOLD:
+        if float(np.dot(all_embs[idx], s1_anchor)) < threshold:
             passing_indices.append(idx)
             s1_anchor = all_embs[idx]
 
@@ -513,6 +535,8 @@ if __name__ == "__main__":
                         help="Base data directory for saving captions JSON (captions/{seq_id}/captions/)")
     parser.add_argument("--device", type=str, default=None,
                         help="Device for SigLIP encoding: 'cuda', 'cpu', or None for auto-detect")
+    parser.add_argument("--threshold", type=float, default=SIMILARITY_THRESHOLD,
+                        help="Stage 1 SigLIP cosine similarity threshold (default 0.95)")
     parser.add_argument("--siglip_batch_size", type=int, default=32,
                         help="Images per batch during SigLIP encoding")
     args = parser.parse_args()
