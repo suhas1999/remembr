@@ -1,0 +1,215 @@
+{
+    "version": 0.1,
+    "video_info": {
+        "source": "gs://remember-data-bucket/remembr/data/WhatsApp Video 2026-04-22 at 03.00.15.mp4",
+        "seq_id": 99,
+        "video_start_utc": "2026-04-22 00:00:00",
+        "video_start_time": 1745280000.0,
+        "video_end_time": 1745280584.346,
+        "duration_s": 584.346,
+        "note": "end_time updated after running mp4_to_pkl.py (2026-04-22)"
+    },
+    "data": [
+        {
+            "id": "PERSONAL_q01_keys_location",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Where were your keys lying initially at the start of the video?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q02_song_playing",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n What song is playing on the computer in the video?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q03_phone_room",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n You cannot find your phone. In which room is the phone located?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q04_catan_location",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Where is the board game Catan lying around in the house?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q05_apartment_numbers",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n What apartment numbers were visible in the video today?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q06_laundry_how_long_ago",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. The current time is the end of the recording. \n How long ago did you do your laundry?",
+            "type": "duration",
+            "answers": {
+                "text": ["unknown - verify from video"],
+                "duration": 0.0
+            }
+        },
+        {
+            "id": "PERSONAL_q07_laundry_settings",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n What settings did you use on the laundry machine?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q08_detergent_softener",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Did you put both detergent and fabric softener into the laundry machine?",
+            "type": "binary",
+            "answers": {
+                "text": ["unknown - verify from video"],
+                "binary": "yes"
+            }
+        },
+        {
+            "id": "PERSONAL_q09_kitchen_sink_utensils",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Were there any uncleaned utensils sitting in the kitchen sink?",
+            "type": "binary",
+            "answers": {
+                "text": ["unknown - verify from video"],
+                "binary": "yes"
+            }
+        },
+        {
+            "id": "PERSONAL_q10_amazon_boxes_living_area",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Are there any Amazon boxes or packaging covers in the living area?",
+            "type": "binary",
+            "answers": {
+                "text": ["unknown - verify from video"],
+                "binary": "yes"
+            }
+        },
+        {
+            "id": "PERSONAL_q11_guard_ground_floor",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Was there a security guard present on the ground floor when you were leaving the building?",
+            "type": "binary",
+            "answers": {
+                "text": ["unknown - verify from video"],
+                "binary": "yes"
+            }
+        },
+        {
+            "id": "PERSONAL_q12_apartment_entered",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n What was the apartment number or identifier of the apartment you entered?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q13_laundry_direction_from_elevator",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n After stepping out of the elevator, did you turn left or right to reach the laundry room?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q14_elevator_notice",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n What was written on the notice posted beside the elevator?",
+            "type": "text",
+            "answers": {
+                "text": ["unknown - verify from video"]
+            }
+        },
+        {
+            "id": "PERSONAL_q15_superintendent_office_near_laundry",
+            "length_category": "FULL",
+            "length": 584.346,
+            "start_time": 1745280000.0,
+            "end_time": 1745280584.346,
+            "file_info": {},
+            "question": "The recording started at 2026-04-22 00:00:00 UTC. You are reviewing the full recording. \n Is the superintendent's office located near the laundry room?",
+            "type": "binary",
+            "answers": {
+                "text": ["unknown - verify from video"],
+                "binary": "yes"
+            }
+        }
+    ]
+}
