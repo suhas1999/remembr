@@ -254,7 +254,7 @@ def main(args):
 
     results_dir = os.path.join(args.out_dir, "eval_results")
     os.makedirs(results_dir, exist_ok=True)
-    out_path = os.path.join(results_dir, f"seq{args.sequence_id}_v1_gemini_{args.llm}.json")
+    out_path = os.path.join(results_dir, f"seq{args.sequence_id}_v1_{args.captioner_name}_{args.llm}.json")
     with open(out_path, "w") as f:
         json.dump({"version": "v1_personal", "responses": all_responses}, f, indent=4)
     print(f"\nDone. Results: {out_path}")
