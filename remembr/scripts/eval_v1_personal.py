@@ -136,9 +136,10 @@ def evaluate_output(qa_instance, predicted):
 
 def main(args):
     questions_path = os.path.join(args.data_dir, "questions", str(args.sequence_id), "human_qa.json")
+    secs = int(args.seconds_per_caption) if args.seconds_per_caption == int(args.seconds_per_caption) else args.seconds_per_caption
     captions_path = os.path.join(
         args.data_dir, "captions", str(args.sequence_id), "captions",
-        f"captions_{args.captioner_name}_{args.seconds_per_caption}_secs.json"
+        f"captions_{args.captioner_name}_{secs}_secs.json"
     )
 
     with open(questions_path) as f:
