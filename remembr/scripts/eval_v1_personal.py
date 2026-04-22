@@ -138,7 +138,7 @@ def main(args):
     questions_path = os.path.join(args.data_dir, "questions", str(args.sequence_id), "human_qa.json")
     captions_path = os.path.join(
         args.data_dir, "captions", str(args.sequence_id), "captions",
-        f"captions_gemini_{args.seconds_per_caption}_secs.json"
+        f"captions_{args.captioner_name}_{args.seconds_per_caption}_secs.json"
     )
 
     with open(questions_path) as f:
@@ -262,7 +262,8 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--sequence_id", type=int, default=99)
-    parser.add_argument("--seconds_per_caption", type=float, default=1.5)
+    parser.add_argument("--seconds_per_caption", type=float, default=3.0)
+    parser.add_argument("--captioner_name", type=str, default="Llama-3-VILA1.5-8b")
     parser.add_argument("--llm", type=str, default="gpt-4o")
     parser.add_argument("--openai_api_key", type=str, default=None)
     parser.add_argument("--data_dir", type=str, default="./data")
