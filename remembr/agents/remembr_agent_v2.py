@@ -96,7 +96,8 @@ def _parse_json(string: str) -> dict:
 
 class ReMEmbRAgentV2(Agent):
 
-    def __init__(self, llm_type: str = "gpt-4o", num_ctx: int = 8192 * 8, temperature: float = 0):
+    def __init__(self, llm_type: str = "gpt-4o", num_ctx: int = 8192 * 8, temperature: float = 0,
+                 agent_prompt_path: str = None):
         self.llm_type = llm_type
         self.num_ctx = num_ctx
         self.temperature = temperature
@@ -109,8 +110,9 @@ class ReMEmbRAgentV2(Agent):
         top_level = os.path.join(os.path.dirname(__file__), "..")
 
         # Use the battle-tested v1 prompts; append examine_keyframes description
+        prompt_file = agent_prompt_path or os.path.join(top_level, "prompts/agent_system_prompt.txt")
         self.agent_prompt = (
-            file_to_string(os.path.join(top_level, "prompts/agent_system_prompt.txt"))
+            file_to_string(prompt_file)
             + _EXAMINE_KEYFRAMES_ADDENDUM
         )
         self.generate_prompt = file_to_string(
